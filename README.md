@@ -1,2 +1,2 @@
-# Blog-app-django
-This is a simple bolg app
+# Blogger
+Blogger is a basic blogging application which includes user to create account and post their views.
