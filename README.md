@@ -24,7 +24,7 @@ $ cd Blogger/mysite
 $ git checkout -b [your_branch_name]
 ```
 
-- **Make Changes in Souce Code**
+- **Make Changes in Source Code**
 
 #### Setting up Project
 
