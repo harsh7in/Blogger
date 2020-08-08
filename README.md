@@ -53,7 +53,7 @@ python manage.py runserver
 ```
 # For adding/Staging Changes
 
-$ git aad .
+$ git add .
 
 
 # For Commiting Changes
