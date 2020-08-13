@@ -64,7 +64,7 @@ $ git commit -m "<your commit message>"
 
 - **Push your Commit to Repo**
 ```
-$ git push origin <barnch_name>
+$ git push origin <branch_name>
 ```
 
 
