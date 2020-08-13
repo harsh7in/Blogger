@@ -53,7 +53,7 @@ python manage.py runserver
 ```
 # For adding/Staging Changes
 
-$ git aad .
+$ git add .
 
 
 # For Commiting Changes
@@ -64,9 +64,24 @@ $ git commit -m "<your commit message>"
 
 - **Push your Commit to Repo**
 ```
-$ git push origin <barnch_name>
+$ git push origin <branch_name>
 ```
 
+##  Contribution Guidelines 
+- Take a look at existing issues or create your own issues.
+- Claim the issue in the comment section.
+- Wait for the issue to be assigned to you after which you can start working on it.
+- Create a seperate Branch for every issue you are working on.
+- Refer to the issue that a PR solves, so that a PR can be related to an issue.
+- Create PR to specified Branch which will be promptly reviewed and suggestions would be added for improving it.
+- Add proper commit messages and documentation to your code.
+- Add screenshots of your implementation to help better understand the features you have implemented (must for design related PR).
+- To keep youself Merge Conflict-free
+```
+$ git pull  https://github.com/harsh-9in/Blogger.git     # everyday
+```
+- If you are making multiple commits, make sure to squash the commits amd make a PR.
+- Don't override "First Come, First Serve". If someone has claimed that issue, please don't ask yourself to be assigned the same.
 
 ## Open Source Programs
 
