@@ -5,7 +5,7 @@ Blogger is a basic blogging application which includes user to create account an
 - **Frontend:** HTML/CSS
 - **Backend:** Django
 
-asdfadsfda
+
 ## Quick Start :
 
 - **Fork it** :
