@@ -83,6 +83,7 @@ $ git pull  https://github.com/harsh-9in/Blogger.git     # everyday
 - If you are making multiple commits, make sure to squash the commits amd make a PR.
 - Don't override "First Come, First Serve". If someone has claimed that issue, please don't ask yourself to be assigned the same.
 
+
 ## Open Source Programs
 
 - ### Contributor's Hack 2020
