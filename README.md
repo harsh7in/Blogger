@@ -78,7 +78,29 @@ $ git push origin <barnch_name>
 - Add screenshots of your implementation to help better understand the features you have implemented (must for design related PR).
 - To keep youself Merge Conflict-free
 ```
-$ git pull  https://github.com/harsh-9in/Blogger.git     # everyday
+# Configuring a remote for a fork
+$ git remote -v
+> origin  https://github.com/YOUR_USERNAME/YOUR_FORK.git (fetch)
+> origin  https://github.com/YOUR_USERNAME/YOUR_FORK.git (push)
+
+$ git remote add upstream https://github.com/ORIGINAL_OWNER/ORIGINAL_REPOSITORY.git 
+> origin  https://github.com/YOUR_USERNAME/YOUR_FORK.git (fetch)
+> origin  https://github.com/YOUR_USERNAME/YOUR_FORK.git (push)
+> upstream  https://github.com/ORIGINAL_OWNER/ORIGINAL_REPOSITORY.git (fetch)
+> upstream  https://github.com/ORIGINAL_OWNER/ORIGINAL_REPOSITORY.git (push)
+
+
+# to sync fork with original repository
+
+$ git fetch upstream
+> From https://github.com/ORIGINAL_OWNER/ORIGINAL_REPOSITORY
+>  * [new branch]      master     -> upstream/master
+
+$ git checkout master
+> Switched to branch 'master'
+
+$ git merge upstream/master
+
 ```
 - If you are making multiple commits, make sure to squash the commits amd make a PR.
 - Don't override "First Come, First Serve". If someone has claimed that issue, please don't ask yourself to be assigned the same.
