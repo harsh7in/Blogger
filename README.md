@@ -53,7 +53,7 @@ python manage.py runserver
 ```
 # For adding/Staging Changes
 
-$ git aad .
+$ git add .
 
 
 # For Commiting Changes
@@ -64,7 +64,7 @@ $ git commit -m "<your commit message>"
 
 - **Push your Commit to Repo**
 ```
-$ git push origin <barnch_name>
+$ git push origin <branch_name>
 ```
 
 ## Contribution Guidelines 
