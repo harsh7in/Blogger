@@ -24,7 +24,7 @@ $ cd Blogger/mysite
 $ git checkout -b [your_branch_name]
 ```
 
-- **Make Changes in Souce Code**
+- **Make Changes in Source Code**
 
 #### Setting up Project
 
@@ -53,7 +53,7 @@ python manage.py runserver
 ```
 # For adding/Staging Changes
 
-$ git aad .
+$ git add .
 
 
 # For Commiting Changes
