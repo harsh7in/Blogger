@@ -26,6 +26,9 @@
             <div class="navbar-nav mr-auto">
               <a class="nav-item nav-link" href="{% url 'blog-home' %}">Home</a>
               <a class="nav-item nav-link" href="/about">About</a>
+              {% if user.is_authenticated %}
+              <a class="nav-item nav-link" href="{% url 'post_create' %}">Post Create</a>
+              {% endif %}
             </div>
             <!-- Navbar Right Side -->
             <div class="navbar-nav">
