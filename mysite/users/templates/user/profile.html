@@ -5,13 +5,71 @@
 
 <div class="content-section">
     <div class="media">
-        <img class="rounded-circle account-img" src="{{ user.profile.image.url }}">
-        <div class="media-body">
-            <h2 class="account-heading">{{user.username}}</h2>
-            <p class="text-secondary">{{user.email}}</p>
-        </div>
+        <div class="container col-md-3 text-center">
+
+        <!--If User has profile Image-->
+        {% if user.profile.image.url  %}
+          <div data-toggle="modal" data-target="#example">
+            <img class="rounded-circle account-img img-responsive " id="profileImage" style="cursor: pointer;" src="{{ user.profile.image.url }}">    
+            <span style="cursor: pointer; font-size: small;" ><i class="fas fa-pencil-alt" style="padding-right: 5px;"></i> Profile Img</span>
+          </div> 
+
+          <div class="modal fade" id="example" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Choose Profile pic</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <form method="POST" action="profileUpdate/{{user.profile.pk}}/" enctype="multipart/form-data">
+                  {% csrf_token %}
+                  {{ form | crispy }}
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button  class="btn btn-primary" type="submit">Save changes</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        {% else %}
+
+          <!--Else User hasn't profile Image-->
+          <div data-toggle="modal" data-target="#exampleModal">
+            <img class="rounded-circle account-img" id="profileImage" style="cursor: pointer;" src="https://mdbootstrap.com/img/Photos/Others/placeholder-avatar.jpg" >
+            <span style="cursor: pointer; font-size: small;" ><i class="fas fa-pencil-alt" style="padding-right: 5px;"></i> Profile Img</span>
+          </div>
+
+          <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Choose Profile pic</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <form method="POST" action="{% url 'profile' %}" enctype="multipart/form-data">
+                  {% csrf_token %}
+                  {{ form | crispy }}
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button  class="btn btn-primary" type="submit">Save changes</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        {% endif %}
+      </div>
+      <!--User Details-->
+      <div class="media-body">  
+          <h2 class="account-heading">{{user.username}}</h2>
+          <p class="text-secondary">{{user.email}}</p>
+      </div>
     </div>
-    <!-- FORM HERE -->
 </div>
 
 
