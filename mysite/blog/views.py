@@ -5,8 +5,6 @@ from .models import post
 
 # Create your views here.
 
-
-
 def home(request):
     context={
         'post': post.objects.all()
