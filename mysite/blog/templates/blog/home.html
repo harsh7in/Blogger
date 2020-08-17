@@ -6,7 +6,7 @@
 <article class="media content-section">
     <div class="media-body">
       <div class="article-metadata">
-        <a class="mr-2" href="#">{{ post.author }}</a>
+        <a class="mr-2" href="{% url 'blog-profile' name=post.author %}">{{ post.author }}</a>
         <small class="text-muted">{{ post.date_posted }}</small>
       </div>
       <h2><a class="article-title" href="#">{{ post.title }}</a></h2>

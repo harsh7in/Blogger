@@ -1,0 +1,31 @@
+{% extends 'blog/base.html'%}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<div class="content-section">
+    <div class="media">
+        <div class="container col-md-3 text-center">
+            {% if user.profile.image.url %}
+              <div data-toggle="modal" data-target="#example"> 
+                <img class="rounded-circle account-img " id="profileImage" src="{{user.profile.image.url }}">   
+              </div>
+        
+            {% else %}
+
+              <div data-toggle="modal" data-target="#exampleModal">
+                <img class="rounded-circle account-img" id="profileImage" src="https://mdbootstrap.com/img/Photos/Others/placeholder-avatar.jpg" >
+              </div>
+
+            {% endif%}
+        </div>
+
+              <!--User Details-->
+      <div class="media-body">  
+          <h2 class="account-heading">{{user.username}}</h2>
+          <p class="text-secondary">{{user.email}}</p>
+      </div>
+    </div>
+</div>
+
+{% endblock %}
