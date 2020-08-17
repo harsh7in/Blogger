@@ -2,7 +2,7 @@
 from django.shortcuts import render ,redirect, get_object_or_404, get_list_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from .forms import user_reg_form, UserProfileForm
+from .forms import user_reg_form, UserProfileForm, UserProfileUpdateForm
 from .models import Profile
 from django.contrib.auth.models import User
 
@@ -57,3 +57,15 @@ def profileUpdate(request, pk):
             return redirect('profile')
     form = UserProfileForm()
     return render(request,'user/profile.html',{'form': form})
+
+@login_required
+def editProfile(request):
+    if request.method == 'POST':
+        # server = get_object_or_404(Profile, pk=pk)
+        form = UserProfileUpdateForm(request.POST, instance=request.user)
+        if form.is_valid():
+            form.save()
+            messages.success(request,f'Your profile information updated successfully')
+            return redirect(profile)
+    form = UserProfileUpdateForm(instance = request.user)
+    return render(request, 'user/editProfile.html', {'form': form})
