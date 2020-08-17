@@ -2,12 +2,14 @@
 from django.shortcuts import render ,redirect, get_object_or_404, get_list_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from .forms import user_reg_form, UserProfileForm
+from .forms import user_reg_form, LoginForm, UserProfileForm
+from django.contrib.auth import views as auth_views
 from .models import Profile
 from django.contrib.auth.models import User
 
 # Create your views here.
 
+# For user registration
 def register(request):
     if request.method=='POST':
         form = user_reg_form(request.POST)
@@ -20,6 +22,11 @@ def register(request):
         form=user_reg_form()
 
     return render(request,'user/register.html',{'form': form})
+
+#For User login
+class LoginView(auth_views.LoginView):
+    form_class = LoginForm
+    template_name = 'users/login.html'
 
 #If User Add New Image to profile
 @login_required

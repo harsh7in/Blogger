@@ -3,7 +3,7 @@
 
 {% block content %}
     <div class="content-section">
-        <form  method="POST">
+        <form action="{% url 'login' %}" method="POST">
             {% csrf_token %}
 
             <fieldset class="form-group"> 

@@ -130,7 +130,10 @@ MEDIA_URL='/media/'
 
 LOGIN_REDIRECT_URL='blog-home'
 
+LOGOUT_REDIRECT_URL = 'blog-home'
+
 LOGIN_URL='login'
 
+AUTHENTICATION_BACKENDS = ['users.backends.EmailBackend'] #Userlogin by Email / Username 
 
 django_heroku.settings(locals())
