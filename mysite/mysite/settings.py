@@ -130,6 +130,8 @@ MEDIA_URL='/media/'
 
 LOGIN_REDIRECT_URL='blog-home'
 
+LOGOUT_REDIRECT_URL = 'blog-home'
+
 LOGIN_URL='login'
 
 
