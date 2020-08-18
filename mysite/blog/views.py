@@ -4,12 +4,21 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .models import Post
 from .forms import PostForm
+from django.db.models import Q
 
 # Create your views here.
 
 def home(request):
+    posts = Post.objects.all()
+    search_query = request.GET.get('q')
+    if search_query:
+        posts = posts.filter(
+            Q(title__icontains = search_query) |
+            Q(content__icontains = search_query)
+        )
+
     context={
-        'post': Post.objects.all()
+        'posts': posts
     }
     return render(request,'blog/home.html', context)
 

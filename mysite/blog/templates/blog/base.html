@@ -29,6 +29,12 @@
               {% if user.is_authenticated %}
               <a class="nav-item nav-link" href="{% url 'post_create' %}">Post Create</a>
               {% endif %}
+              <!--Search Bar-->
+              <div class="search-bar">
+                <form method="GET" action="/" style="display:inline-block; line-height:24px; border-radius:80px">
+                  <input type="text" placeholder="Search Blogs..." onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search Blogs...';}" name ="q" required="" size="29">
+                </form>
+              </div>
             </div>
             <!-- Navbar Right Side -->
             <div class="navbar-nav">
@@ -45,7 +51,6 @@
         </div>
       </nav>
     </header>
-
 
 
     <main role="main" class="container">
