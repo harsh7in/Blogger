@@ -28,13 +28,14 @@ def about(request):
 
 def Profileview(request,name):
     user =User.objects.get(username=name)
+    flag = (request.user==post.author)
     context={
-        'user':user,
+        'user':user, 'flag':flag     
     }
     if request.user!=user:
-        return render(request,'blog/profileview.html', context)
+        return render(request,'user/profile.html', context)
     else:
         context={
-            'post': post.objects.all()
+            'posts': post.objects.all(),'flag':flag  
         }
         return render(request,'blog/home.html',context)
