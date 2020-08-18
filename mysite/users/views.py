@@ -61,11 +61,10 @@ def profileUpdate(request, pk):
 @login_required
 def editProfile(request):
     if request.method == 'POST':
-        # server = get_object_or_404(Profile, pk=pk)
         form = UserProfileUpdateForm(request.POST, instance=request.user)
         if form.is_valid():
             form.save()
-            messages.success(request,f'Your profile information updated successfully')
+            messages.success(request, f'Your profile information updated successfully')
             return redirect(profile)
     form = UserProfileUpdateForm(instance = request.user)
     return render(request, 'user/editProfile.html', {'form': form})
