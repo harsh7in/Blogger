@@ -6,11 +6,11 @@
 <div class="content-section">
     <div class="media">
         <div class="container col-md-3 text-center">
-
+        {% if flag is True %}   
         <!--If User has profile Image-->
         {% if user.profile.image.url  %}
           <div data-toggle="modal" data-target="#example">
-            <img class="rounded-circle account-img img-responsive " id="profileImage" style="cursor: pointer;" src="{{ user.profile.image.url }}">    
+            <img class="rounded-circle account-img img-responsive " id="profileImage" style="cursor: pointer;" src="{{ user.profile.image.url }}"> 
             <span style="cursor: pointer; font-size: small;" ><i class="fas fa-pencil-alt" style="padding-right: 5px;"></i> Profile Img</span>
           </div> 
 
@@ -63,12 +63,28 @@
             </div>
           </div>
         {% endif %}
+    {% else %}
+      {% if user.profile.image.url  %}
+          <div data-toggle="modal" data-target="#example">
+            <img class="rounded-circle account-img img-responsive " id="profileImage" style="cursor: pointer;" src="{{ user.profile.image.url }}"> 
+          </div>
+
+      {%else%}
+      <div data-toggle="modal" data-target="#exampleModal">
+        <img class="rounded-circle account-img" id="profileImage" style="cursor: pointer;" src="https://mdbootstrap.com/img/Photos/Others/placeholder-avatar.jpg" >
       </div>
-      <!--User Details-->
+      {% endif%}
+    {% endif %}
+    </div> 
+      
+      
+            <!--User Details-->
       <div class="media-body">  
           <h2 class="account-heading">{{user.username}}</h2>
           <p class="text-secondary">{{user.email}}</p>
+          {% if flag is True %}  
           <a href="{% url 'editProfile' %}" class="btn btn-outline-secondary" role="button" aria-pressed="true">Edit Profile</a>
+          {% endif%}
       </div>
     </div>
 </div>
