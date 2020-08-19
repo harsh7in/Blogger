@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 from .models import Post
 from .forms import PostForm
 from django.db.models import Q
-
+from django.shortcuts import render, get_object_or_404
 # Create your views here.
 
 def home(request):
@@ -39,4 +39,8 @@ def post_create(request):
     }
     return render(request, "blog/post_create.html", context)
 
-
+def post_detail(request, pk):
+    context={
+        'post' : get_object_or_404(Post, pk=pk)
+    }
+    return render(request, 'blog/post_detail.html', context)
