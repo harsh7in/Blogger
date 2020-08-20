@@ -1,7 +1,7 @@
 
 <div align="center">
   
-# Blogger
+# BLOGGER
 
 </div>
 
@@ -73,8 +73,11 @@ $ git commit -m "<your commit message>"
 $ git push origin <barnch_name>
 ```
 
+<div align="center">
 
 ## Open Source Programs
+
+</div>
 
 - ### Contributor's Hack 2020
 Contributor's Hack 2020 is a program that helps students grow with ""OPEN SOURCE"". This initiative by **HakinCodes** provides you the best platform to improve your skills and abilities by contributing to vast variety of OPEN SOURCE Projects and opportunity to interact with the mentors and the Organizing Team.
