@@ -1,6 +1,10 @@
 
 <div align="center">
+  
 # Blogger
+
+</div>
+
 Blogger is a basic blogging application which includes user to create account and post their views.
 
 ## Tech Stack
