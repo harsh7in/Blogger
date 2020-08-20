@@ -54,6 +54,50 @@
 
 
     <main role="main" class="container">
+      <!--Slider Start-->
+      <div class="slider">
+        <input name="input-slider" id="input-slide-0" type="radio" class="input-slide input-slide-num" />
+        <input name="input-slider" id="input-slide-1" type="radio" class="input-slide input-slide-num" />
+        <input name="input-slider" id="input-slide-2" type="radio" class="input-slide input-slide-num" />
+        <input name="input-slider" id="input-slide-3" type="radio" class="input-slide input-slide-num" />
+        <input name="input-slider" id="input-slide-autoplay" type="radio" class="input-slide" checked />
+        <ul>
+            <li class="slide-0"></li>
+            <li class="slide-1"></li>
+            <li class="slide-2"></li>
+            <li class="slide-3"></li>
+        </ul>
+        <div class="slide-description">
+            <label class="slide-0">
+                <h1 class="text-slide">Lorem Ipsum</h1>
+                <h5>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</h5>
+                <a href="/" class="readmorebutton">Read More</a>
+            </label>
+            <label class="slide-1">
+                <h1 class="text-slide">Lorem Ipsum</h1>
+                <h5>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</h5>
+                <a href="/" class="readmorebutton">Read More</a>
+            </label>
+            <label class="slide-2">
+                <h1 class="text-slide">Lorem Ipsum</h1>
+                <h5>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</h5>
+                <a href="/" class="readmorebutton">Read More</a>
+            </label>
+            <label class="slide-3">
+                <h1 class="text-slide">Lorem Ipsum</h1>
+                <h5>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</h5>
+                <a href="/" class="readmorebutton">Read More</a>
+            </label>
+        </div>
+        <div class="slider-dot">
+            <label class="slide-0" for="input-slide-0"></label>
+            <label class="slide-1" for="input-slide-1"></label>
+            <label class="slide-2" for="input-slide-2"></label>
+            <label class="slide-3" for="input-slide-3"></label>
+        </div>
+      </div>
+      <!--Slider End-->
+      <span style="display:inline-block; width: 3px;"></span>
       <div class="row">
         <div class="col-md-8">
             {% if messages %}
@@ -61,7 +105,6 @@
                 <div class="alert alert-{{ message.tags }}">
                     {{ messages }}
                 </div>
-                
                 {% endfor %}
             {% endif %}
           {% block content %}
@@ -83,7 +126,7 @@
         </div>
       </div>
     </main>
-    
+
 
 
     <!-- Optional JavaScript -->
