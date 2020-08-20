@@ -2,8 +2,8 @@
 from django.shortcuts import render ,redirect, get_object_or_404, get_list_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from .forms import user_reg_form, LoginForm, UserProfileForm
 from django.contrib.auth import views as auth_views
+from .forms import user_reg_form, LoginForm, UserProfileForm, UserProfileUpdateForm
 from .models import Profile
 from django.contrib.auth.models import User
 
@@ -31,6 +31,7 @@ class LoginView(auth_views.LoginView):
 #If User Add New Image to profile
 @login_required
 def profile(request):
+    flag=True
     if request.method == 'POST':
         profile_form = UserProfileForm(request.POST or None, request.FILES or None)
         if profile_form.is_valid():
@@ -49,11 +50,12 @@ def profile(request):
     else:
         profile_form = UserProfileForm()
 
-    return render(request,'user/profile.html',{'form': profile_form})
+    return render(request,'user/profile.html',{'form': profile_form,'flag':flag})
 
 #If User Update Profile Image
 @login_required
 def profileUpdate(request, pk):
+    flag=True
     if request.method == 'POST':
         #print(pk)
         server = get_object_or_404(Profile, pk=pk)
@@ -63,4 +65,17 @@ def profileUpdate(request, pk):
             edit.save()
             return redirect('profile')
     form = UserProfileForm()
-    return render(request,'user/profile.html',{'form': form})
+    return render(request,'user/profile.html',{'form': form,'flag':flag})
+
+@login_required
+def editProfile(request):
+    flag=True
+    if request.method == 'POST':
+        form = UserProfileUpdateForm(request.POST, instance=request.user)
+        if form.is_valid():
+            form.save()
+            messages.success(request, f'Your profile information updated successfully')
+            return redirect(profile)
+    form = UserProfileUpdateForm(instance = request.user)
+    return render(request, 'user/editProfile.html', {'form': form, 'flag':flag} )
+    
