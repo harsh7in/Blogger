@@ -96,6 +96,7 @@ h1 {
   margin-inline-start: 0px;
   margin-inline-end: 0px;
   font-weight: bold;
+  color: #555555;
 }
 
 h5 {
@@ -109,7 +110,7 @@ label {
   cursor: pointer;
 }
 .slider {
-  height: 20vw;
+  height: 37vh;
   overflow: hidden;
   text-align: center;
   background-color: #47d7ed;
@@ -149,7 +150,7 @@ label {
 }
 .slider > .slider-dot {
   position: relative;
-  margin-top: -4vw;
+  margin-top: -3vw;
   text-align: center;
   z-index: 300;
   font-size: 0;
@@ -176,7 +177,7 @@ label {
 .slider > .slide-description {
   position: absolute;
   width: 50%;
-  top: calc(18% - 3vw);
+  top: calc(16% - 3vw);
   left: 25%;
   z-index: 200;
 }
@@ -318,8 +319,27 @@ label {
   margin: 4px 0;
   border-radius: 3px;
   width: 80px;
-  font-weight: bold;  
+  font-weight: bold;
 }
 .readmorebutton:hover {
-  color:yellow;
+  color:rgb(149, 255, 0);
+}
+ul,
+li {
+    list-style: none;
+}
+@media screen and (max-width: 600px) {
+  .slider {
+   height: 100vh;
+   font-size: 1em;
+  }
+  h5 {
+     font-size: 1em;
+ }
+ h1 {
+ font-size: 2em;
+ }
+}
+*:focus {
+  outline: none;
 }

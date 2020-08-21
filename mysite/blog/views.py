@@ -22,8 +22,19 @@ def home(request):
             Q(content__icontains = search_query)
         )
 
+    # Top 4 most liked blogs, If possible after the feature of like count is added then 
+    # add a logic to store all the id's of most liked blogs from the database in a list, then pass all the id's from the list to this 4 query. 
+    mostliked1 = Post.objects.get(id=6)
+    mostliked2 = Post.objects.get(id=5)
+    mostliked3 = Post.objects.get(id=5)
+    mostliked4 = Post.objects.get(id=3)
+    
     context={
-        'posts': posts
+        'posts': posts,
+        'mostliked1':mostliked1,
+        'mostliked2':mostliked2,
+        'mostliked3':mostliked3,
+        'mostliked4':mostliked4,
     }
     return render(request,'blog/home.html', context)
 
