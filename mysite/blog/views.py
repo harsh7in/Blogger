@@ -1,5 +1,8 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from .models import post
+from django.contrib.auth.models import User
+from django.db.models import Q
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
 # Create your views here.
@@ -41,6 +44,20 @@ def home(request):
 def about(request):
     return render(request,'blog/about.html')
 
+
+def Profileview(request,name):
+    user =User.objects.get(username=name)
+    flag = (request.user==post.author)
+    context={
+        'user':user, 'flag':flag     
+    }
+    if request.user!=user:
+        return render(request,'user/profile.html', context)
+    else:
+        context={
+            'posts': post.objects.all(),'flag':flag  
+        }
+        return render(request,'blog/home.html',context)
 class PostDetailView(DetailView):
     model = Post
 

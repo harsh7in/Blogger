@@ -1,5 +1,6 @@
 {% extends 'blog/base.html' %}
 
+<<<<<<< HEAD
 {% block slider%}
   <div class="slider">
     <input name="input-slider" id="input-slide-0" type="radio" class="input-slide input-slide-num" style="display: none"/>
@@ -42,6 +43,21 @@
         <label class="slide-1" for="input-slide-1"></label>
         <label class="slide-2" for="input-slide-2"></label>
         <label class="slide-3" for="input-slide-3"></label>
+=======
+{% block content %}
+  {% for post in posts %}
+    <article class="media content-section">
+        <div class="media-body">
+          <div class="article-metadata">
+            <a class="mr-2" href="{% url 'blog-profile' name=post.author %}">{{ post.author }}</a>
+            <small class="text-muted">{{ post.date_posted }}</small>
+          </div>
+          <h2><a class="article-title" href="#">{{ post.title }}</a></h2>
+          <p class="article-content">{{ post.content }}</p>
+        </div>
+      <h2><a class="article-title" href="{% url 'post-detail' post.id %}">{{ post.title }}</a></h2>
+      <p class="article-content">{{ post.content }}</p>
+>>>>>>> upstream/master
     </div>
   </div>
 {% endblock %}
