@@ -1,11 +1,20 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from django.views.generic import ListView
+from .models import Post
+# Create your views here.
+
+class PostListView(ListView):
+    model = Post
+    template_name = 'blog/home.html'
+    context_object_name = 'posts'
+    ordering = ['-date_posted']
+
 from django.contrib.auth.models import User
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic import DetailView, UpdateView, DeleteView
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from .models import Post
 from .forms import PostForm
 from django.db.models import Q
 
