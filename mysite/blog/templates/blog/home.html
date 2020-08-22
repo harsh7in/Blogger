@@ -16,22 +16,22 @@
         <label class="slide-0">
             <h1 class="text-slide">{{ mostliked1.title }}</h1>
             <h5>{{mostliked1.content|truncatechars:70}}</h5>
-            <a href="{% url 'post-detail' mostliked1.id %}" class="readmorebutton">Read More</a>
+            <a href="{% url 'post-detail' slug=mostliked1.slug %}" class="readmorebutton">Read More</a>
         </label>
         <label class="slide-1">
             <h1 class="text-slide">{{ mostliked2.title }}</h1>
             <h5>{{mostliked2.content|truncatechars:70}}</h5>
-            <a href="{% url 'post-detail' mostliked2.id %}" class="readmorebutton">Read More</a>
+            <a href="{% url 'post-detail' slug=mostliked2.slug %}" class="readmorebutton">Read More</a>
         </label>
         <label class="slide-2">
             <h1 class="text-slide">{{ mostliked3.title }}</h1>
             <h5>{{mostliked3.content|truncatechars:70}}</h5>
-            <a href="{% url 'post-detail' mostliked3.id %}" class="readmorebutton">Read More</a>
+            <a href="{% url 'post-detail' slug=mostliked3.slug %}" class="readmorebutton">Read More</a>
         </label>
         <label class="slide-3">
             <h1 class="text-slide">{{ mostliked4.title }}</h1>
             <h5>{{mostliked4.content|truncatechars:70}}</h5>
-            <a href="{% url 'post-detail' mostliked4.id %}" class="readmorebutton">Read More</a>
+            <a href="{% url 'post-detail' slug=mostliked4.slug %}" class="readmorebutton">Read More</a>
         </label>
     </div>
 
@@ -49,8 +49,9 @@
             <a class="mr-2" href="{% url 'blog-profile' name=post.author %}">{{ post.author }}</a>
             <small class="text-muted">{{ post.date_posted }}</small>
         </div>
-        <h2><a class="article-title" href="{% url 'post-detail' post.id %}">{{ post.title }}</a></h2>
-        <p class="article-content">{{ post.content }}</p>
+        <h2><a class="article-title" href="{% url 'post-detail' post.slug %}">{{ post.title }}</a></h2>
+        <p class="article-content">{{ post.content|truncatechars:300  }}</p>
     </div>
 </article>
 {% endfor %} {% endblock%}
+
