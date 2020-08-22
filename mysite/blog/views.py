@@ -11,12 +11,8 @@ class PostListView(ListView):
     ordering = ['-date_posted']
 
 from django.contrib.auth.models import User
-from django.db.models import Q
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-
-# Create your views here.
 from django.views.generic import DetailView, UpdateView, DeleteView
-
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .forms import PostForm
@@ -44,7 +40,7 @@ def about(request):
 
 def Profileview(request,name):
     user =User.objects.get(username=name)
-    flag = (request.user==post.author)
+    flag = (request.user==Post.author)
     context={
         'user':user, 'flag':flag     
     }
@@ -52,7 +48,7 @@ def Profileview(request,name):
         return render(request,'user/profile.html', context)
     else:
         context={
-            'posts': post.objects.all(),'flag':flag  
+            'posts': Post.objects.all(),'flag':flag  
         }
         return render(request,'blog/home.html',context)
 class PostDetailView(DetailView):
