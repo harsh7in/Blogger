@@ -16,22 +16,22 @@
         <label class="slide-0">
             <h1 class="text-slide">{{ mostliked1.title }}</h1>
             <h5>{{mostliked1.content|truncatechars:70}}</h5>
-            <a href="{% url 'post-detail' mostliked1.id %}" class="readmorebutton">Read More</a>
+            <a href="{% url 'post-detail' pk=mostliked1.id %}" class="readmorebutton">Read More</a>
         </label>
         <label class="slide-1">
             <h1 class="text-slide">{{ mostliked2.title }}</h1>
             <h5>{{mostliked2.content|truncatechars:70}}</h5>
-            <a href="{% url 'post-detail' mostliked2.id %}" class="readmorebutton">Read More</a>
+            <a href="{% url 'post-detail' pk=mostliked2.id %}" class="readmorebutton">Read More</a>
         </label>
         <label class="slide-2">
             <h1 class="text-slide">{{ mostliked3.title }}</h1>
             <h5>{{mostliked3.content|truncatechars:70}}</h5>
-            <a href="{% url 'post-detail' mostliked3.id %}" class="readmorebutton">Read More</a>
+            <a href="{% url 'post-detail' pk=mostliked3.id %}" class="readmorebutton">Read More</a>
         </label>
         <label class="slide-3">
             <h1 class="text-slide">{{ mostliked4.title }}</h1>
             <h5>{{mostliked4.content|truncatechars:70}}</h5>
-            <a href="{% url 'post-detail' mostliked4.id %}" class="readmorebutton">Read More</a>
+            <a href="{% url 'post-detail' pk=mostliked4.id %}" class="readmorebutton">Read More</a>
         </label>
     </div>
 

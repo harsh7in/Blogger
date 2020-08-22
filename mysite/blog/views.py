@@ -37,8 +37,10 @@ def home(request):
     }
     return render(request,'blog/home.html', context)
 
+
 def about(request):
     return render(request,'blog/about.html')
+
 
 def Profileview(request,name):
     user =User.objects.get(username=name)
@@ -53,8 +55,11 @@ def Profileview(request,name):
             'posts': Post.objects.all(),'flag':flag  
         }
         return render(request,'blog/home.html',context)
+
+
 class PostDetailView(DetailView):
     model = Post
+
 
 class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Post
@@ -80,6 +85,8 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         if self.request.user == post.author:
             return True
         return False
+
+
 @login_required
 def post_create(request):
     form = PostForm(request.POST or None, request.FILES or None)
