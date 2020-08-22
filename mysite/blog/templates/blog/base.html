@@ -61,16 +61,19 @@
                 <div class="alert alert-{{ message.tags }}">
                     {{ messages }}
                 </div>
-                
+
                 {% endfor %}
             {% endif %}
           {% block content %}
-          
+
           {% endblock %}
         </div>
         <div class="col-md-4">
           <div class="content-section">
-            <h3>Our Sidebar</h3>
+            {% block contentr %}
+
+            {% endblock %}
+
             <p class='text-muted'>You can put any information here you'd like.
               <ul class="list-group">
                 <li class="list-group-item list-group-item-light">Latest Posts</li>
@@ -83,7 +86,7 @@
         </div>
       </div>
     </main>
-    
+
 
 
     <!-- Optional JavaScript -->
@@ -93,4 +96,3 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
   </body>
 </html>
-
