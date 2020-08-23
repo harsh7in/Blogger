@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,include
 from users import views as user_views
+from users.views import LoginView
 
 from django.contrib.auth import views as auth_views
 
@@ -29,7 +30,8 @@ urlpatterns = [
     path('profile/', user_views.profile,name='profile'),
     path('profile/profileUpdate/<pk>/', user_views.profileUpdate,name='profileUpdate'),
     path('profile/edit/', user_views.editProfile, name='editProfile'),
-    path('login/', auth_views.LoginView.as_view(template_name='user/login.html'),name='login'),
+    path('login/', LoginView.as_view(template_name='user/login.html'), name='login'), #For New User Login By Email/User
+    #path('login/', auth_views.LoginView.as_view(template_name='user/login.html'),name='login'),
     path('logout/', auth_views.LogoutView.as_view(template_name='user/logout.html'),name='logout'),
     path('password_reset/', auth_views.PasswordResetView.as_view(template_name='user/password_reset.html'),name='password_reset'),
     path('password_reset_sent/',auth_views.PasswordResetDoneView.as_view(template_name='user/password_reset_sent.html'),name='password_reset_done'),
