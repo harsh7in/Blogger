@@ -1,16 +1,12 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .models import post
+from .models import Post
+from django.views.generic import ListView
 from django.contrib.auth.models import User
-from django.db.models import Q
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-
-# Create your views here.
 from django.views.generic import DetailView, UpdateView, DeleteView
-
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from .models import Post
 from .forms import PostForm
 from django.db.models import Q
 
@@ -25,18 +21,28 @@ def home(request):
             Q(content__icontains = search_query)
         )
 
+    # Top 4 most liked blogs, If possible after the feature of like count is added then 
+    # add a logic to store all the id's of most liked blogs from the database in a list, then pass all the id's from the list to this 4 query. 
+    mostliked1 = Post.objects.get(id=6)
+    mostliked2 = Post.objects.get(id=5)
+    mostliked3 = Post.objects.get(id=5)
+    mostliked4 = Post.objects.get(id=3)
+
     context={
-        'posts': posts
+        'posts': posts,
+        'mostliked1':mostliked1,
+        'mostliked2':mostliked2,
+        'mostliked3':mostliked3,
+        'mostliked4':mostliked4,
     }
     return render(request,'blog/home.html', context)
 
 def about(request):
     return render(request,'blog/about.html')
 
-
 def Profileview(request,name):
     user =User.objects.get(username=name)
-    flag = (request.user==post.author)
+    flag = (request.user==Post.author)
     context={
         'user':user, 'flag':flag     
     }
@@ -44,7 +50,7 @@ def Profileview(request,name):
         return render(request,'user/profile.html', context)
     else:
         context={
-            'posts': post.objects.all(),'flag':flag  
+            'posts': Post.objects.all(),'flag':flag  
         }
         return render(request,'blog/home.html',context)
 class PostDetailView(DetailView):
@@ -87,5 +93,3 @@ def post_create(request):
         "form": form
     }
     return render(request, "blog/post_create.html", context)
-
-
