@@ -1,5 +1,5 @@
-from django.shortcuts import render, redirect
-from django.http import HttpResponse
+from django.shortcuts import render, redirect, get_object_or_404
+from django.http import HttpResponse, HttpResponseRedirect
 from .models import Post
 from django.views.generic import ListView
 from django.contrib.auth.models import User
@@ -9,6 +9,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .forms import PostForm
 from django.db.models import Q
+from django.urls import reverse
 
 # Create your views here.
 
@@ -21,8 +22,8 @@ def home(request):
             Q(content__icontains = search_query)
         )
 
-    # Top 4 most liked blogs, If possible after the feature of like count is added then 
-    # add a logic to store all the id's of most liked blogs from the database in a list, then pass all the id's from the list to this 4 query. 
+    # Top 4 most liked blogs, If possible after the feature of like count is added then
+    # add a logic to store all the id's of most liked blogs from the database in a list, then pass all the id's from the list to this 4 query.
     mostliked1 = Post.objects.get(id=6)
     mostliked2 = Post.objects.get(id=5)
     mostliked3 = Post.objects.get(id=5)
@@ -44,17 +45,24 @@ def Profileview(request,name):
     user =User.objects.get(username=name)
     flag = (request.user==Post.author)
     context={
-        'user':user, 'flag':flag     
+        'user':user, 'flag':flag
     }
     if request.user!=user:
         return render(request,'user/profile.html', context)
     else:
         context={
-            'posts': Post.objects.all(),'flag':flag  
+            'posts': Post.objects.all(),'flag':flag
         }
         return render(request,'blog/home.html',context)
+        
 class PostDetailView(DetailView):
     model = Post
+    def get_context_data(self, *args, **kwargs):
+        context = super(PostDetailView, self).get_context_data(**kwargs)
+        get_obj = get_object_or_404(Post, id=self.kwargs['pk'])
+        total_likes = get_obj.total_likes()
+        context['total_likes'] = total_likes
+        return context
 
 class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Post
@@ -93,3 +101,12 @@ def post_create(request):
         "form": form
     }
     return render(request, "blog/post_create.html", context)
+
+# Increase the like count
+def like_post(request, pk):
+    post = get_object_or_404(Post, id=request.POST.get('like_btn'))
+    if request.user not in post.likes.all():
+        post.likes.add(request.user)
+    else:
+        post.likes.remove(request.user)
+    return HttpResponseRedirect(reverse('post-detail', args=[str(pk)]))

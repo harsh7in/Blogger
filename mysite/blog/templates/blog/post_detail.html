@@ -13,6 +13,29 @@
           </div>
         {% endif %}
       </div>
+
+      <!-- The like button  -->
+      {% if user.is_authenticated %}
+        {% if user not in object.likes.all %}
+          <form class="" action="{% url 'like_post' object.pk %}" method="POST">
+            {% csrf_token %}
+            <button class="btn btn-primary btn-sm active"
+                    type="submit" name="like_btn" value="{{object.id}}">Like</button> {{total_likes}} Likes
+          </form>
+        {% else %}
+          <form class="" action="{% url 'like_post' object.pk %}" method="POST">
+            {% csrf_token %}
+            <button class="btn btn-primary btn-sm disabled"
+                    type="submit" name="like_btn" value="{{object.id}}">Like</button> {{total_likes}} Likes
+          </form>
+        {% endif %}
+      {% else %}
+        <a class="btn btn-primary btn-sm active" href="{% url 'login' %}">Like</a> {{total_likes}} Likes
+        <br>
+      {% endif %}
+      <!-- Like button ends -->
+
+      <br>
       <h2 class="article-title">{{ object.title }}</h2>
       <p class="article-content">{{ object.content }}</p>
     </div>
