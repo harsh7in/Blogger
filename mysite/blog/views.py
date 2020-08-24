@@ -100,3 +100,4 @@ def post_create(request):
         "form": form
     }
     return render(request, "blog/post_create.html", context)
+    
