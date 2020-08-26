@@ -86,7 +86,7 @@ $ git commit -m "<your commit message>"
 ```
 $ git push origin <branch_name>
 ```
-
+<div align="center">
 
 ## Open Source Programs
 
