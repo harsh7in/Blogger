@@ -1,4 +1,4 @@
-<div align="cemter">
+<div align="center">
 
 # Blogger
 
