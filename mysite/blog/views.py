@@ -54,7 +54,7 @@ def Profileview(request,name):
         context={
             'posts': Post.objects.all(),'flag':flag  
         }
-        return render(request,'blog/home.html',context)
+        return render(request,'user/profile.html',context)
 
 
 class PostDetailView(DetailView):
