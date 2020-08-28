@@ -25,7 +25,7 @@ def home(request):
     # add a logic to store all the 4 id's of most liked blogs from the database in a list, then pass all the id's from the list to this 4 query. 
     mostliked1 = Post.objects.get(id=6)
     mostliked2 = Post.objects.get(id=5)
-    mostliked3 = Post.objects.get(id=5)
+    mostliked3 = Post.objects.get(id=4)
     mostliked4 = Post.objects.get(id=3)
 
     context={
@@ -100,4 +100,3 @@ def post_create(request):
         "form": form
     }
     return render(request, "blog/post_create.html", context)
-

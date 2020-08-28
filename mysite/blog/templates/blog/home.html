@@ -50,8 +50,7 @@
             <small class="text-muted">{{ post.date_posted }}</small>
         </div>
         <h2><a class="article-title" href="{% url 'post-detail' post.slug %}">{{ post.title }}</a></h2>
-        <p class="article-content">{{ post.content|truncatechars:300  }}</p>
+        <p class="article-content">{{ post.content|truncatechars:300 }}</p>
     </div>
 </article>
 {% endfor %} {% endblock%}
-
