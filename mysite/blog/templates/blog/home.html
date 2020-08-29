@@ -1,4 +1,4 @@
-{% extends 'blog/base.html' %} {% block slider%}
+{% extends 'blog/base.html' %}{% load static %} {% block slider%}
 <div class="slider">
     <input name="input-slider" id="input-slide-0" type="radio" class="input-slide input-slide-num" style="display: none;" />
     <input name="input-slider" id="input-slide-1" type="radio" class="input-slide input-slide-num" style="display: none;" />
@@ -48,7 +48,7 @@
         <div class="article-metadata">
             <a class="mr-2" href="{% url 'blog-profile' name=post.author %}">{{ post.author }}</a>
             <small class="text-muted">{{ post.date_posted }}</small>
-            {% comment %} 3<img src="{% static "viewicon.png" %}"></img> {% endcomment %}
+            <img style="height:19px; width:18px; float:right;" src="{% static "blog/viewicon.png" %}"><p style="float: right;">{{post.view_count}}</p></img>
         </div>
         <h2><a class="article-title" href="{% url 'post-detail' post.slug %}">{{ post.title }}</a></h2>
         <p class="article-content">{{ post.content|truncatechars:300 }}</p>

@@ -59,11 +59,16 @@ def Profileview(request,name):
 
 class PostDetailView(DetailView):
     model = Post
+    def get_object(self):
+        obj = super().get_object()
+        obj.view_count += 1
+        obj.save()
+        return obj
 
 
 class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Post
-    fields = ['title', 'content']
+    fields = ['title', 'image', 'content']
 
     def form_valid(self, form):
         form.instance.author = self.request.user
