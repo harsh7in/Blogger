@@ -48,6 +48,7 @@
         <div class="article-metadata">
             <a class="mr-2" href="{% url 'blog-profile' name=post.author %}">{{ post.author }}</a>
             <small class="text-muted">{{ post.date_posted }}</small>
+            {% comment %} 3<img src="{% static "viewicon.png" %}"></img> {% endcomment %}
         </div>
         <h2><a class="article-title" href="{% url 'post-detail' post.slug %}">{{ post.title }}</a></h2>
         <p class="article-content">{{ post.content|truncatechars:300 }}</p>
