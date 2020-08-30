@@ -28,6 +28,21 @@ $ git checkout -b [your_branch_name]
 
 #### Setting up Project
 
+- Create a Virtual Environment
+```
+python3 -m venv env
+```
+
+- Activate the Virtual Environment
+  - On Windows
+    ``` 
+    env\Scripts\activate
+    ```
+  - On Linux or MAC
+    ```
+    source env/bin/activate
+    ```
+
 - Install dependencies using
 ```
 pip install -r requirements.txt

@@ -22,10 +22,10 @@ def home(request):
         )
 
     # Top 4 most liked blogs, If possible after the feature of like count is added then 
-    # add a logic to store all the id's of most liked blogs from the database in a list, then pass all the id's from the list to this 4 query. 
+    # add a logic to store all the 4 id's of most liked blogs from the database in a list, then pass all the id's from the list to this 4 query. 
     mostliked1 = Post.objects.get(id=6)
     mostliked2 = Post.objects.get(id=5)
-    mostliked3 = Post.objects.get(id=5)
+    mostliked3 = Post.objects.get(id=4)
     mostliked4 = Post.objects.get(id=3)
 
     context={
@@ -37,8 +37,10 @@ def home(request):
     }
     return render(request,'blog/home.html', context)
 
+
 def about(request):
     return render(request,'blog/about.html')
+
 
 def Profileview(request,name):
     user =User.objects.get(username=name)
@@ -53,8 +55,11 @@ def Profileview(request,name):
             'posts': Post.objects.all(),'flag':flag  
         }
         return render(request,'blog/home.html',context)
+
+
 class PostDetailView(DetailView):
     model = Post
+
 
 class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Post
@@ -80,6 +85,8 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         if self.request.user == post.author:
             return True
         return False
+
+
 @login_required
 def post_create(request):
     form = PostForm(request.POST or None, request.FILES or None)
