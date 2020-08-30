@@ -1,8 +1,8 @@
 # **OUR TOP CONTRIBUTORS !!!!**
 ![Thank you Image](https://pvsmt99345.i.lithium.com/t5/image/serverpage/image-id/11515i5FE675D18BD5D6D4/image-size/large?v=1.0&px=999)
 
-# Top contributers!!  :+1
-Contributor|Github Link|Total Commits
+# Top contributors!!  :+1
+**Contributor**|**Github Link**|**Total Commits**
 -----------|-----------|-------------
 Harsh      |https://github.com/harsh-9in | 22
 Rithik Soni|https://github.com/ritiksoni00 | 14
