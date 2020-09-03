@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from .models import Post
 from django.views.generic import ListView
@@ -9,6 +9,9 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .forms import PostForm
 from django.db.models import Q
+from django.utils import timezone
+from .utils import get_read_time
+from datetime import datetime
 
 # Create your views here.
 
@@ -64,6 +67,16 @@ class PostDetailView(DetailView):
         obj.view_count += 1
         obj.save()
         return obj
+
+    # def get_context_data(self, *args, **kwargs):
+    #     context = super().get_context_data(**kwargs)
+    #     texts = self.object.content
+    #     print(texts)
+    #     Read_Time=get_read_time(texts)
+    #     print(type(Read_Time))
+    #     print(Read_Time)
+    #     #Post.objects.create(read_time=Read_Time)
+    #     return context
 
 
 class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):

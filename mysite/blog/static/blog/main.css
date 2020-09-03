@@ -342,3 +342,10 @@ li {
 *:focus {
   outline: none;
 }
+.readtime {
+  float: right; 
+  color: violet;
+}
+.viewcount {
+  float: right;
+}
