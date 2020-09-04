@@ -14,3 +14,4 @@ def get_read_time(text_string):
     read_time_min = math.ceil(count/200.0) #Assuming 200 words per min Reading
     read_time = str(datetime.timedelta(minutes=read_time_min))
     return read_time
+    

@@ -30,7 +30,7 @@ class Post(models.Model):
         ordering = ["-date_posted"]
         
     def readTIme(self):
-        # context = super().get_context_data(**kwargs)
-        # texts = self.object.content
         Read_Time=get_read_time(self.content)
+        Read_Time = Read_Time[2:-3]
         return Read_Time
+        
