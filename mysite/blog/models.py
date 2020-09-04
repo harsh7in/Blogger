@@ -3,7 +3,7 @@ from django.utils import timezone
 from django.contrib.auth.models import User
 from django.urls import reverse
 from django.utils.text import slugify
-
+from .utils import get_read_time
 # Create your models here.
 
 class Post(models.Model):
@@ -13,7 +13,6 @@ class Post(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     image = models.ImageField(upload_to="blog_images", height_field=None, width_field=None, max_length=None, blank=True)
     view_count = models.IntegerField(default=0)
-    read_time = models.TextField()
     slug = models.SlugField(blank=True, null=True)
 
     def save(self, *args, **kwargs):
@@ -29,3 +28,9 @@ class Post(models.Model):
 
     class Meta:
         ordering = ["-date_posted"]
+        
+    def readTIme(self):
+        # context = super().get_context_data(**kwargs)
+        # texts = self.object.content
+        Read_Time=get_read_time(self.content)
+        return Read_Time
