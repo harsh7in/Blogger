@@ -56,7 +56,7 @@ def Profileview(request,name):
         return redirect("profile")   #Redirect to users login profile for login user
     else:
         messages.warning(request,"Something went wrong try again...")
-        return redirect("home")
+        return redirect("blog-home")
 
 
 class PostDetailView(DetailView):
