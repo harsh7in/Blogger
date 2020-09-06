@@ -81,6 +81,9 @@
             <!--User Details-->
       <div class="media-body">  
           <h2 class="account-heading">{{user.username}}</h2>
+          {% if user.profile.bio %}
+          <p class="text-secondary">{{user.profile.bio}}</p>
+          {% endif %}
           <p class="text-secondary">{{user.email}}</p>
           {% if flag is True %}  
           <a href="{% url 'editProfile' %}" class="btn btn-outline-secondary" role="button" aria-pressed="true">Edit Profile</a>

@@ -74,8 +74,17 @@ def editProfile(request):
         form = UserProfileUpdateForm(request.POST, instance=request.user)
         if form.is_valid():
             form.save()
+            print("outttt", form.cleaned_data['bio'])
+            if form.cleaned_data['bio'] or form.cleaned_data['bio']=="":
+                print("hbhbhb", form.cleaned_data['bio'])
+                try:
+                    prof = Profile.objects.get(user=request.user)
+                except Profile.DoesNotExist:
+                    prof = Profile.objects.create(user=request.user)
+                prof.bio = form.cleaned_data['bio']
+                prof.save()
             messages.success(request, f'Your profile information updated successfully')
-            return redirect(profile)
+            return redirect("profile")
     form = UserProfileUpdateForm(instance = request.user)
     return render(request, 'user/editProfile.html', {'form': form, 'flag':flag} )
     
