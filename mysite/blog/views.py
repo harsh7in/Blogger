@@ -52,11 +52,11 @@ def Profileview(request,name):
     }
     if request.user!=user:
         return render(request,'user/profile.html', context)
+    if request.user == user:
+        return redirect("profile")   #Redirect to users login profile for login user
     else:
-        context={
-            'posts': Post.objects.all(),'flag':flag  
-        }
-        return render(request,'blog/home.html',context)
+        messages.warning(request,"Something went wrong try again...")
+        return redirect("home")
 
 
 class PostDetailView(DetailView):
