@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from .models import Post
 from django.views.generic import ListView
@@ -9,6 +9,8 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .forms import PostForm
 from django.db.models import Q
+from django.utils import timezone
+
 
 # Create your views here.
 
@@ -54,16 +56,21 @@ def Profileview(request,name):
         context={
             'posts': Post.objects.all(),'flag':flag  
         }
-        return render(request,'blog/home.html',context)
+        return render(request,'user/profile.html',context)
 
 
 class PostDetailView(DetailView):
     model = Post
+    def get_object(self):
+        obj = super().get_object()
+        obj.view_count += 1
+        obj.save()
+        return obj
 
 
 class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Post
-    fields = ['title', 'content']
+    fields = ['title', 'image', 'content']
 
     def form_valid(self, form):
         form.instance.author = self.request.user
