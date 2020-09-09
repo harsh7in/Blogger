@@ -1,7 +1,15 @@
 {% extends "blog/base.html" %}
 {% block content %}
   <article class="media content-section">
-    <img class="rounded-circle article-img" src="{{ object.author.profile.image.url }}">
+
+    
+    {% if object.author.profile.image.url  %}
+      <img class="rounded-circle article-img img-responsive" src="{{ object.author.profile.image.url }}"> 
+    {%else%}
+      <img class="rounded-circle article-img img-responsive" id="profileImage" src="https://mdbootstrap.com/img/Photos/Others/placeholder-avatar.jpg" >
+    {% endif%}
+
+
     <div class="media-body">
       <div class="article-metadata">
         <a class="mr-2" href="#">{{ object.author }}</a>
