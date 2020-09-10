@@ -1,10 +1,15 @@
 {% extends 'blog/base.html' %} {% block slider%}
 <div class="slider">
-    <input name="input-slider" id="input-slide-0" type="radio" class="input-slide input-slide-num" style="display: none;" />
-    <input name="input-slider" id="input-slide-1" type="radio" class="input-slide input-slide-num" style="display: none;" />
-    <input name="input-slider" id="input-slide-2" type="radio" class="input-slide input-slide-num" style="display: none;" />
-    <input name="input-slider" id="input-slide-3" type="radio" class="input-slide input-slide-num" style="display: none;" />
-    <input name="input-slider" id="input-slide-autoplay" type="radio" class="input-slide" checked style="display: none;" />
+    <input name="input-slider" id="input-slide-0" type="radio" class="input-slide input-slide-num"
+        style="display: none;" />
+    <input name="input-slider" id="input-slide-1" type="radio" class="input-slide input-slide-num"
+        style="display: none;" />
+    <input name="input-slider" id="input-slide-2" type="radio" class="input-slide input-slide-num"
+        style="display: none;" />
+    <input name="input-slider" id="input-slide-3" type="radio" class="input-slide input-slide-num"
+        style="display: none;" />
+    <input name="input-slider" id="input-slide-autoplay" type="radio" class="input-slide" checked
+        style="display: none;" />
     <ul>
         <li class="slide-0"></li>
         <li class="slide-1"></li>
@@ -42,7 +47,9 @@
         <label class="slide-3" for="input-slide-3"></label>
     </div>
 </div>
-{% endblock %} {% block content %} {% for post in posts %}
+{% endblock %} {% block content %} 
+
+{% for post in posts %}
 <article class="media content-section">
     <div class="media-body">
         <div class="article-metadata">
@@ -53,4 +60,30 @@
         <p class="article-content">{{ post.content }}</p>
     </div>
 </article>
-{% endfor %} {% endblock%}
+{% endfor %}
+
+<div class="pagination">
+
+    {% if posts.has_previous %}
+        <a class="btn btn-outline-info mb-4" href="?page=1">First</a>
+        <a class="btn btn-outline-info mb-4" href="?page={{ posts.previous_page_number }}">Previous</a>
+    {% endif %}
+
+    {% for num in posts.paginator.page_range %}
+
+        {% if posts.number == num %}
+            <a class="btn btn-info mb-4" href="?page={{ num }}">{{ num }}</a>
+        {% elif num > posts.number|add:'-3' and num < posts.number|add:'3' %}
+            <a class="btn btn-outline-info mb-4" href="?page={{ num }}">{{ num }}</a>
+        {% endif %}
+    
+    {% endfor %}
+
+    {% if posts.has_next %}
+        <a class="btn btn-outline-info mb-4" href="?page={{ posts.next_page_number }}">Next</a>
+        <a class="btn btn-outline-info mb-4" href="?page={{ posts.paginator.num_pages }}">Last</a>
+    {% endif %}
+
+</div>
+
+{% endblock%}
