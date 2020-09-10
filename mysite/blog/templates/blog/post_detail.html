@@ -1,11 +1,20 @@
 {% extends "blog/base.html" %}
 {% block content %}
   <article class="media content-section">
-    <img class="rounded-circle article-img" src="{{ object.author.profile.image.url }}">
+
+    
+    {% if object.author.profile.image.url  %}
+      <img class="rounded-circle article-img img-responsive" src="{{ object.author.profile.image.url }}"> 
+    {%else%}
+      <img class="rounded-circle article-img img-responsive" id="profileImage" src="https://mdbootstrap.com/img/Photos/Others/placeholder-avatar.jpg" >
+    {% endif%}
+
+
     <div class="media-body">
       <div class="article-metadata">
         <a class="mr-2" href="#">{{ object.author }}</a>
         <small class="text-muted">{{ object.date_posted|date:"F d, Y" }}</small>
+        <p class="readtime">{{object.readTIme}} min read</p>
         {% if object.author == user %}
           <div>
             <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'post-update' object.id %}">Update</a>
@@ -13,8 +22,15 @@
           </div>
         {% endif %}
       </div>
-      <h2 class="article-title">{{ object.title }}</h2>
-      <p class="article-content">{{ object.content }}</p>
+      {% if object.image.url != '' %} <!--Condition to see if there's any image with the blog-->
+        <img src="{{ object.image.url }}" alt="Unable to load the Image" style="width: 100%;">
+        <div class="horizontalgap" style="height:10px"></div>
+        <h2 class="article-title">{{ object.title }}</h2>
+        <p class="article-content">{{ object.content }}</p>
+      {% else %}
+        <h2 class="article-title">{{ object.title }}</h2>
+        <p class="article-content">{{ object.content }}</p>
+      {% endif %}
     </div>
   </article>
 {% endblock content %}
