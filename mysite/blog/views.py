@@ -1,19 +1,22 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Post
-from django.views.generic import ListView
 from django.contrib.auth.models import User
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-from django.views.generic import DetailView, UpdateView, DeleteView
+from django.views.generic import ListView, DetailView, UpdateView, DeleteView
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .forms import PostForm
 from django.db.models import Q
+from django.core.paginator import Paginator
 
 # Create your views here.
 
 def home(request):
     posts = Post.objects.all()
+    paginator = Paginator(posts, 3)
+    page = request.GET.get('page')
+    posts = paginator.get_page(page)
     search_query = request.GET.get('q')
     if search_query:
         posts = posts.filter(
