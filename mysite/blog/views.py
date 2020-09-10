@@ -17,7 +17,7 @@ from django.utils import timezone
 
 def home(request):
     posts = Post.objects.all()
-    paginator = Paginator(posts, 3)
+    paginator = Paginator(posts, 2)
     page = request.GET.get('page')
     posts = paginator.get_page(page)
     search_query = request.GET.get('q')
