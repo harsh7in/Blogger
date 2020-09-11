@@ -64,8 +64,6 @@ def Profileview(request,name):
 
         return render(request,'blog/home.html',context)
     
-
-        return render(request,'user/profile.html',context)
     
 class PostDetailView(DetailView):
     model = Post
