@@ -27,6 +27,15 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'Standard',
+        'skin': 'moono',
+        'removePlugins': 'elementspath,save,font',
+        'height': 300,
+        'width': 727,
+    },
+}
 
 # Application definition
 
