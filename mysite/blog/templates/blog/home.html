@@ -58,7 +58,7 @@
             <img style="height:19px; width:18px; float:right;" src="{% static "blog/viewicon.png" %}"><p class="viewcount">{{post.view_count}}</p></img>
         </div>
         <h2><a class="article-title" href="{% url 'post-detail' post.slug %}">{{ post.title }}</a></h2>
-        <p class="article-content">{{ post.content|truncatechars:300 }}</p>
+        <p class="article-content">{{ post.content|truncatechars:300|safe }}</p>
     </div>
 </article>
 
@@ -74,7 +74,7 @@
     {% for num in posts.paginator.page_range %}
     {% if posts.number == num %}
     <a class="btn btn-info mb-4" href="?page={{ num }}">{{ num }}</a>
-    {% elif num > posts.number|add:'-3' and num < posts.number|add:'3' %}
+    {% elif num > posts.number|add:'-4' and num < posts.number|add:'4' %}
     <a class="btn btn-outline-info mb-4" href="?page={{ num }}">{{ num }}</a>
     {% endif %}
     {% endfor %}

@@ -26,10 +26,10 @@
         <img src="{{ object.image.url }}" alt="Unable to load the Image" style="width: 100%;">
         <div class="horizontalgap" style="height:10px"></div>
         <h2 class="article-title">{{ object.title }}</h2>
-        <p class="article-content">{{ object.content }}</p>
+        <p class="article-content">{{ object.content|safe }}</p>
       {% else %}
         <h2 class="article-title">{{ object.title }}</h2>
-        <p class="article-content">{{ object.content }}</p>
+        <p class="article-content">{{ object.content|safe }}</p>
       {% endif %}
     </div>
   </article>
