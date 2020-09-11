@@ -10,8 +10,6 @@ from .forms import PostForm
 from django.db.models import Q
 from django.core.paginator import Paginator
 
-from django.core.paginator import Paginator
-
 from django.utils import timezone
 
 # Create your views here.
