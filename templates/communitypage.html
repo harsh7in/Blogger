@@ -11,39 +11,8 @@
     <title>Blogger | Community Page</title>
 </head>
 <body>
-<!-- Navbar starts here -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <img src="../static/images/logo-transparent.png" style="height:70px; width:180px;"></img>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
-        <h4><a class="nav-link" href="#"><img src="https://img.icons8.com/flat_round/50/000000/home--v1.png"/>Home <span class="sr-only">(current)</span></a></h4>
-      </li>
-      <li class="nav-item active">
-        <h4><a class="nav-link" href="#"><img src="https://img.icons8.com/bubbles/50/000000/conference-call.png"/>Communities</a></h4>
-      </li>
-      <li class="nav-item">
-        <h4><a class="nav-link" href="#"><img src="https://img.icons8.com/color/50/000000/appointment-reminders.png"/>Notifications</a></h4>
-      </li>
-    <form class="form-inline my-2 my-lg-0" id="searchNav">
-      <input class="form-control mr-sm-2" type="search" id="search" placeholder="Search Communities" aria-label="Search Communtiies">
-      <i id = "searchIcon" class="fa fa-search icon"></i>
-    </form>
-        </ul>
-    <ul class="navbar-nav ml-auto">
-    <li class="nav-item">
-        <h4><a class="nav-link" href="#" tabindex="-1" aria-disabled="true"><img src="https://img.icons8.com/color/50/000000/user-location.png"/>Profile</a></h4>
-      </li>
-    </ul>
-  </div>
-  </div>
-</nav>
-<!-- Navbar ends here -->
     
+    <div id="header"></div>
     <div class="title" id="title" style="margin-left: 70px;margin-top:20px;">
         <h1> Communities </h1>
     </div>
@@ -121,41 +90,19 @@
       <input style = "height:40px; width:350px;" type="search" placeholder="Enter your mail id" aria-label="Search Communtiies">
       <button class="btn btn-outline-warning my-2 my-sm-0" type="submit">Mail me</button>
     </div>
-</div>
-<!-- Footer starts here -->
-<footer class="footer mt-auto py-3 bg-dark">
-  <div id="footer" class="container" style="color:white;">
-    <h3 id="footer-contents"> Blogger </h3>
-    <h4 id="footer-contents"> Basic Introduction</h4>
-  <div id="footer-contents">
-        <ul>
-          <li><a href="#" style="color:white;"><img src="https://img.icons8.com/fluent/40/000000/about.png"/> About</a></li>
-          <li><a href="#" style="color:white;" ><img src="https://img.icons8.com/flat_round/40/000000/home--v1.png"/> Home</a></li>
-          <li><a href="#" style="color:white;"><img src="https://img.icons8.com/color/40/000000/appointment-reminders.png"/> Notifications</a></li>
-        </ul>
   </div>
-  <div id="footer-contents">
-        <ul>
-          <li><img src="https://img.icons8.com/fluent/32/000000/phone-disconnected.png"/> 1234567890</li>
-          <li><img src="https://img.icons8.com/nolan/32/user-location.png"/> Address</li>
-          <li><img src="https://img.icons8.com/fluent/32/000000/important-mail.png"/> Mail</li>
-        </ul> 
-  </div>
-  <div id="footer-contents">
-        <ul>
-          <li><a href="#"><img src="https://i.postimg.cc/7PTDC26P/facebook.png" alt="facebook" style="height:50px; width:50px;"/></a></li>
-          <li><a href="#" ><img src="https://i.postimg.cc/FdkwvJDQ/instagram.png" alt="instagram" style="height:50px; width:50px;"></a></li>
-          <li><a href="#" ><img src="https://i.postimg.cc/mDYwqjj2/linkedin.png" alt="linkedin" style="height:50px; width:50px;"></a></li>
-          <li><a href="#" ><img src="https://i.postimg.cc/QMR4vHrS/twitter.png" alt ="twitter" style="height:50px; width:50px;"></a></li>
-        </ul> 
-  </div>
-  </div>
-</footer>
-<!-- Footer ends here -->
+    <!-- Footer renders here -->
+    <div id="footer"></div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="http://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <script> 
+    $(function(){
+      $("#header").load("header.html"); 
+      $("#footer").load("footer.html"); 
+    });
+    </script> 
 </body>
 </html>
