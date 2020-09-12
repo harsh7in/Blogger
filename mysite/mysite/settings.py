@@ -30,10 +30,13 @@ ALLOWED_HOSTS = []
 CKEDITOR_CONFIGS = {
     'default': {
         'toolbar': 'Standard',
-        # 'skin': 'moono',
+        # 'toolbar': 'Custom',
+        # 'toolbar_Custom': [
+        #     ['Styles', 'Format', 'Bold', 'Italic', 'Underline', 'Strike', 'Spellchecker', 'Undo'],
+        #     ['Link', 'Unlink', 'Anchor'],
+        # ],
+        'removeButtons': 'Save,NewPage,Print,PasteFromWord,Form,TextField,Textarea,Button,ImageButton,HiddenField,BidiLtr,BidiRtl,Language,Flash,PageBreak,Iframe,ShowBlocks,About,CreateDiv',
         'skin': 'kama',
-        'uiColor': '#5f788a',
-        'removePlugins': 'elementspath,save,font',
         'height': 300,
         'width': 727,
     },
