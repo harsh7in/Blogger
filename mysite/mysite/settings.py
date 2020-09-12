@@ -30,7 +30,9 @@ ALLOWED_HOSTS = []
 CKEDITOR_CONFIGS = {
     'default': {
         'toolbar': 'Standard',
-        'skin': 'moono',
+        # 'skin': 'moono',
+        'skin': 'kama',
+        'uiColor': '#5f788a',
         'removePlugins': 'elementspath,save,font',
         'height': 300,
         'width': 727,
