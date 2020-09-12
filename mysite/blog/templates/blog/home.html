@@ -67,21 +67,21 @@
 <div class="pagination" style="justify-content: center;">
 
     {% if posts.has_previous %}
-    <a class="btn btn-outline-info mb-4" href="?page=1">First</a>
-    <a class="btn btn-outline-info mb-4" href="?page={{ posts.previous_page_number }}">Previous</a>
+        <a class="btn btn-outline-info mb-4" href="?page=1">First</a>&nbsp;
+        <a class="btn btn-outline-info mb-4" href="?page={{ posts.previous_page_number }}">Previous</a>
     {% endif %}
 
     {% for num in posts.paginator.page_range %}
-    {% if posts.number == num %}
-    <a class="btn btn-info mb-4" href="?page={{ num }}">{{ num }}</a>
-    {% elif num > posts.number|add:'-3' and num < posts.number|add:'3' %}
-    <a class="btn btn-outline-info mb-4" href="?page={{ num }}">{{ num }}</a>
-    {% endif %}
+        {% if posts.number == num %}
+            &nbsp;<a class="btn btn-info mb-4" href="?page={{ num }}">{{ num }}</a>
+        {% elif num > posts.number|add:'-3' and num < posts.number|add:'3' %}
+            &nbsp;<a class="btn btn-outline-info mb-4" href="?page={{ num }}">{{ num }}</a>
+        {% endif %}
     {% endfor %}
 
     {% if posts.has_next %}
-    <a class="btn btn-outline-info mb-4" href="?page={{ posts.next_page_number }}">Next</a>
-    <a class="btn btn-outline-info mb-4" href="?page={{ posts.paginator.num_pages }}">Last</a>
+        &nbsp;<a class="btn btn-outline-info mb-4" href="?page={{ posts.next_page_number }}">Next</a>&nbsp;
+        <a class="btn btn-outline-info mb-4" href="?page={{ posts.paginator.num_pages }}">Last</a>
     {% endif %}
 
 </div>
