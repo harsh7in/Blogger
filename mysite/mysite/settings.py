@@ -35,17 +35,18 @@ CKEDITOR_CONFIGS = {
         'toolbar_Custom': [
             ['Maximize'],
             ['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'CopyFormatting', 'RemoveFormat'],
+            ['Cut', 'Copy', 'Paste', 'PasteText', '-', 'Undo', 'Redo'],
             ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'],
+            '/',
+            ['Checkbox', 'Radio'],
             ['Link', 'Unlink', 'Anchor'],
             ['Image', 'Table', 'HorizontalRule', 'Smiley', 'SpecialChar'],
-            ['Cut', 'Copy', 'Paste', 'PasteText', '-', 'Undo', 'Redo'],
-            ['Find', 'Replace', '-', 'SelectAll'],
-            # ['SpellChecker'],
-            ['Checkbox', 'Radio'],
-            ['Styles', 'Format', 'Font', 'FontSize'],
-            ['TextColor', 'BGColor']
-            # ['codesnippet', 'Source', ]
+            ['TextColor', 'BGColor'],
+            ['Find', 'Replace', '-', 'SelectAll', 'Scayt'],
+            ['Source'], ['Preview'], ['CodeSnippet'],['ShowBlocks'],
+            ['Styles', 'Format', 'Font', 'FontSize']
         ],
+        'extraPlugins': ['codesnippet'],
         'skin': 'kama',
         'height': 300,
         'width': '100%',
