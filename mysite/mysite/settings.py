@@ -29,18 +29,30 @@ ALLOWED_HOSTS = []
 
 CKEDITOR_CONFIGS = {
     'default': {
-        'toolbar': 'Standard',
-        # 'toolbar': 'Custom',
-        # 'toolbar_Custom': [
-        #     ['Styles', 'Format', 'Bold', 'Italic', 'Underline', 'Strike', 'Spellchecker', 'Undo'],
-        #     ['Link', 'Unlink', 'Anchor'],
-        # ],
-        'removeButtons': 'Save,NewPage,Print,PasteFromWord,Form,TextField,Textarea,Button,ImageButton,HiddenField,BidiLtr,BidiRtl,Language,Flash,PageBreak,Iframe,ShowBlocks,About,CreateDiv',
+        # 'toolbar': 'Standard',
+        # 'removeButtons': 'Save,NewPage,Print,PasteFromWord,Form,TextField,Textarea,Button,ImageButton,HiddenField,BidiLtr,BidiRtl,Language,Flash,PageBreak,Iframe,ShowBlocks,About,CreateDiv',
+        'toolbar': 'Custom',
+        'toolbar_Custom': [
+            ['Maximize'],
+            ['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'CopyFormatting', 'RemoveFormat'],
+            ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'],
+            ['Link', 'Unlink', 'Anchor'],
+            ['Image', 'Table', 'HorizontalRule', 'Smiley', 'SpecialChar'],
+            ['Cut', 'Copy', 'Paste', 'PasteText', '-', 'Undo', 'Redo'],
+            ['Find', 'Replace', '-', 'SelectAll'],
+            # ['SpellChecker'],
+            ['Checkbox', 'Radio'],
+            ['Styles', 'Format', 'Font', 'FontSize'],
+            ['TextColor', 'BGColor']
+            # ['codesnippet', 'Source', ]
+        ],
         'skin': 'kama',
         'height': 300,
-        'width': 727,
+        'width': '100%',
     },
 }
+
+CKEDITOR_UPLOAD_PATH = "uploads/"
 
 # Application definition
 
@@ -55,6 +67,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'users.apps.UsersConfig',
     'ckeditor',
+    'ckeditor_uploader',
 ]
 
 MIDDLEWARE = [
@@ -136,6 +149,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+# STATIC_ROOT = os.path.join(BASE_DIR,'static')
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
