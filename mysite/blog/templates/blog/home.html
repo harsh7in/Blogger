@@ -55,10 +55,10 @@
         <div class="article-metadata">
             <a class="mr-2" href="{% url 'blog-profile' name=post.author %}">{{ post.author }}</a>
             <small class="text-muted">{{ post.date_posted }}</small>
-            <img style="height:19px; width:18px; float:right;" src="{% static "blog/viewicon.png" %}"><p class="viewcounter">{{post.view_count}}</p></img>
+            <img style="height:19px; width:18px; float:right;" src="{% static "blog/viewicon.png" %}"><p style="float: right; display: inline !important;">{{post.view_count}}</p></img>
         </div>
         <h2><a class="article-title" href="{% url 'post-detail' post.slug %}">{{ post.title }}</a></h2>
-        <p class="article-content">{{ post.content|truncatechars:300|safe }}</p>
+        <p class="article-content">{{ post.content|truncatechars:30|safe }}</p>
     </div>
 </article>
 

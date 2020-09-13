@@ -61,12 +61,13 @@
       <!--Slider End-->
       <span style="display:inline-block; width: 3px;"></span>
       {% include 'user/message.html' %}
+      
       <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-8" style="max-width: 63%;">
           {% block content %}
           {% endblock %}
         </div>
-        <div class="col-md-4">
+        <div class="col-md-4" style="max-width: 100%;">
           <div class="content-section">
             <h3>Our Sidebar</h3>
             <p class='text-muted'>You can put any information here you'd like.
@@ -79,6 +80,7 @@
             </p>
           </div>
         </div>
+      
       </div>
     </main>
 
