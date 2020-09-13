@@ -1,14 +1,21 @@
+
 {% extends 'blog/base.html' %} 
 
 {% load static %}
 
 {% block slider%}
+{% extends 'blog/base.html' %}{% load static %} {% block slider%}
 <div class="slider">
-    <input name="input-slider" id="input-slide-0" type="radio" class="input-slide input-slide-num" style="display: none;" />
-    <input name="input-slider" id="input-slide-1" type="radio" class="input-slide input-slide-num" style="display: none;" />
-    <input name="input-slider" id="input-slide-2" type="radio" class="input-slide input-slide-num" style="display: none;" />
-    <input name="input-slider" id="input-slide-3" type="radio" class="input-slide input-slide-num" style="display: none;" />
-    <input name="input-slider" id="input-slide-autoplay" type="radio" class="input-slide" checked style="display: none;" />
+    <input name="input-slider" id="input-slide-0" type="radio" class="input-slide input-slide-num"
+        style="display: none;" />
+    <input name="input-slider" id="input-slide-1" type="radio" class="input-slide input-slide-num"
+        style="display: none;" />
+    <input name="input-slider" id="input-slide-2" type="radio" class="input-slide input-slide-num"
+        style="display: none;" />
+    <input name="input-slider" id="input-slide-3" type="radio" class="input-slide input-slide-num"
+        style="display: none;" />
+    <input name="input-slider" id="input-slide-autoplay" type="radio" class="input-slide" checked
+        style="display: none;" />
     <ul>
         <li class="slide-0"></li>
         <li class="slide-1"></li>
@@ -50,6 +57,8 @@
 {% block content %}
 <h2>Recent Posts</h2>
 <hr />
+{% endblock %} {% block content %}
+
 {% for post in posts %}
 <article class="media content-section">
     <div class="media-body">
@@ -60,6 +69,8 @@
                 <small class="text-muted">Category</small>
                 <small class="text-muted">{{ post.date_posted }}</small>
             </div>
+            <small class="text-muted">{{ post.date_posted }}</small>
+            <img style="height:19px; width:18px; float:right;" src="{% static "blog/viewicon.png" %}"><p class="viewcount">{{post.view_count}}</p></img>
         </div>
         <p class="article-content">{{ post.content|truncatechars:300 }}</p>
         <hr />
@@ -73,3 +84,30 @@
 </article>
 {% endfor %} 
 {% endblock%}
+
+{% endfor %}
+
+<div class="pagination">
+
+    {% if posts.has_previous %}
+    <a class="btn btn-outline-info mb-4" href="?page=1">First</a>
+    <a class="btn btn-outline-info mb-4" href="?page={{ posts.previous_page_number }}">Previous</a>
+    {% endif %}
+
+    {% for num in posts.paginator.page_range %}
+    {% if posts.number == num %}
+    <a class="btn btn-info mb-4" href="?page={{ num }}">{{ num }}</a>
+    {% elif num > posts.number|add:'-3' and num < posts.number|add:'3' %}
+    <a class="btn btn-outline-info mb-4" href="?page={{ num }}">{{ num }}</a>
+    {% endif %}
+    {% endfor %}
+
+    {% if posts.has_next %}
+    <a class="btn btn-outline-info mb-4" href="?page={{ posts.next_page_number }}">Next</a>
+    <a class="btn btn-outline-info mb-4" href="?page={{ posts.paginator.num_pages }}">Last</a>
+    {% endif %}
+
+</div>
+
+{% endblock%}
+

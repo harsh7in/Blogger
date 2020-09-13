@@ -339,7 +339,6 @@ label {
   display: inline-block;
   margin: 4px 0;
   border-radius: 3px;
-  width: 80px;
   font-weight: bold;
 }
 .readmorebutton:hover {
@@ -363,4 +362,15 @@ li {
 }
 *:focus {
   outline: none;
+}
+.notification{
+    position: relative;
+    left: 10px;
+    bottom: 10px;
+.readtime {
+  float: right; 
+  color: violet;
+}
+.viewcount {
+  float: right;
 }

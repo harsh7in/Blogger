@@ -5,7 +5,7 @@
 Contributor|Github Link|Total Commits
 -----------|-----------|-------------
 Harsh      |https://github.com/harsh-9in | 22
-Rithik Soni|https://github.com/ritiksoni00 | 14
+Ritik Soni|https://github.com/ritiksoni00 | 14
 Akshita Aggarwal|https://github.com/Akshi149 | 13
 Manish Shah|https://github.com/ManishShah120 | 10
 Arjun|https://github.com/itsarjun12 | 8
