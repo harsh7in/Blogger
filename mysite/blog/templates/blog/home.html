@@ -4,7 +4,7 @@
 {% load static %}
 
 {% block slider%}
-{% extends 'blog/base.html' %}{% load static %} {% block slider%}
+
 <div class="slider">
     <input name="input-slider" id="input-slide-0" type="radio" class="input-slide input-slide-num"
         style="display: none;" />
@@ -57,7 +57,7 @@
 {% block content %}
 <h2>Recent Posts</h2>
 <hr />
-{% endblock %} {% block content %}
+
 
 {% for post in posts %}
 <article class="media content-section">
@@ -83,9 +83,9 @@
     </div>
 </article>
 {% endfor %} 
-{% endblock%}
 
-{% endfor %}
+
+
 
 <div class="pagination">
 
