@@ -8,7 +8,6 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .forms import PostForm
 from django.db.models import Q
-
 from django.core.paginator import Paginator
 
 from django.utils import timezone
@@ -17,7 +16,7 @@ from django.utils import timezone
 
 def home(request):
     posts = Post.objects.all()
-    paginator = Paginator(posts, 6)
+    paginator = Paginator(posts, 2)
     page = request.GET.get('page')
     posts = paginator.get_page(page)
     search_query = request.GET.get('q')
@@ -50,19 +49,22 @@ def about(request):
 
 def Profileview(request,name):
     user =User.objects.get(username=name)
+    posts = user.post_set.all()
     flag = (request.user==Post.author)
     context={
-        'user':user, 'flag':flag     
+        'user':user, 'flag':flag , 'posts':posts    
     }
+    
     if request.user!=user:
         return render(request,'user/profile.html', context)
     else:
         context={
             'posts': Post.objects.all(),'flag':flag  
         }
-        return render(request,'user/profile.html',context)
 
-
+        return render(request,'blog/home.html',context)
+    
+    
 class PostDetailView(DetailView):
     model = Post
     def get_object(self):

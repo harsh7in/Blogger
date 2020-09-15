@@ -31,7 +31,7 @@
               {% endif %}
               <!--Search Bar-->
               <div class="search-bar">
-                <form method="GET" action="/" style="display:inline-block; line-height:24px; border-radius: 80px">
+                <form method="GET" action="/" style="display:inline-block; line-height:24px; border-radius: 80px;">
                   <input type="text" placeholder="Search Blogs..." onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search Blogs...';}" name ="q" required="" size="29" style="border-radius: 80px; padding: 0px 12px;">
                 </form>
               </div>
@@ -68,23 +68,35 @@
           {% endblock %}
         </div>
         <div class="col-md-4">
-          <div class="content-section">
-            <h3>Our Sidebar</h3>
-            <p class='text-muted'>You can put any information here you'd like.
-              <ul class="list-group">
-                <li class="list-group-item list-group-item-light">Latest Posts</li>
-                <li class="list-group-item list-group-item-light">Announcements</li>
-                <li class="list-group-item list-group-item-light">Calendars</li>
-                <li class="list-group-item list-group-item-light">etc</li>
-              </ul>
-            </p>
+          <div class="content-section filter-section position-sticky">
+            <h3>Filter By</h3>
+            <hr style="height: 5px;" />
+            <div class="custom-control custom-checkbox">
+              <input type="checkbox" class="custom-control-input" id="check1">
+              <label class="custom-control-label" for="check1">Technology</label>
+            </div>
+            <div class="custom-control custom-checkbox">
+              <input type="checkbox" class="custom-control-input" id="check2">
+              <label class="custom-control-label" for="check2">Social</label>
+            </div>
+            <div class="custom-control custom-checkbox">
+              <input type="checkbox" class="custom-control-input" id="check3">
+              <label class="custom-control-label" for="check3">Finance</label>
+            </div>
+            <div class="custom-control custom-checkbox">
+              <input type="checkbox" class="custom-control-input" id="check4">
+              <label class="custom-control-label" for="check4">Others</label>
+            </div>
+          </div>
+          <div class="content-section trending-section position-sticky">
+            <h3>Trending</h3>
+            <hr />
+
           </div>
         </div>
       
       </div>
     </main>
-
-
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

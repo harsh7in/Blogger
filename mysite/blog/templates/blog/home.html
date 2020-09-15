@@ -1,4 +1,10 @@
-{% extends 'blog/base.html' %}{% load static %} {% block slider%}
+
+{% extends 'blog/base.html' %} 
+
+{% load static %}
+
+{% block slider%}
+
 <div class="slider">
     <input name="input-slider" id="input-slide-0" type="radio" class="input-slide input-slide-num"
         style="display: none;" />
@@ -47,22 +53,40 @@
         <label class="slide-3" for="input-slide-3"></label>
     </div>
 </div>
-{% endblock %} {% block content %}
+{% endblock %} 
+{% block content %}
+<h2>Recent Posts</h2>
+<hr />
+
 
 {% for post in posts %}
 <article class="media content-section">
     <div class="media-body">
+        <h2><a class="article-title" href="{% url 'post-detail' post.slug %}">{{ post.title }}</a></h2>
         <div class="article-metadata">
             <a class="mr-2" href="{% url 'blog-profile' name=post.author %}">{{ post.author }}</a>
-            <small class="text-muted">{{ post.date_posted }}</small>
+            <div class="float-right">
+                <small class="text-muted">Category</small>
+                <small class="text-muted">{{ post.date_posted }}</small>
+            </div>
+            {% comment %} <small class="text-muted">{{ post.date_posted }}</small> {% endcomment %}
             <img style="height:19px; width:18px; float:right;" src="{% static "blog/viewicon.png" %}"><p style="float: right; display: inline !important;">{{post.view_count}}</p></img>
         </div>
-        <h2><a class="article-title" href="{% url 'post-detail' post.slug %}">{{ post.title }}</a></h2>
-        <p class="article-content">{{ post.content|truncatechars:30|safe }}</p>
+        {% comment %} <h2><a class="article-title" href="{% url 'post-detail' post.slug %}">{{ post.title }}</a></h2> {% endcomment %}
+        <p class="article-content">{{ post.content|truncatechars:200|safe }}</p>
+        <hr />
+        <div class="reactions">
+            <img src="{% static 'images/like.svg' %}" alt="like" class="mx-1" />
+            <img src="{% static 'images/dislike.svg' %}" alt="dislike" class="mx-1" />
+            <img src="{% static 'images/comment.svg' %}" alt="comment" class="mx-1" />
+            <img src="{% static 'images/share.svg' %}" alt="share" class="mx-1 float-right" />
+        </div>
     </div>
 </article>
-
 {% endfor %}
+
+
+
 
 <div class="pagination" style="justify-content: center;">
 
