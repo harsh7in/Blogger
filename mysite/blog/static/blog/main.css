@@ -367,10 +367,4 @@ li {
     position: relative;
     left: 10px;
     bottom: 10px;
-.readtime {
-  float: right; 
-  color: violet;
-}
-.viewcount {
-  float: right;
 }

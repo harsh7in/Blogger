@@ -76,6 +76,7 @@ class PostDetailView(DetailView):
 
 class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Post
+    success_url = '/'
     fields = ['title', 'image', 'content']
 
     def form_valid(self, form):
