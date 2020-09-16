@@ -1,5 +1,4 @@
-
-{% extends 'blog/base.html' %} 
+{% extends 'blog/base.html' %}
 
 {% load static %}
 
@@ -53,7 +52,7 @@
         <label class="slide-3" for="input-slide-3"></label>
     </div>
 </div>
-{% endblock %} 
+{% endblock %}
 {% block content %}
 <h2>Recent Posts</h2>
 <hr />
@@ -70,19 +69,18 @@
                 <small class="text-muted">{{ post.date_posted }}</small>
             </div>
             <small class="text-muted">{{ post.date_posted }}</small>
-            <img style="height:19px; width:18px; float:right;" src="{% static "blog/viewicon.png" %}"><p class="viewcount">{{post.view_count}}</p></img>
+            <img style="height:19px; width:18px; float:right;" src="{% static "blog/viewicon.png" %}">
+            <p class="viewcount">{{post.view_count}}</p></img>
         </div>
         <p class="article-content">{{ post.content|truncatechars:300 }}</p>
         <hr />
-        <div class="reactions">
-            <img src="{% static 'images/like.svg' %}" alt="like" class="mx-1" />
-            <img src="{% static 'images/dislike.svg' %}" alt="dislike" class="mx-1" />
-            <img src="{% static 'images/comment.svg' %}" alt="comment" class="mx-1" />
-            <img src="{% static 'images/share.svg' %}" alt="share" class="mx-1 float-right" />
-        </div>
+        <button class="btn btn-light btn-sm disabled" type="submit">❤</button>
+        <button class="btn btn-light btn-sm disabled" type="submit">👎</button>
+        <button class="btn btn-light btn-sm disabled" type="submit">💬</button>
+
     </div>
 </article>
-{% endfor %} 
+{% endfor %}
 
 
 
@@ -110,4 +108,3 @@
 </div>
 
 {% endblock%}
-
