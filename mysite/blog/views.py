@@ -16,15 +16,16 @@ from django.utils import timezone
 
 def home(request):
     posts = Post.objects.all()
-    paginator = Paginator(posts, 2)
-    page = request.GET.get('page')
-    posts = paginator.get_page(page)
     search_query = request.GET.get('q')
     if search_query:
         posts = posts.filter(
             Q(title__icontains = search_query) |
             Q(content__icontains = search_query)
         )
+
+    paginator = Paginator(posts, 2)
+    page = request.GET.get('page')
+    posts = paginator.get_page(page)
 
     # Top 4 most liked blogs, If possible after the feature of like count is added then 
     # add a logic to store all the 4 id's of most liked blogs from the database in a list, then pass all the id's from the list to this 4 query. 
