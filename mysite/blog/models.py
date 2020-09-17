@@ -4,11 +4,12 @@ from django.contrib.auth.models import User
 from django.urls import reverse
 from django.utils.text import slugify
 from .utils import get_read_time
+from ckeditor_uploader.fields import RichTextUploadingField
 # Create your models here.
 
 class Post(models.Model):
     title = models.CharField(max_length=100)
-    content = models.TextField()
+    content = RichTextUploadingField(blank=True, null=True)
     date_posted = models.DateTimeField(default=timezone.now)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     image = models.ImageField(upload_to="blog_images", height_field=None, width_field=None, max_length=None, blank=True)

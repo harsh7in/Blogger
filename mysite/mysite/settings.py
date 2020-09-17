@@ -27,6 +27,33 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+CKEDITOR_CONFIGS = {
+    'default': {
+        # 'toolbar': 'Standard',
+        # 'removeButtons': 'Save,NewPage,Print,PasteFromWord,Form,TextField,Textarea,Button,ImageButton,HiddenField,BidiLtr,BidiRtl,Language,Flash,PageBreak,Iframe,ShowBlocks,About,CreateDiv',
+        'toolbar': 'Custom',
+        'toolbar_Custom': [
+            ['Maximize'],
+            ['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'CopyFormatting', 'RemoveFormat'],
+            ['Cut', 'Copy', 'Paste', 'PasteText', '-', 'Undo', 'Redo'],
+            ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'],
+            '/',
+            ['Checkbox', 'Radio'],
+            ['Link', 'Unlink', 'Anchor'],
+            ['Image', 'Table', 'HorizontalRule', 'Smiley', 'SpecialChar'],
+            ['TextColor', 'BGColor'],
+            ['Find', 'Replace', '-', 'SelectAll', 'Scayt'],
+            ['Source'], ['Preview'], ['CodeSnippet'],['ShowBlocks'],
+            ['Styles', 'Format', 'Font', 'FontSize']
+        ],
+        'extraPlugins': ['codesnippet'],
+        'skin': 'kama',
+        'height': 300,
+        'width': '100%',
+    },
+}
+
+CKEDITOR_UPLOAD_PATH = "uploads/"
 
 # Application definition
 
@@ -40,6 +67,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'users.apps.UsersConfig',
+    'ckeditor',
+    'ckeditor_uploader',
 ]
 
 MIDDLEWARE = [
@@ -121,6 +150,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+# STATIC_ROOT = os.path.join(BASE_DIR,'static')
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
