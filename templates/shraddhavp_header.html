@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="style1.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/style_dashboardpage.css">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <!-- FontAwesome -->
@@ -99,6 +99,12 @@ chart3.render();
     
   }
 
+
+</script>
+    <title>Blogger Dashboard</title>
+</head>
+<body>
+<!-- Navbar starts here -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <img src="../static/images/logo-transparent.png" style="height:70px; width:180px;"></img>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -108,24 +114,32 @@ chart3.render();
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <h4><a class="nav-link" href="#"><img src="https://img.icons8.com/flat_round/50/000000/home--v1.png"/>Home <span class="sr-only">(current)</span></a></h4>
+        <h4><a class="nav-link" href="#"><i class="fa fa-home" style="font-size:24px;color:red"></i> Home <span class="sr-only">(current)</span></a></h4>
       </li>
       <li class="nav-item active">
-        <h4><a class="nav-link" href="#"><img src="https://img.icons8.com/bubbles/50/000000/conference-call.png"/>Communities</a></h4>
+        <h4><a class="nav-link" href="#"><i class="fa fa-info" style="font-size:24px;color:pink"></i> About</a></h4>
       </li>
       <li class="nav-item">
-        <h4><a class="nav-link" href="#"><img src="https://img.icons8.com/color/50/000000/appointment-reminders.png"/>Notifications</a></h4>
+        <h4><a class="nav-link" href="#"><i class="fa fa-bell" style="font-size:24px;color:yellow"></i> Notifications</a></h4>
       </li>
-    <form class="form-inline my-2 my-lg-0" id="searchNav">
-      <input class="form-control mr-sm-2" type="search" id="search" placeholder="Search Communities" aria-label="Search Communtiies">
-      <i id = "searchIcon" class="fa fa-search icon"></i>
-    </form>
+    
         </ul>
     <ul class="navbar-nav ml-auto">
     <li class="nav-item">
-        <h4><a class="nav-link" href="#" tabindex="-1" aria-disabled="true"><img src="https://img.icons8.com/color/50/000000/user-location.png"/>Profile</a></h4>
+        <!--<h4><a class="nav-link" href="#" tabindex="-1" aria-disabled="true"><img src="https://img.icons8.com/color/50/000000/user-location.png"/>Profile</a></h4>-->
+        <div class="dropdown">
+  <a class="nav-link" href="#" tabindex="-1" aria-disabled="true"><img src="https://img.icons8.com/color/50/000000/user-location.png"/>Profile</a>
+  <div class="dropdown-content">
+    <a href="#"> MyProfile</a>
+    <a href="#">Dashboard</a>
+    <a href="#">Logout</a>
+  </div>
       </li>
     </ul>
+    <form class="form-inline my-2 my-lg-0" id="searchNav">
+      <input class="form-control mr-sm-2" type="search" id="search" placeholder="Search Blogs" aria-label="Search Blogs">
+      <i id = "searchIcon" class="fa fa-search icon"></i>
+    </form>
   </div>
   </div>
 </nav>

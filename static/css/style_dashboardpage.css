@@ -1,0 +1,224 @@
+.nav-link {
+    color: white !important;
+    padding: 0px 20px !important;
+    font-family: PT serif;
+}
+.card {
+    box-shadow: 0 0px 10px 0 #C2185B;
+    background-color: antiquewhite!important;
+    transition: 0.3s;
+ }
+ #title{
+    color: #C2185B;
+    font-family: oswald;
+ }
+.card-title{
+    font-family:  Montserrat;
+    color: #E91E63;
+}
+#subheading{
+    color: #C2185B;
+    font-family: Oswald;
+}
+#searchNav{
+    padding-left:50px;
+    padding-bottom:10px;
+}
+#search{
+    width:400px;
+}
+#searchIcon{
+    position: absolute;
+    margin-left: 370px;
+    color: orange;
+}
+ul li {
+  display:inline;
+  font-size: 25px;
+  padding: 5px;
+}
+.centered-flexbox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-areas:
+    "general-stats general-stats general-stats general-stats general-stats general-stats general-stats general-stats general-stats general-stats general-stats general-stats";
+     grid-gap: 15px;
+}
+.lni-wrapper {
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.lni-wrapper-16 {
+  height: 32px;
+  width: 32px;
+}
+
+.lni-green {
+  background: rgba(50, 151, 71, 0.2);
+  color: rgba(50, 151, 71);
+}
+
+.lni-orange {
+  background: rgba(255, 165, 0, 0.2);
+  color: rgba(255, 165, 0);
+}
+.general-stats {
+  grid-area: general-stats;
+}
+.stat-group {
+  transition: all .3s ease-in-out;
+}
+.general-stat-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+.general-stat-icon {
+  height: 45px;
+  transition: all .1s ease-in-out;
+  border: 5px solid #000;
+
+}
+
+.general-icon {
+  height: 60px;
+  transition: all .1s ease-in-out;
+  border: 5px solid #000;
+
+
+}
+.stat-group {
+  transition: all .3s ease-in-out;
+}
+
+.stat-group:hover {
+  transform: translateY(-5px);
+}
+
+.stat-group:not(:last-child):after {
+  content: "";
+  width: 2px;
+  height: 75px;
+  background: #eee;
+}
+
+.stat-group:hover .general-stat-icon {
+  filter: invert(50%) sepia(11%) saturate(2483%) hue-rotate(80deg) brightness(95%) contrast(87%);
+}
+.centered-flexbox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#footer-contents{
+    display: table;
+    margin: 0 auto;
+    padding: 8px;
+    font-family: PT serif;
+}
+nav.circle ul li a {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+/* By Dominik Biedebach @domobch */
+nav.circle ul li a:after {
+  display: block;
+  position: absolute;
+  margin: 0;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  content: '.';
+  color: transparent;
+  width: 1px;
+  height: 1px;
+  border-radius: 50%;
+  background: transparent;
+}
+nav.circle ul li a:hover:after {
+  -webkit-animation: circle 1.5s ease-in forwards;
+}
+.box1 {
+  background-color: #5D9FA6;
+  float: left;
+  color: black;
+  border: 2px solid black;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  border-radius: 50%;
+}
+.button {
+  background-color: #EA78A4;
+  border: 3px solid black;
+  color: black;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  font-family: cursive;
+  font-style: bold;
+  margin: 4px 2px;
+
+}
+.dropbtn {
+  background-color: #C70039;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: left;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 16px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #ddd;}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {display: block;}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {background-color: #3e8e41;}
+
+
+
+.button1 {border-radius: 25%;}
+
+.img1{
+  border: 5px solid #000;
+}
