@@ -3,6 +3,7 @@ from .views import (
         PostDetailView,
         PostUpdateView,
         PostDeleteView,
+        getblogs,
         home,
         about,
         post_create,
@@ -11,6 +12,7 @@ from .views import (
 
 urlpatterns = [
     path("", home, name="blog-home"),
+    path("ajax/getBlogs", getblogs, name="getBlogs"),
     path("about/", about, name="blog-about"),
     path("profileview/<name>", Profileview, name="blog-profile"),
     path("post/<slug:slug>/", PostDetailView.as_view(), name="post-detail"),
