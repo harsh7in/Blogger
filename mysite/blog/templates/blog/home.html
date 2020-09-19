@@ -87,38 +87,37 @@
 <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
 <script>
     $(document).ready(function(){
-        setInterval(function()
+    setInterval(function()
+    {
+    $.ajax({
+        type:'GET',
+        url: "{% url 'getBlogs' %}",
+        success: function(response){
+        $("#ViewCount_1").empty();
+        for (var key in response.blogs)
         {
-      $.ajax({
-          type:'GET',
-          url: "{% url 'getBlogs' %}",
-          success: function(response){
-          $("#ViewCount_1").empty();
-          for (var key in response.blogs)
-          {
-              var fromServerTitle = response.blogs[key].title;
-              var fromPageTitle = document.getElementById("post_title_1").innerText;
-              if (fromServerTitle == fromPageTitle) {
-                  var temp = response.blogs[key].view_count
-                  $("#ViewCount_1").append(temp);
-              }
-           }
-          $("#ViewCount_2").empty();
-          for (var key in response.blogs)
-          {
-              var fromServerTitle = response.blogs[key].title;
-              var fromPageTitle = document.getElementById("post_title_2").innerText;
-              if (fromServerTitle == fromPageTitle) {
-                  var temp = response.blogs[key].view_count
-                  $("#ViewCount_2").append(temp);
-              }
-           }
-          },
-      });
-        },1000);
+            var fromServerTitle = response.blogs[key].title;
+            var fromPageTitle = document.getElementById("post_title_1").innerText;
+            if (fromServerTitle == fromPageTitle) {
+                var temp = response.blogs[key].view_count
+                $("#ViewCount_1").append(temp);
+            }
+        }
+        $("#ViewCount_2").empty();
+        for (var key in response.blogs)
+        {
+            var fromServerTitle = response.blogs[key].title;
+            var fromPageTitle = document.getElementById("post_title_2").innerText;
+            if (fromServerTitle == fromPageTitle) {
+                var temp = response.blogs[key].view_count
+                $("#ViewCount_2").append(temp);
+            }
+        }
+        },
+    });
+    },1000);
     });
 </script>
-
 
 
 
