@@ -68,16 +68,13 @@
                 <small class="text-muted">Category</small>
                 <small class="text-muted">{{ post.date_posted }}</small>
             </div>
-
             <small class="text-muted">{{ post.date_posted }}</small>
             <img style="height:19px; width:18px; float:right;" src="{% static "blog/viewicon.png" %}">
-            <p class="viewcount">{{post.view_count}}</p></img>
-
-            {% comment %} <small class="text-muted">{{ post.date_posted }}</small> {% endcomment %}
-            <img style="height:19px; width:18px; float:right;" src="{% static "blog/viewicon.png" %}"><p style="float: right; display: inline !important;">{{post.view_count}}</p></img>
-
+                <p style="float: right; display: inline !important;">{{post.view_count}}
+                
+                </p>
+            </img>
         </div>
-        {% comment %} <h2><a class="article-title" href="{% url 'post-detail' post.slug %}">{{ post.title }}</a></h2> {% endcomment %}
         <p class="article-content">{{ post.content|truncatechars:200|safe }}</p>
         <hr />
         <button class="btn btn-light btn-sm disabled" type="submit">❤</button>
