@@ -9,10 +9,15 @@ from django.contrib.auth.decorators import login_required
 from .forms import PostForm
 from django.db.models import Q
 from django.core.paginator import Paginator
-
+from django.http import JsonResponse
 from django.utils import timezone
 
 # Create your views here.
+
+def getblogs(request):
+    queryset = Post.objects.all()
+    return JsonResponse({"blogs":list(queryset.values())})
+
 
 def home(request):
     posts = Post.objects.all()
