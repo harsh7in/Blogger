@@ -19,11 +19,11 @@
           <div>
             <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'post-update' object.id %}">Update</a>
             <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'post-delete' object.id %}">Delete</a>
-            <hr style="height: 5px;">
-            <div class="tag">
+            <hr style="height: 5px; margin-top: 0px;">
+            <div class="tag" style = "position:relative; top:-11px;">
               <strong>Tags</strong>:
-              {% for tag in object.tags.all%}
-                <a href="{% url 'tagged' tag.slug %}" class="mr-1 badge badge-info">#{{tag}}</a>
+              {% for tag in object.tags.all %}
+                <a style ="color:white;"href="#" class="mr-1 badge badge-info">#{{tag}}</a>
               {% endfor %}
             </div>
           </div>

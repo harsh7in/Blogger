@@ -11,7 +11,6 @@ from django.db.models import Q
 from django.core.paginator import Paginator
 from django.http import JsonResponse
 from django.utils import timezone
-from taggit.models import Tag
 
 
 # Create your views here.
@@ -49,15 +48,6 @@ def home(request):
         'mostliked4':mostliked4,
     }
     return render(request,'blog/home.html', context)
-
-
-def tagged(request,slug):
-    tag = get_object_or_404(Tag, slug=slug)
-    posts = Post.objects.filter(tags=tag)
-    context={
-        'posts': posts,
-    }
-    return render(request, 'blog/home.html', context)
 
 
 def about(request):

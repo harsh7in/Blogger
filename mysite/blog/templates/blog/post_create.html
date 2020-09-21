@@ -31,7 +31,7 @@
 
                 <div id="div_id_tags" class="form-group"> 
                     <label for="id_tags" class="">Tags: </label>
-                        <div class="">
+                        <div class="" style="display: inline-block;">
                             <input type="text" data-role="tagsinput" name="tags" maxlength="100" class="textinput textInput form-control" id="id_tags">
                         </div>
                 </div>
@@ -41,27 +41,3 @@
         </form> 
 {% endblock%}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        {% comment %} <form class="post-form" method="POST" action="" enctype="multipart/form-data">
-            <div class="form-group">
-                {% csrf_token %}
-                {{ form.media }}
-                {{ form|crispy }}
-                <input type="submit" value="Create Post" />
-            </div>
-        </form> {% endcomment %}
