@@ -69,6 +69,7 @@ INSTALLED_APPS = [
     'users.apps.UsersConfig',
     'ckeditor',
     'ckeditor_uploader',
+    'taggit',
 ]
 
 MIDDLEWARE = [

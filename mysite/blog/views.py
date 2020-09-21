@@ -11,6 +11,8 @@ from django.db.models import Q
 from django.core.paginator import Paginator
 from django.http import JsonResponse
 from django.utils import timezone
+from taggit.models import Tag
+
 
 # Create your views here.
 
@@ -49,6 +51,15 @@ def home(request):
     return render(request,'blog/home.html', context)
 
 
+def tagged(request,slug):
+    tag = get_object_or_404(Tag, slug=slug)
+    posts = Post.objects.filter(tags=tag)
+    context={
+        'posts': posts,
+    }
+    return render(request, 'blog/home.html', context)
+
+
 def about(request):
     return render(request,'blog/about.html')
 
@@ -83,7 +94,7 @@ class PostDetailView(DetailView):
 class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Post
     success_url = '/'
-    fields = ['title', 'image', 'content']
+    fields = ['title', 'image', 'content', 'tags']
 
     def form_valid(self, form):
         form.instance.author = self.request.user
@@ -114,6 +125,7 @@ def post_create(request):
         instance = form.save(commit=False)
         instance.author_id = request.user.id
         instance.save()
+        form.save_m2m()
         messages.success(request, "Successfully Created")
         return redirect('blog-home')
     context  ={

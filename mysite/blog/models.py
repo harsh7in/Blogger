@@ -5,6 +5,7 @@ from django.urls import reverse
 from django.utils.text import slugify
 from .utils import get_read_time
 from ckeditor_uploader.fields import RichTextUploadingField
+from taggit.managers import TaggableManager
 # Create your models here.
 
 class Post(models.Model):
@@ -15,6 +16,7 @@ class Post(models.Model):
     image = models.ImageField(upload_to="blog_images", height_field=None, width_field=None, max_length=None, blank=True)
     view_count = models.IntegerField(default=0)
     slug = models.SlugField(blank=True, null=True)
+    tags = TaggableManager()
 
     def save(self, *args, **kwargs):
         if not self.slug:
