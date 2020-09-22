@@ -19,10 +19,17 @@
           <div>
             <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'post-update' object.id %}">Update</a>
             <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'post-delete' object.id %}">Delete</a>
+            <hr style="height: 5px; margin-top: 0px;">
+            <div class="tag" style = "position:relative; top:-11px;">
+              <strong>Tags</strong>:
+              {% for tag in object.tags.all %}
+                <a style ="color:white;"href="#" class="mr-1 badge badge-info">#{{tag}}</a>
+              {% endfor %}
+            </div>
           </div>
         {% endif %}
       </div>
-      {% if object.image.url != '' %} <!--Condition to see if there's any image with the blog-->
+      {% if object.image.url != '' %} <!--Condition to see if there's any cover image with the blog-->
         <img src="{{ object.image.url }}" alt="Unable to load the Image" style="width: 100%;">
         <div class="horizontalgap" style="height:10px"></div>
         <h2 class="article-title">{{ object.title }}</h2>

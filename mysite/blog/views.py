@@ -12,6 +12,7 @@ from django.core.paginator import Paginator
 from django.http import JsonResponse
 from django.utils import timezone
 
+
 # Create your views here.
 
 def getblogs(request):
@@ -83,7 +84,7 @@ class PostDetailView(DetailView):
 class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Post
     success_url = '/'
-    fields = ['title', 'image', 'content']
+    fields = ['title', 'image', 'content', 'tags']
 
     def form_valid(self, form):
         form.instance.author = self.request.user
@@ -114,6 +115,7 @@ def post_create(request):
         instance = form.save(commit=False)
         instance.author_id = request.user.id
         instance.save()
+        form.save_m2m()
         messages.success(request, "Successfully Created")
         return redirect('blog-home')
     context  ={

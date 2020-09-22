@@ -7,7 +7,7 @@ from .views import (
         home,
         about,
         post_create,
-        Profileview
+        Profileview,
     )
 
 urlpatterns = [

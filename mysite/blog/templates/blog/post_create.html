@@ -7,11 +7,37 @@
         <form class="post-form" method="POST" action="" enctype="multipart/form-data">
             <div class="form-group">
                 {% csrf_token %}
-                {{ form.media }}
-                {{ form|crispy }}
-                <input type="submit" value="Create Post" />
-            </div>
-        </form>
-{% endblock%}
+                <div id="div_id_title" class="form-group">
+                    <label for="id_title" class=" requiredField">Title<span class="asteriskField">*</span></label>
+                    <div class="">
+                        <input type="text" name="title" maxlength="100" class="textinput textInput form-control" required="" id="id_title"><!--Here name="" is the name of the fields of model-->
+                    </div>
+                </div>
 
+                <div id="div_id_image" class="form-group"> 
+                    <label for="id_image" class="">Image</label>
+                        <div class="">
+                            <input type="file" name="image" accept="image/*" class="clearablefileinput form-control-file" id="id_image">
+                        </div>
+                </div>
+                
+                <div id="div_id_content" class="form-group">
+                    <label for="id_content" class="">Content</label>
+                    <div class="">
+                        {{form.media}}
+                        {{form.content}}
+                    </div>
+                </div>
+
+                <div id="div_id_tags" class="form-group"> 
+                    <label for="id_tags" class="">Tags: </label>
+                        <div class="" style="display: inline-block;">
+                            <input type="text" data-role="tagsinput" name="tags" maxlength="100" class="textinput textInput form-control" id="id_tags">
+                        </div>
+                </div>
+
+                <button type="submit" class="btn btn-success">Create Post</button>
+            </div>
+        </form> 
+{% endblock%}
 
