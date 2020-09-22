@@ -62,16 +62,15 @@ def Profileview(request,name):
         'user':user, 'flag':flag , 'posts':posts    
     }
     
-    if request.user!=user:
+    if request.user != user or request.user == user:
         return render(request,'user/profile.html', context)
     else:
         context={
             'posts': Post.objects.all(),'flag':flag  
         }
-
         return render(request,'blog/home.html',context)
-    
-    
+
+
 class PostDetailView(DetailView):
     model = Post
     def get_object(self):
