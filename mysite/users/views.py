@@ -59,10 +59,11 @@ def profileUpdate(request, pk):
     if request.method == 'POST':
         #print(pk)
         server = get_object_or_404(Profile, pk=pk)
-        form = UserProfileForm(request.POST or None, request.FILES or None,  instance=server)
+        form = UserProfileForm(request.POST or None, request.FILES or None,  instance=request.user.profile)
         if form.is_valid():
             edit = form.save(commit=False)
             edit.save()
+            messages.success(request, f'Your Account has been updated!')
             return redirect('profile')
     form = UserProfileForm()
     return render(request,'user/profile.html',{'form': form,'flag':flag})
