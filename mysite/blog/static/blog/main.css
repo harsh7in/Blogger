@@ -20,7 +20,7 @@ ul {
 }
 
 .site-header .navbar-nav .nav-link {
-  color: #cbd5db;
+  color: black;
 }
 
 .site-header .navbar-nav .nav-link:hover {
@@ -34,7 +34,6 @@ ul {
 .content-section {
   background: #ffffff;
   padding: 10px 20px;
-  border: 1px solid #dddddd;
   border-radius: 3px;
   margin-bottom: 20px;
 }
@@ -109,6 +108,28 @@ h5 {
 label {
   cursor: pointer;
 }
+
+.site-footer {
+  background-color: #c4c4c4;
+  color: black;
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.links {
+  padding: 10px;
+}
+
+.contact {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
 .slider {
   height: 37vh;
   overflow: hidden;
@@ -341,6 +362,11 @@ li {
 }
 *:focus {
   outline: none;
+}
+.notification{
+    position: relative;
+    left: 10px;
+    bottom: 10px;
 }
 .readtime {
   float: right; 

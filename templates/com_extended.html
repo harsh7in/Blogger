@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" type="text/css" href="../static/css/style_extendedpage.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <!-- <link rel="stylesheet" href="{% static 'blog/main.css' %}" type="text/css"> -->
+    <title></title>
+  </head>
+  <body>
+     
+<!-- header is rendered here -->
+<div id="header"></div>
+    
+    <strong>Community > Technology</strong>
+    <img src="..static/imga/image.png" alt="image" style="float:right; margin-right:200px; margin-top: 36px" width="200" height='240' margin-right="10"/>
+    
+    <div class="jumbotron"> 
+      <h2 style="margin-top:0px; font-family:roboto; font-weight:bold ">Technology
+        <button id= 'navbtn1'  class="btn btn-outline"> 
+          <img src="..static/imga/plus.png" width=25 height=25 /> Join 
+        </button> 
+      </h2> 
+      <p>brief description about the selected community</p>
+      <button id= 'navbtn2' class="btn btn-outline">Followers: 14k
+    </div>
+    <div class="container align-center" >
+      <div class="row">
+        <div class="col-md-8">
+          <button id= 'navbtn3' type="button" class="btn btn-outline" >Trending</button>
+          <button id= 'navbtn4' type="button" class="btn btn-outline" >Most Liked</button>
+        </div>
+        <div class="col-md-4">
+          <button id= 'navbtn5' class="btn btn-outline" href="{% url 'post_create' %}">Write a Blog</button>
+        </div>
+      </div>
+    </div>
+    <main role="main" class="container">
+    <div class="row">
+      <div class="col-md-8">
+    {% for post in posts %}
+      <article class="media content-section">
+        <div class="media-body">
+            <div class="article-metadata">
+              <h2><a class="article-title" href="{% url 'post-detail' post.slug %}">{{ post.title }}</a></h2>
+                <a class="mr-2" href="{% url 'blog-profile' name=post.author %}" >{{ post.author }}</a>
+                <img style="height:19px; width:18px; float:right;" src="{% static 'blog/viewicon.png' %}"><p class="viewcount">{{post.view_count}}</p></img> 
+                <small class="text-muted" style="float:right; padding-right:5px">{{ post.date_posted }}</small>
+            </div>
+            <p class="article-content" style="font-size: 21">{{ post.content|truncatechars:300 }}</p>
+            <hr>
+            <i class="material-icons" style="padding: 5px 1 0 0;">thumb_up_alt</i>
+            <i class="material-icons"style="padding: 5px 1 0 0;">thumb_down_alt</i>
+            <i class="material-icons"style="padding: 5px 1 0 0;">comments_alt</i>
+            <i class="material-icons"style="float: right;height:19px; width:18px;">share_alt</i>
+        </div>
+      </article>
+            {% endfor %}
+            <div class="pagination">
+
+              {% if posts.has_previous %}
+              <a class="btn btn-outline-info mb-4" href="?page=1">First</a>
+              <a class="btn btn-outline-info mb-4" href="?page={{ posts.previous_page_number }}">Previous</a>
+              {% endif %}
+          
+              {% for num in posts.paginator.page_range %}
+              {% if posts.number == num %}
+              <a class="btn btn-info mb-4" href="?page={{ num }}">{{ num }}</a>
+              {% elif num > posts.number|add:'-3' and num < posts.number|add:'3' %}
+              <a class="btn btn-outline-info mb-4" href="?page={{ num }}">{{ num }}</a>
+              {% endif %}
+              {% endfor %}
+          
+              {% if posts.has_next %}
+              <a class="btn btn-outline-info mb-4" href="?page={{ posts.next_page_number }}">Next</a>
+              <a class="btn btn-outline-info mb-4" href="?page={{ posts.paginator.num_pages }}">Last</a>
+              {% endif %}
+          
+          </div>
+          </div>
+          
+          <!-- sidebar starts here -->
+        <div class="col-md-4">
+          <div class="content-section">
+            <h2 style=" font-family:oswald; color:#E85A4F;">Challenges</h2>
+            <hr>
+            <ul class="list-group">
+              <li ><i class="material-icons" style ="padding-right: 10px">event_note</i> Events</li>
+              <li ><i style="font-size:22px; padding-right: 20px;" class="fa">&#xf128;</i>Quizzes</li> 
+            </ul>
+          </div>
+          <div class="content-section" style="margin-top: 20px">
+        
+            <h2 style=" font-family:oswald; color:#E85A4F;">Lets Talk</h2>
+            <hr>
+            <ul class="list-group">
+              <li style ="padding-right: 10px"> Discussion Forum</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </main>
+        <!-- footer is rendered here -->
+  <div id="footer"></div>
+
+  <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="http://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <script> 
+    $(function(){
+      $("#header").load("Akshi_header.html"); 
+      $("#footer").load("Akshi_footer.html"); 
+    });
+    </script> 
+    </body>
+</html> 

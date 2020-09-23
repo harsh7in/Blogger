@@ -8,6 +8,7 @@ class PostForm(forms.ModelForm):
             'title',
             'image',
             'content',
+            'tags',
         ]
     def __init__(self, *args, **kwargs):
         super(PostForm, self).__init__(*args, **kwargs)

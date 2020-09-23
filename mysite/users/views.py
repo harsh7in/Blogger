@@ -6,6 +6,7 @@ from django.contrib.auth import views as auth_views
 from .forms import user_reg_form, LoginForm, UserProfileForm, UserProfileUpdateForm
 from .models import Profile
 from django.contrib.auth.models import User
+from blog.models import Post
 
 # Create your views here.
 
@@ -49,7 +50,9 @@ def profile(request):
             print(profile_form.errors)
     else:
         profile_form = UserProfileForm()
-
+    if Post.objects.filter(author=request.user): #For login user blog view
+        posts = Post.objects.filter(author=request.user)
+        return render(request,'user/profile.html',{'form': profile_form,'flag':flag, "posts":posts})
     return render(request,'user/profile.html',{'form': profile_form,'flag':flag})
 
 #If User Update Profile Image

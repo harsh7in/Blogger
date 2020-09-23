@@ -1,0 +1,45 @@
+.nav-link {
+    color: white !important;
+    padding: 0px 20px !important;
+    font-family: PT serif;
+}
+.card {
+    box-shadow: 0 0px 10px 0 #C2185B;
+    background-color: antiquewhite!important;
+    transition: 0.3s;
+ }
+ #title{
+    color: #C2185B;
+    font-family: oswald;
+ }
+.card-title{
+    font-family:  Montserrat;
+    color: #E91E63;
+}
+#subheading{
+    color: #C2185B;
+    font-family: Oswald;
+}
+#searchNav{
+    padding-left:50px;
+    padding-bottom:10px;
+}
+#search{
+    width:400px;
+}
+#searchIcon{
+    position: absolute;
+    margin-left: 370px;
+    color: orange;
+}
+ul li {
+  display:inline;
+  font-size: 25px;
+  padding: 5px;
+}
+#footer-contents{
+    display: table;
+    margin: 0 auto;
+    padding: 8px;
+    font-family: PT serif;
+}

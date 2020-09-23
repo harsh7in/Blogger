@@ -2,15 +2,75 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
+<style>
+    body{
+        background-color:#f4f4f2;
+    }
+    h2{
+        color:#ea584f;
+        font-family:Oswald;
+        border-bottom:0.25px double grey;
+    }
+    input[type="text"]{
+        font-family:roboto;
+        font-size:20px;
+    }
+    #label{
+        font-style: italic;
+    }
+    button[type="submit"]{
+        background-color:transparent;
+        width:75%;
+        font-size:18px;
+        height:40px;
+        border-color:#ea584f;
+        border-radius: 7px;
+        font-family:Oswald;
+        margin-left:75px
+    }
+    button[type="submit"]:hover{
+        background-color:#ea584f;
+        color:#f4f4f2;
+    }
 
-        <h1>Form</h1>
+</style>
+
+        <h2>Create Post...</h2>
+        <br><br>
         <form class="post-form" method="POST" action="" enctype="multipart/form-data">
             <div class="form-group">
                 {% csrf_token %}
-                {{ form|crispy }}
-                <input type="submit" value="Create Post" />
-            </div>
-        </form>
-{% endblock%}
+                <div id="div_id_title" class="form-group">
+                    <div class="">
+                        <input type="text" name="title" maxlength="100" class="textinput textInput form-control" required="" id="id_title" placeholder="Add A Catchy Title"><!--Here name="" is the name of the fields of model-->
+                    </div>
+                </div>
+                
+                <div id="div_id_image" class="form-group"> 
+                    <div class='custom-file'>
+                        <label class="custom-file-label" for="id_image">Choose File
+                            <input type="file" name="image" accept="image/*" class="custom-file-input"  id="id_image">
+                        </label>
+                    </div>
+                </div>
+                
+                <div id="div_id_content" class="form-group">
+                    <label for="id_content" class="" id="label" style='color:#ea584f'>Write your post here...</label>
+                    <div class="">
+                        {{form.media}}
+                        {{form.content}}
+                    </div>
+                </div>
 
+                <div id="div_id_tags" class="form-group"> 
+                    <label for="id_tags" class="">Tags: </label>
+                        <div class="" style="display: inline-block;">
+                            <input type="text" data-role="tagsinput" name="tags" maxlength="100" class="textinput textInput form-control" id="id_tags">
+                        </div>
+                </div>
+
+                <button type="submit">Create Post</button>
+            </div>
+        </form> 
+{% endblock%}
 
