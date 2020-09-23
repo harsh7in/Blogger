@@ -2,27 +2,58 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
+<style>
+    body{
+        background-color:#f4f4f2;
+    }
+    h2{
+        color:#ea584f;
+        font-family:Oswald;
+        border-bottom:0.25px double grey;
+    }
+    input[type="text"]{
+        font-family:roboto;
+        font-size:20px;
+    }
+    #label{
+        font-style: italic;
+    }
+    button[type="submit"]{
+        background-color:transparent;
+        width:75%;
+        border-color:#ea584f;
+        border-radius: 7px;
+        font-family:Oswald;
+        margin-left:75px
+    }
+    button[type="submit"]:hover{
+        background-color:#ea584f;
+        color:#f4f4f2;
+    }
 
-        <h1>Create Post...</h1>
+</style>
+
+        <h2>Create Post...</h2>
+        <br>
         <form class="post-form" method="POST" action="" enctype="multipart/form-data">
             <div class="form-group">
                 {% csrf_token %}
                 <div id="div_id_title" class="form-group">
-                    <label for="id_title" class=" requiredField">Title<span class="asteriskField">*</span></label>
                     <div class="">
-                        <input type="text" name="title" maxlength="100" class="textinput textInput form-control" required="" id="id_title"><!--Here name="" is the name of the fields of model-->
+                        <input type="text" name="title" maxlength="100" class="textinput textInput form-control" required="" id="id_title" placeholder="Add A Catchy Title"><!--Here name="" is the name of the fields of model-->
                     </div>
                 </div>
-
+                <br><br>
                 <div id="div_id_image" class="form-group"> 
-                    <label for="id_image" class="">Image</label>
-                        <div class="">
-                            <input type="file" name="image" accept="image/*" class="clearablefileinput form-control-file" id="id_image">
-                        </div>
+                    <div class='custom-file'>
+                        <label class="custom-file-label" for="id_image">Choose File
+                            <input type="file" name="image" accept="image/*" class="custom-file-input"  id="id_image">
+                        </label>
+                    </div>
                 </div>
                 
                 <div id="div_id_content" class="form-group">
-                    <label for="id_content" class="">Content</label>
+                    <label for="id_content" class="" id="label">Write your post here...</label>
                     <div class="">
                         {{form.media}}
                         {{form.content}}
@@ -36,7 +67,7 @@
                         </div>
                 </div>
 
-                <button type="submit" class="btn btn-success">Create Post</button>
+                <button type="submit">Create Post</button>
             </div>
         </form> 
 {% endblock%}
