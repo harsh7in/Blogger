@@ -21,6 +21,8 @@
     button[type="submit"]{
         background-color:transparent;
         width:75%;
+        font-size:18px;
+        height:40px;
         border-color:#ea584f;
         border-radius: 7px;
         font-family:Oswald;
@@ -34,7 +36,7 @@
 </style>
 
         <h2>Create Post...</h2>
-        <br>
+        <br><br>
         <form class="post-form" method="POST" action="" enctype="multipart/form-data">
             <div class="form-group">
                 {% csrf_token %}
@@ -43,7 +45,7 @@
                         <input type="text" name="title" maxlength="100" class="textinput textInput form-control" required="" id="id_title" placeholder="Add A Catchy Title"><!--Here name="" is the name of the fields of model-->
                     </div>
                 </div>
-                <br><br>
+                
                 <div id="div_id_image" class="form-group"> 
                     <div class='custom-file'>
                         <label class="custom-file-label" for="id_image">Choose File
@@ -53,7 +55,7 @@
                 </div>
                 
                 <div id="div_id_content" class="form-group">
-                    <label for="id_content" class="" id="label">Write your post here...</label>
+                    <label for="id_content" class="" id="label" style='color:#ea584f'>Write your post here...</label>
                     <div class="">
                         {{form.media}}
                         {{form.content}}
