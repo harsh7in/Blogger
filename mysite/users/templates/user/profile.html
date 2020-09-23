@@ -29,14 +29,12 @@
               <form method="POST" action="{% url 'profile' %}" enctype="multipart/form-data">
                 {% csrf_token %}
                 {{ form | crispy }}
-            
-              </form>
             </div>
             <div class="modal-footer flex-center">
               <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
               <button class="btn btn-primary" type="submit">Save changes</button>
             </div>
-
+              </form>
           </div>
         </div>
       </div>
@@ -63,13 +61,13 @@
               <form method="POST" action="{% url 'profile' %}" enctype="multipart/form-data">
                 {% csrf_token %}
                 {{ form | crispy }}
-           
-              </form>
+          
             </div>
             <div class="modal-footer flex-center">
               <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
               <button class="btn btn-primary" type="submit">Save changes</button>
             </div>
+          </form>
           </div>
         </div>
       </div>
