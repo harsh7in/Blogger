@@ -1,0 +1,67 @@
+{% extends 'blog/base.html'%}
+{% load static %}
+
+{% block content %}
+    <h2>Favourites</h2>
+
+    {% for post in new %}
+    <article class="media content-section">
+        <div class="media-body">
+            <h2><a id="post_title_{{ forloop.counter }}" class="article-title" href="{% url 'post-detail' post.slug %}">{{ post.title }}</a></h2>
+            <div class="article-metadata">
+                <a class="mr-2" href="{% url 'blog-profile' name=post.author %}">{{ post.author }}</a>
+                <div class="float-right">
+                    <small class="text-muted">Category</small>
+                    <small class="text-muted">{{ post.date_posted }}</small>
+                </div>
+                <div style="float:right;">
+                    <img style="height:19px; width:18px;" src="{% static "blog/viewicon.png" %}">
+                        <p style="float: right; display: inline !important;" id="ViewCount_{{ forloop.counter }}">
+                        
+                        </p>
+                    </img>
+                </div>
+            </div>
+            <p class="article-content">{{ post.content|truncatechars:200|safe }}</p>
+            <hr />
+            <button class="btn btn-light btn-sm disabled" type="submit">❤</button>
+            <button class="btn btn-light btn-sm disabled" type="submit">👎</button>
+            <button class="btn btn-light btn-sm disabled" type="submit">💬</button>
+        </div>
+    </article>
+    {% endfor %}
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function(){
+        setInterval(function()
+        {
+        $.ajax({
+            type:'GET',
+            url: "{% url 'getBlogs' %}",
+            success: function(response){
+            $("#ViewCount_1").empty();
+            for (var key in response.blogs)
+            {
+                var fromServerTitle = response.blogs[key].title;
+                var fromPageTitle = document.getElementById("post_title_1").innerText;
+                if (fromServerTitle == fromPageTitle) {
+                    var temp = response.blogs[key].view_count
+                    $("#ViewCount_1").append(temp);
+                }
+            }
+            $("#ViewCount_2").empty();
+            for (var key in response.blogs)
+            {
+                var fromServerTitle = response.blogs[key].title;
+                var fromPageTitle = document.getElementById("post_title_2").innerText;
+                if (fromServerTitle == fromPageTitle) {
+                    var temp = response.blogs[key].view_count
+                    $("#ViewCount_2").append(temp);
+                }
+            }
+            },
+        });
+        },1000);
+        });
+    </script>
+{% endblock %}
