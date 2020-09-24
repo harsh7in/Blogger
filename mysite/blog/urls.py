@@ -10,6 +10,7 @@ from .views import (
         Profileview,
     )
 
+
 urlpatterns = [
     path("", home, name="blog-home"),
     path("ajax/getBlogs", getblogs, name="getBlogs"),
