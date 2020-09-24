@@ -6,6 +6,7 @@ from django.contrib.auth import views as auth_views
 from .forms import user_reg_form, LoginForm, UserProfileForm, UserProfileUpdateForm
 from .models import Profile
 from django.contrib.auth.models import User
+from blog.models import Post
 
 # Create your views here.
 
@@ -49,7 +50,9 @@ def profile(request):
             print(profile_form.errors)
     else:
         profile_form = UserProfileForm()
-
+    if Post.objects.filter(author=request.user): #For login user blog view
+        posts = Post.objects.filter(author=request.user)
+        return render(request,'user/profile.html',{'form': profile_form,'flag':flag, "posts":posts})
     return render(request,'user/profile.html',{'form': profile_form,'flag':flag})
 
 #If User Update Profile Image
@@ -74,8 +77,17 @@ def editProfile(request):
         form = UserProfileUpdateForm(request.POST, instance=request.user)
         if form.is_valid():
             form.save()
+            print("outttt", form.cleaned_data['bio'])
+            if form.cleaned_data['bio'] or form.cleaned_data['bio']=="":
+                print("hbhbhb", form.cleaned_data['bio'])
+                try:
+                    prof = Profile.objects.get(user=request.user)
+                except Profile.DoesNotExist:
+                    prof = Profile.objects.create(user=request.user)
+                prof.bio = form.cleaned_data['bio']
+                prof.save()
             messages.success(request, f'Your profile information updated successfully')
-            return redirect(profile)
+            return redirect("profile")
     form = UserProfileUpdateForm(instance = request.user)
     return render(request, 'user/editProfile.html', {'form': form, 'flag':flag} )
     
