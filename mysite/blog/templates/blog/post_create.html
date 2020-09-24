@@ -1,41 +1,79 @@
-{% extends 'blog/base.html' %}
-{% load crispy_forms_tags %}
+{% load static %}
 
-{% block content %}
-<style>
-    body{
-        background-color:#f4f4f2;
-    }
-    h2{
-        color:#ea584f;
-        font-family:Oswald;
-        border-bottom:0.25px double grey;
-    }
-    input[type="text"]{
-        font-family:roboto;
-        font-size:20px;
-    }
-    #label{
-        font-style: italic;
-    }
-    button[type="submit"]{
-        background-color:transparent;
-        width:75%;
-        font-size:18px;
-        height:40px;
-        border-color:#ea584f;
-        border-radius: 7px;
-        font-family:Oswald;
-        margin-left:75px
-    }
-    button[type="submit"]:hover{
-        background-color:#ea584f;
-        color:#f4f4f2;
-    }
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-</style>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="../static/css/style_extendedpage.css" >
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="{% static 'blog/post.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'blog/tagsinput.css' %}" type="text/css">
+    <title></title>
+  </head>
+  <body>
 
-        <h2>Create Post...</h2>
+    <header class="site-header">
+      <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
+        <div class="container">
+          <a class="navbar-brand mr-4" href="{% url 'blog-home' %}"> 
+            <img src="{% static 'blog/png_logo.png' %}" alt="Blogger" width=110 height = 40 class="d-inline-block align-top">
+            <!-- <img src="../static/img/png_logo.png" style="height:40px; width:110px;"></img> -->
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarToggle">
+            <div class="navbar-nav mr-auto">
+              <i class="material-icons" style="padding:9px;color: #eae7dc;">home</i>
+              <a class="nav-item nav-link" href="{% url 'blog-home' %}">Home</a>
+              <i class="material-icons" style="padding:9px;color: #eae7dc;">group</i>
+              <a class="nav-item nav-link" href="#">Communities</a>
+              {% if user.is_authenticated %}
+              <i class="material-icons" style="padding:9px;color: #eae7dc;">create</i>
+              <a class="nav-item nav-link" href="{% url 'post_create' %}">Create Blog</a>
+              {% endif %}
+              <i class="material-icons" style="padding:9px;color: #eae7dc;">notifications</i>
+              <a class="nav-item nav-link" href="#">Notifications</a>
+              <!--Search Bar-->
+              <div class="search-bar">
+                <form method="GET" action="/" style="display:inline-block; line-height:21px; border-radius: 80px; padding:9px 0 0 95px">
+                  <input type="text" placeholder="Search Blogs..." onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search Blogs...';}" name ="q" required="" size="29" style="border-radius: 80px; padding: 0px 12px; font-style:italic ;">
+                </form>
+              </div>
+            </div>
+            <!-- Navbar Right Side -->
+            <div class="navbar-nav">
+              <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="color: #eae7dc; "><i class="material-icons" style="padding:4px ;color: #eae7dc;">account_circle</i>
+                <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  {% if user.is_authenticated %}
+                  <a href="{% url 'profile' %}">Profile</a><br>
+                  <a  href="{% url 'logout' %}">Logout</a>
+                  {% else %}
+                  <a  href="{% url 'login' %}">Login</a><br>
+                  <a  href="{% url 'register' %}">Register</a>
+                  {% endif %}
+                </ul>
+              </li>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+
+    <main role="main" class="container">
+      <div class="row">
+        <div class="col-md-12">
+            <br>
+        <h2 id="post_id">Create Post...</h2>
         <br><br>
         <form class="post-form" method="POST" action="" enctype="multipart/form-data">
             <div class="form-group">
@@ -56,7 +94,7 @@
                 
                 <div id="div_id_content" class="form-group">
                     <label for="id_content" class="" id="label" style='color:#ea584f'>Write your post here...</label>
-                    <div class="">
+                    <div class="" style='padding-left:53px'>
                         {{form.media}}
                         {{form.content}}
                     </div>
@@ -72,5 +110,55 @@
                 <button type="submit">Create Post</button>
             </div>
         </form> 
-{% endblock%}
+        </div> 
+      </div>
+    </main>
+<br>
+<footer class="site-footer" style="text-align: center;color:#f4f4f2">
+  <div style="background-color: white; color: black; font-family: oswald; padding-top: 10px; font-size:16px">
+    Subscribe to the newsletter to get the latest blog post links
+    <form class="py-3" style="font-family:pt serif ; ">
+      <input class="px-3 py-1" type="email" placeholder="Enter your mail id..." style="width: 50%; border-radius: 15px; font-style: italic;"/>
+      <button class="px-3 py-1" style="border-radius: 15px; background-color:#E85A4F; color:#f4f4f2; ">Mail Me</button>
+    </form>
+  </div>
+  <div class="py-3">
+    <!-- <img src="{% static 'blog/png_logo.png' %}" alt="Blogger" style="height: 50px; width: 110px; margin-top: 5px"/> -->
+    <img src="{% static 'blog/png_logo.png' %}" style="height:50px; width:110px; margin-top: 5px"></img>
+    <div style="font-size: 38px;">Blogger</div>
+    <div class="introduction">A blogging site</div>
+  </div>
+  
+  <div class="footer-links" style="word-spacing: 2px; color: #eae7dc">
+    
+    <a class="links" href="{% url 'blog-home' %}"><i class="material-icons" style="padding:9px;color: #eae7dc;">home</i>Home</a>
+    <a class="links" href="/about" ><i class="material-icons" style="padding:9px;color: #eae7dc;">sms_failed</i>About</a>
+    
+    <a class="links" href="#"><i class="material-icons" style="padding:9px; color:#eae7dc;">notifications</i>Notifications</a>
+  </div>
+  <div class="contact" >
+    <p><img src="{% static 'blog/image 6.png' %}" alt="contact number" class="mx-2" style="height: 28px;"/>+91 1234567890
+    <img src="{% static 'blog/image 7.png' %}" alt="contact number" class="mx-2" style="height: 28px;"/>support@example.com
+    <img src="{% static 'blog/image 8.png' %}" alt="contact number" class="mx-2" style="height: 28px;"/>xyz street</p>
+    </div>
+  <div class="social-links" style="height: 60px; padding: 10px; word-spacing:3px">
+    <img src="https://i.postimg.cc/7PTDC26P/facebook.png" alt="facebook" style="height:30px; width:30px;"/>
+    <img src="https://i.postimg.cc/FdkwvJDQ/instagram.png" alt="instagram" style="height:30px; width:30px;"/>
+    <img src="https://i.postimg.cc/mDYwqjj2/linkedin.png" alt="linkedin" style="height:30px; width:30px;"/>
+    <img src="https://i.postimg.cc/QMR4vHrS/twitter.png" alt ="twitter" style="height:30px; width:30px;"/>
+  </div>
+</footer>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="{% static '/blog/tagsinput.js' %}"></script>
+    <script src="{% static '/blog/main.js' %}"></script>
+  </body>
+</html>
+
+
 
