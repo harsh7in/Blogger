@@ -10,14 +10,17 @@ from blog.models import Post
 
 # Create your views here.
 
+# For returning the favourites
 @login_required
 def favourite_list(request):
     posts = Post.objects.all()
     new = posts.filter(favourites = request.user)
-    return render(request, 'user/favourites.html', {'new': new})
+    context = {
+        'new': new,
+    }
+    return render(request, 'user/favourites.html', context)
 
-
-# For Favourite feature
+# For Adding Favourite
 @login_required
 def favourite_add(request, id):
     post = get_object_or_404(Post, id = id)

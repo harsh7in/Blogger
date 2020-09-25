@@ -79,8 +79,15 @@ def PostDetail(request, slug):
     post.view_count = post.view_count + 1
     post.save()
 
+    objects = Post.objects.get(slug = slug)
+
+    fav = bool
+    if objects.favourites.filter(id=request.user.id).exists():
+        fav = True
+
     context = {
-        'object': Post.objects.get(slug = slug),
+        'object': objects,
+        'fav': fav,
     }
     return render(request, 'blog/post_detail.html', context)
 
