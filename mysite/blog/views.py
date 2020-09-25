@@ -74,13 +74,15 @@ def Profileview(request,name):
         return render(request,'blog/home.html',context)
 
 
-class PostDetailView(DetailView):
-    model = Post
-    def get_object(self):
-        obj = super().get_object()
-        obj.view_count += 1
-        obj.save()
-        return obj
+def PostDetail(request, slug):
+    post = Post.objects.filter(slug=slug).first()
+    post.view_count = post.view_count + 1
+    post.save()
+
+    context = {
+        'object': Post.objects.get(slug = slug),
+    }
+    return render(request, 'blog/post_detail.html', context)
 
 
 class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
