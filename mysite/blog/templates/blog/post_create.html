@@ -17,6 +17,7 @@
     <title></title>
   </head>
   <body>
+      <!-- header starts -->
 
     <header class="site-header">
       <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
@@ -67,7 +68,7 @@
         </div>
       </nav>
     </header>
-
+<!-- header ends -->
 
     <main role="main" class="container">
       <div class="row">
@@ -86,15 +87,14 @@
                 
                 <div id="div_id_image" class="form-group"> 
                     <div class='custom-file'>
-                        <label class="custom-file-label" for="id_image">Choose File
-                            <input type="file" name="image" accept="image/*" class="custom-file-input"  id="id_image">
-                        </label>
+                        <input type="file" name="image" accept="image/*" class="custom-file-input"  id="id_image">
+                        <label class="custom-file-label" for="id_image">Choose File</label>
                     </div>
                 </div>
                 
                 <div id="div_id_content" class="form-group">
                     <label for="id_content" class="" id="label" style='color:#ea584f'>Write your post here...</label>
-                    <div class="" style='padding-left:53px'>
+                    <div class="" style='padding-left:57px'>
                         {{form.media}}
                         {{form.content}}
                     </div>
@@ -114,6 +114,8 @@
       </div>
     </main>
 <br>
+
+<!-- footer starts -->
 <footer class="site-footer" style="text-align: center;color:#f4f4f2">
   <div style="background-color: white; color: black; font-family: oswald; padding-top: 10px; font-size:16px">
     Subscribe to the newsletter to get the latest blog post links
@@ -148,7 +150,7 @@
     <img src="https://i.postimg.cc/QMR4vHrS/twitter.png" alt ="twitter" style="height:30px; width:30px;"/>
   </div>
 </footer>
-
+<!-- footer ends -->
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
