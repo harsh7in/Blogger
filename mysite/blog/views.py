@@ -133,3 +133,7 @@ def post_create(request):
         "form": form
     }
     return render(request, "blog/post_create.html", context)
+
+#   For 404 Error Handling
+def view_404(request, exception):
+    return render(request, 'blog/404.html')
