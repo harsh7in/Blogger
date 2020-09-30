@@ -13,23 +13,7 @@
 
 
     <div class="media-body">
-<<<<<<< HEAD
-        <div class="article-metadata">
-            <a class="mr-2" href="#">{{ object.author }}</a>
-            <small class="text-muted">{{ object.date_posted|date:"F d, Y" }}</small>
-            <p style="float: right; color: violet;">{{object.readTIme}} min read</p>
-            {% if object.author == user %}
-            <div>
-                <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'post-update' object.id %}">Update</a>
-                <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'post-delete' object.id %}">Delete</a>
-                <hr style="height: 5px; margin-top: 0px;">
-                <div class="tag" style="position:relative; top:-11px;">
-                    <strong>Tags</strong>:
-                    {% for tag in object.tags.all %}
-                    <a style="color:white;" href="#" class="mr-1 badge badge-info">#{{tag}}</a>
-                    {% endfor %}
-                </div>
-=======
+
       <div class="article-metadata">
         <a class="mr-2" href="#">{{ object.author }}</a>
         <small class="text-muted">{{ object.date_posted|date:"F d, Y" }}</small>
@@ -67,7 +51,7 @@
               {% for tag in object.tags.all %}
                 <a style ="color:white;"href="#" class="mr-1 badge badge-info">#{{tag}}</a>
               {% endfor %}
->>>>>>> 40c9f72a59bce7a2c83e7e8ff095bd96c46e930d
+
             </div>
             {% endif %}
         </div>
@@ -82,7 +66,7 @@
         {% endif %}
     </div>
 
-
+    </div>
 </article>
 <div>
     <b>COMMENTS SECTION</b>

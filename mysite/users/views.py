@@ -1,9 +1,6 @@
 # from django.shortcuts import render, get_object_or_404, get_list_or_404
-<<<<<<< HEAD
 from django.shortcuts import render, redirect, get_object_or_404, get_list_or_404
-=======
 from django.shortcuts import render ,redirect, get_object_or_404, get_list_or_404, HttpResponseRedirect
->>>>>>> 40c9f72a59bce7a2c83e7e8ff095bd96c46e930d
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import views as auth_views

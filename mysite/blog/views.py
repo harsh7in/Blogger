@@ -82,6 +82,9 @@ def PostDetailView(request, slug):
     curr_user = request.user
     # print(curr_user)
     form = CommentForm()
+    fav = bool
+    if post.favourites.filter(id=request.user.id).exists():
+        fav = True
     if request.method == 'POST':
         # print(request.user.id)
         form = CommentForm(request.POST)
@@ -99,11 +102,10 @@ def PostDetailView(request, slug):
         "comments": comments,
         "form": form,
         "user": curr_user,
+        "fav": fav,
     }
     return render(request, "blog/post_detail.html", context)
 
-
-<<<<<<< HEAD
 # class PostDetailView(DetailView):
 #     model = Post
 #
@@ -112,24 +114,6 @@ def PostDetailView(request, slug):
 #         obj.view_count += 1
 #         obj.save()
 #         return obj
-=======
-def PostDetail(request, slug):
-    post = Post.objects.filter(slug=slug).first()
-    post.view_count = post.view_count + 1
-    post.save()
-
-    objects = Post.objects.get(slug = slug)
-
-    fav = bool
-    if objects.favourites.filter(id=request.user.id).exists():
-        fav = True
-
-    context = {
-        'object': objects,
-        'fav': fav,
-    }
-    return render(request, 'blog/post_detail.html', context)
->>>>>>> 40c9f72a59bce7a2c83e7e8ff095bd96c46e930d
 
 
 class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
@@ -177,4 +161,3 @@ def post_create(request):
 #   For 404 Error Handling
 def view_404(request, exception):
     return render(request, 'blog/404.html')
-    

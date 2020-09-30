@@ -38,7 +38,6 @@ class Post(models.Model):
         Read_Time=get_read_time(self.content)
         Read_Time = Read_Time[2:-3]
         return Read_Time
-<<<<<<< HEAD
 
 
 class Comment(models.Model):
@@ -52,5 +51,4 @@ class Comment(models.Model):
 
     def __str__(self):
         return 'Comment {} by {}'.format(self.body, self.user)
-=======
->>>>>>> 40c9f72a59bce7a2c83e7e8ff095bd96c46e930d
+
