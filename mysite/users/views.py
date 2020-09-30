@@ -1,5 +1,9 @@
 # from django.shortcuts import render, get_object_or_404, get_list_or_404
+<<<<<<< HEAD
 from django.shortcuts import render, redirect, get_object_or_404, get_list_or_404
+=======
+from django.shortcuts import render ,redirect, get_object_or_404, get_list_or_404, HttpResponseRedirect
+>>>>>>> 40c9f72a59bce7a2c83e7e8ff095bd96c46e930d
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import views as auth_views
@@ -10,6 +14,26 @@ from blog.models import Post
 
 
 # Create your views here.
+
+# For returning the favourites
+@login_required
+def favourite_list(request):
+    posts = Post.objects.all()
+    new = posts.filter(favourites = request.user)
+    context = {
+        'new': new,
+    }
+    return render(request, 'user/favourites.html', context)
+
+# For Adding Favourite
+@login_required
+def favourite_add(request, id):
+    post = get_object_or_404(Post, id = id)
+    if post.favourites.filter(id=request.user.id).exists():
+        post.favourites.remove(request.user)
+    else:
+        post.favourites.add(request.user)
+    return HttpResponseRedirect(request.META['HTTP_REFERER'])
 
 # For user registration
 def register(request):

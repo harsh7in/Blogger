@@ -1,0 +1,136 @@
+body {
+    background : #f4f4f2;
+    color: #333333;
+    margin-top: 5rem;
+  }
+  
+  h2,
+  h3,
+  h4,
+  h6 {
+    color: #444444;
+  }
+  
+  ul {
+    margin: 0;
+  }
+  
+  .bg-steel {
+    background-color: #5c5b56;
+  }
+  
+  
+  .site-header .navbar-nav .nav-link {
+    color: #f4f4f2;
+    display:inline-block;
+  }
+  .site-header .navbar-nav .nav-link:hover {
+    color: #ea584f;
+  }
+  
+  .site-header .navbar-nav .nav-link.active {
+    font-weight: 500;
+  }
+
+  #post_id{
+      color:#ea584f;
+      font-family:Oswald;
+      border-bottom:1px solid  rgb(180, 176, 176);
+  }
+  #id_title{
+      font-family:roboto;
+      font-size:22px;
+        text-align: center;
+        border:none;
+  }
+  #label{
+      font-style: italic;
+  }
+  button[type="submit"]{
+      background-color:transparent;
+      width:60%;
+      font-size:18px;
+      height:37px;
+      border-color:#ea584f;
+      border-radius: 7px;
+      font-family:Oswald;
+      margin-left:200px
+  }
+  button[type="submit"]:hover{
+      background-color:#ea584f;
+      color:#f4f4f2;
+  }
+
+  .jumbotron {
+    margin-top: 10px;
+    background-color: #eae4dc;
+  }
+  
+  footer{
+    background-color: #5c5b56;
+    text-decoration-color:#f4f4f2;
+  }
+  .links{
+    color: #f4f4f2;
+    display:inline-block;
+  }
+  .links:hover{
+    color: #ffffff;
+  }
+  
+  strong{
+    margin-left: 10px;
+  }
+  
+  #navbtn1{
+     border-color:#E85A4F; 
+     margin-left:450px;
+      border-radius: 5px; 
+      size:35px ; 
+      padding: 4px 70px; 
+      transition-duration: 0.3s;
+  }
+  #navbtn2{
+    border-color:#E85A4F;
+     border-radius: 20px;
+      font-size:15px ; 
+      padding: 2px 20px
+  }
+  #navbtn3{
+    border-color:#E85A4F;
+     transition-duration: 0.3s;
+     padding: 8 80 ;
+  }
+  #navbtn4{
+    margin-left: 20px ;
+    border-color:#E85A4F;
+    transition-duration: 0.3s;
+    padding: 8 80 ;
+  }
+  #navbtn5{
+    margin-left:50px;
+    padding: 8 80 ; 
+    border-color:#E85A4F;
+    transition-duration: 0.3s;
+  
+  }
+  #navbtn5:hover{
+    background-color:#e85a4f;
+    color:#f4f4f2;
+  }
+  #navbtn3:hover{
+    background-color:#e85a4f;
+    color:#f4f4f2;
+  }
+  #navbtn4:hover{
+    background-color:#e85a4f;
+    color:#f4f4f2;
+  }
+  #navbtn1:hover{
+    background-color:#e85a4f;
+    color:#f4f4f2;
+  }
+  #navbtn1:active,#navbtn5:active,#navbtn3:active,#navbtn4:active{
+    background-color:#e85a4f;
+  }
+  

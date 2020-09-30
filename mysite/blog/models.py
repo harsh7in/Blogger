@@ -10,14 +10,15 @@ from taggit.managers import TaggableManager
 
 
 class Post(models.Model):
-    title = models.CharField(max_length=100)
-    content = RichTextUploadingField(blank=True, null=True)
+    title       = models.CharField(max_length=100)
+    content     = RichTextUploadingField(blank=True, null=True)
     date_posted = models.DateTimeField(default=timezone.now)
-    author = models.ForeignKey(User, on_delete=models.CASCADE)
-    image = models.ImageField(upload_to="blog_images", height_field=None, width_field=None, max_length=None, blank=True)
-    view_count = models.IntegerField(default=0)
-    slug = models.SlugField(blank=True, null=True)
-    tags = TaggableManager()
+    author      = models.ForeignKey(User, on_delete=models.CASCADE)
+    image       = models.ImageField(upload_to="blog_images", height_field=None, width_field=None, max_length=None, blank=True)
+    view_count  = models.IntegerField(default=0)
+    favourites  = models.ManyToManyField(User, related_name='favourite', default=None, blank=True)
+    slug        = models.SlugField(blank=True, null=True)
+    tags        = TaggableManager()
 
     def save(self, *args, **kwargs):
         if not self.slug:
@@ -37,6 +38,7 @@ class Post(models.Model):
         Read_Time=get_read_time(self.content)
         Read_Time = Read_Time[2:-3]
         return Read_Time
+<<<<<<< HEAD
 
 
 class Comment(models.Model):
@@ -50,3 +52,5 @@ class Comment(models.Model):
 
     def __str__(self):
         return 'Comment {} by {}'.format(self.body, self.user)
+=======
+>>>>>>> 40c9f72a59bce7a2c83e7e8ff095bd96c46e930d
