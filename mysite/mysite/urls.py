@@ -17,11 +17,11 @@ from django.contrib import admin
 from django.urls import path,include
 from users import views as user_views
 from users.views import LoginView
-
 from django.contrib.auth import views as auth_views
-
 from django.conf import settings
 from django.conf.urls.static import static
+from django.conf.urls import url, handler404
+handler404 = 'blog.views.view_404'
 
 urlpatterns = [
     path('admin/', admin.site.urls),
