@@ -1,16 +1,19 @@
 {% extends "blog/base.html" %}
+{% load crispy_forms_tags %}
 {% block content %}
-  <article class="media content-section">
+<article class="media content-section">
 
-    
-    {% if object.author.profile.image.url  %}
-      <img class="rounded-circle article-img img-responsive" src="{{ object.author.profile.image.url }}"> 
+
+    {% if object.author.profile.image.url %}
+    <img class="rounded-circle article-img img-responsive" src="{{ object.author.profile.image.url }}">
     {%else%}
-      <img class="rounded-circle article-img img-responsive" id="profileImage" src="https://mdbootstrap.com/img/Photos/Others/placeholder-avatar.jpg" >
+    <img class="rounded-circle article-img img-responsive" id="profileImage"
+         src="https://mdbootstrap.com/img/Photos/Others/placeholder-avatar.jpg">
     {% endif%}
 
 
     <div class="media-body">
+
       <div class="article-metadata">
         <a class="mr-2" href="#">{{ object.author }}</a>
         <small class="text-muted">{{ object.date_posted|date:"F d, Y" }}</small>
@@ -48,19 +51,54 @@
               {% for tag in object.tags.all %}
                 <a style ="color:white;"href="#" class="mr-1 badge badge-info">#{{tag}}</a>
               {% endfor %}
+
             </div>
-          </div>
-        {% endif %}
-      </div>
-      {% if object.image.url != '' %} <!--Condition to see if there's any cover image with the blog-->
+            {% endif %}
+        </div>
+        {% if object.image.url != '' %} <!--Condition to see if there's any cover image with the blog-->
         <img src="{{ object.image.url }}" alt="Unable to load the Image" style="width: 100%;">
         <div class="horizontalgap" style="height:10px"></div>
         <h2 class="article-title">{{ object.title }}</h2>
         <p class="article-content">{{ object.content|safe }}</p>
-      {% else %}
+        {% else %}
         <h2 class="article-title">{{ object.title }}</h2>
         <p class="article-content">{{ object.content|safe }}</p>
-      {% endif %}
+        {% endif %}
     </div>
-  </article>
+
+    </div>
+</article>
+<div>
+    <b>COMMENTS SECTION</b>
+    <br><br> There are {{comments.count}} comments <br>
+    {% if user.is_authenticated %}
+    <form method="post" style="margin-top: 1.3em;">
+        {{ form | crispy }}
+        {% csrf_token %}
+        <button type="submit" class="btn btn-primary  btn-lg">Submit</button>
+    </form>
+    {% else %}
+    <br> <b>Please login to add comment</b> <br>
+    {% endif %}
+    {% for comment in comments %}
+    <article class="media content-section">
+        <div class="media-body">
+
+            <div class="article-metadata">
+                <a class="mr-2" href="{% url 'blog-profile' name=comment.user %}">{{ comment.user }}</a>
+                <div class="float-right">
+                    <small class="text-muted">Time</small>
+                    <small class="text-muted">{{ comment.created_on }}</small>
+                </div>
+
+            </div>
+            <p class="article-content">{{ comment.body|truncatechars:200|safe }}</p>
+            <hr/>
+            <button class="btn btn-light btn-sm disabled" type="submit">❤</button>
+            <button class="btn btn-light btn-sm disabled" type="submit">👎</button>
+            <button class="btn btn-light btn-sm disabled" type="submit">💬</button>
+        </div>
+    </article>
+    {% endfor %}
+</div>
 {% endblock content %}

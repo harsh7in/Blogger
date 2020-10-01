@@ -1,12 +1,12 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
-from .models import Post
+from .models import Post, Comment
 from django.contrib.auth.models import User
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic import ListView, DetailView, UpdateView, DeleteView
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from .forms import PostForm
+from .forms import PostForm, CommentForm
 from django.db.models import Q
 from django.core.paginator import Paginator
 from django.http import JsonResponse
@@ -17,7 +17,7 @@ from django.utils import timezone
 
 def getblogs(request):
     queryset = Post.objects.all()
-    return JsonResponse({"blogs":list(queryset.values())})
+    return JsonResponse({"blogs": list(queryset.values())})
 
 
 def home(request):
@@ -25,8 +25,8 @@ def home(request):
     search_query = request.GET.get('q')
     if search_query:
         posts = posts.filter(
-            Q(title__icontains = search_query) |
-            Q(content__icontains = search_query)
+            Q(title__icontains=search_query) |
+            Q(content__icontains=search_query)
         )
 
     paginator = Paginator(posts, 2)
@@ -40,56 +40,80 @@ def home(request):
     mostliked3 = Post.objects.get(id=4)
     mostliked4 = Post.objects.get(id=3)
 
-    context={
+    context = {
         'posts': posts,
-        'mostliked1':mostliked1,
-        'mostliked2':mostliked2,
-        'mostliked3':mostliked3,
-        'mostliked4':mostliked4,
+        'mostliked1': mostliked1,
+        'mostliked2': mostliked2,
+        'mostliked3': mostliked3,
+        'mostliked4': mostliked4,
     }
-    return render(request,'blog/home.html', context)
+    return render(request, 'blog/home.html', context)
 
 
 def about(request):
-    return render(request,'blog/about.html')
+    return render(request, 'blog/about.html')
 
 
-def Profileview(request,name):
-    user    = User.objects.get(username=name)
-    posts   = user.post_set.all()
-    flag    = (request.user==Post.author)
-    context={
-        'user':user,
-        'flag':flag ,
-        'posts':posts,
-    }
-    
-    if request.user != user or request.user == user:
-        return render(request,'user/profile.html', context)
-    else:
-        context={
-            'posts': Post.objects.all(),
-            'flag':flag,
-        }
-        return render(request,'blog/home.html',context)
-
-
-def PostDetail(request, slug):
-    post = Post.objects.filter(slug=slug).first()
-    post.view_count = post.view_count + 1
-    post.save()
-
-    objects = Post.objects.get(slug = slug)
-
-    fav = bool
-    if objects.favourites.filter(id=request.user.id).exists():
-        fav = True
-
+def Profileview(request, name):
+    user = User.objects.get(username=name)
+    posts = user.post_set.all()
+    flag = (request.user == Post.author)
     context = {
-        'object': objects,
-        'fav': fav,
+        'user': user,
+        'flag': flag,
+        'posts': posts,
     }
-    return render(request, 'blog/post_detail.html', context)
+
+    if request.user != user or request.user == user:
+        return render(request, 'user/profile.html', context)
+    else:
+        context = {
+            'posts': Post.objects.all(),
+            'flag': flag,
+        }
+        return render(request, 'blog/home.html', context)
+
+
+def PostDetailView(request, slug):
+    post = Post.objects.get(slug=slug)
+    # print(post)
+    post.view_count += 1
+    post.save()
+    curr_user = request.user
+    # print(curr_user)
+    form = CommentForm()
+    fav = bool
+    if post.favourites.filter(id=request.user.id).exists():
+        fav = True
+    if request.method == 'POST':
+        # print(request.user.id)
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = Comment(
+                body=form.cleaned_data["body"],
+                post=post,
+                user=curr_user
+            )
+            comment.save()
+
+    comments = Comment.objects.filter(post=post)
+    context = {
+        "object": post,
+        "comments": comments,
+        "form": form,
+        "user": curr_user,
+        "fav": fav,
+    }
+    return render(request, "blog/post_detail.html", context)
+
+# class PostDetailView(DetailView):
+#     model = Post
+#
+#     def get_object(self):
+#         obj = super().get_object()
+#         obj.view_count += 1
+#         obj.save()
+#         return obj
 
 
 class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
@@ -129,7 +153,7 @@ def post_create(request):
         form.save_m2m()
         messages.success(request, "Successfully Created")
         return redirect('blog-home')
-    context  ={
+    context = {
         "form": form
     }
     return render(request, "blog/post_create.html", context)
@@ -137,4 +161,3 @@ def post_create(request):
 #   For 404 Error Handling
 def view_404(request, exception):
     return render(request, 'blog/404.html')
-    
