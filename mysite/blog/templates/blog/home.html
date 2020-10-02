@@ -71,7 +71,7 @@
             <div style="float:right;">
                 <img style="height:19px; width:18px;" src="{% static 'blog/viewicon.png' %}">
                     <p style="float: right; display: inline !important;" id="ViewCount_{{ forloop.counter }}">
-                    
+
                     </p>
                 </img>
             </div>
@@ -145,3 +145,16 @@
 </div>
 
 {% endblock%}
+
+{% block contentr %}
+	<div class="content-section">
+	 <ul>
+	  <h4>Latest Posts</h4>
+	    {% for post in postsl %}
+
+	      <li><a  href="{% url 'post-detail' post.id %}">{{ post.title }}</a></li>
+	        <small>{{ post.date_posted }}</small>
+
+	    {% endfor %}
+	</div>
+  {% endblock %}

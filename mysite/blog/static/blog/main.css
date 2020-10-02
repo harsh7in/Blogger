@@ -10,10 +10,15 @@ h4,
 h6 {
   color: #444444;
 }
-
-ul {
-  margin: 0;
-}
+  
+  ul {
+    margin: 0;
+    list-style: none;
+  }
+  
+  ul li:before {
+    content: "\00BB \0020";
+    }
 
 .bg-steel {
   background-color: #5f788a;
@@ -314,6 +319,7 @@ label {
       z-index: 0;
       visibility: hidden;
   }
+
 }
 .slider > #input-slide-autoplay:checked ~ .slide-description > .slide-0 {
   animation: description 32000ms infinite -2000ms ease;

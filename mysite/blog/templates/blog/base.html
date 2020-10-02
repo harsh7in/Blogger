@@ -76,7 +76,7 @@
       <!--Slider End-->
       <span style="display:inline-block; width: 3px;"></span>
       {% include 'user/message.html' %}
-      
+
       <div class="row">
         <div class="col-md-8">
           {% block content %}
@@ -84,6 +84,9 @@
         </div>
         <div class="col-md-4">
           <div class="content-section filter-section position-sticky">
+            {% block contentr %}
+
+            {% endblock %}
             <h3>Filter By</h3>
             <hr style="height: 5px;" />
             <div class="custom-control custom-checkbox">
@@ -109,7 +112,7 @@
 
           </div>
         </div>
-      
+
       </div>
     </main>
 
@@ -123,4 +126,3 @@
     <script src="{% static '/blog/main.js' %}"></script>
   </body>
 </html>
-
