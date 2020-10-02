@@ -29,7 +29,7 @@ class UserTestCase(TestCase):
     def test_login(self):
         response= self.client.login(username='testuser',password='secret')
         self.assertEquals(response,True)
- 
+
     
 
     
