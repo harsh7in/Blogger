@@ -1,16 +1,136 @@
-{% extends 'blog/base.html' %}
-{% load crispy_forms_tags %}
+{% load static %}
 
-{% block content %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="{% static 'blog/post.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'blog/tagsinput.css' %}" type="text/css">
+    <title></title>
+  </head>
+  <body>
+      <!-- header starts -->
 
-        <h1>Form</h1>
+    <header class="site-header">
+      <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
+        <div class="container">
+          <a class="navbar-brand mr-4" href="{% url 'blog-home' %}"> 
+            <img src="{% static 'blog/png_logo.png' %}" alt="Blogger" width=110 height = 40 class="d-inline-block align-top">
+            <!-- <img src="../static/img/png_logo.png" style="height:40px; width:110px;"></img> -->
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarToggle">
+            <div class="navbar-nav mr-auto">
+              <i class="material-icons" style="padding:9px;color: #eae7dc;">home</i>
+              <a class="nav-item nav-link" href="{% url 'blog-home' %}">Home</a>
+              <i class="material-icons" style="padding:9px;color: #eae7dc;">group</i>
+              <a class="nav-item nav-link" href="#">Communities</a>
+              {% if user.is_authenticated %}
+              <i class="material-icons" style="padding:9px;color: #eae7dc;">create</i>
+              <a class="nav-item nav-link" href="{% url 'post_create' %}">Create Blog</a>
+              {% endif %}
+              <i class="material-icons" style="padding:9px;color: #eae7dc;">notifications</i>
+              <a class="nav-item nav-link" href="#">Notifications</a>
+              <!--Search Bar-->
+              <div class="search-bar">
+                <form method="GET" action="/" style="display:inline-block; line-height:21px; border-radius: 80px; padding:9px 0 0 95px">
+                  <input type="text" placeholder="Search Blogs..." onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search Blogs...';}" name ="q" required="" size="29" style="border-radius: 80px; padding: 0px 12px; font-style:italic ;">
+                </form>
+              </div>
+            </div>
+            <!-- Navbar Right Side -->
+            <div class="navbar-nav">
+              <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="color: #eae7dc; "><i class="material-icons" style="padding:4px ;color: #eae7dc;">account_circle</i>
+                <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  {% if user.is_authenticated %}
+                  <a href="{% url 'profile' %}">Profile</a><br>
+                  <a  href="{% url 'logout' %}">Logout</a>
+                  {% else %}
+                  <a  href="{% url 'login' %}">Login</a><br>
+                  <a  href="{% url 'register' %}">Register</a>
+                  {% endif %}
+                </ul>
+              </li>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+<!-- header ends -->
+
+    <main role="main" class="container">
+      <div class="row">
+        <div class="col-md-12">
+            <br>
+        <h2 id="post_id">Create Post...</h2>
+        <br><br>
         <form class="post-form" method="POST" action="" enctype="multipart/form-data">
             <div class="form-group">
                 {% csrf_token %}
-                {{ form|crispy }}
-                <input type="submit" value="Create Post" />
+                <div id="div_id_title" class="form-group">
+                    <div class="">
+                        <input type="text" name="title" maxlength="100" class="textinput textInput form-control" required="" id="id_title" placeholder="Add A Catchy Title"><!--Here name="" is the name of the fields of model-->
+                    </div>
+                </div>
+                
+                <div id="div_id_image" class="form-group"> 
+                    <div class='custom-file'>
+                        <input type="file" name="image" accept="image/*" class="custom-file-input"  id="id_image">
+                        <label class="custom-file-label" for="id_image">Choose File</label>
+                    </div>
+                </div>
+                
+                <div id="div_id_content" class="form-group">
+                    <label for="id_content" class="" id="label" style='color:#ea584f'>Write your post here...</label>
+                    <div class="" style='padding-left:57px'>
+                        {{form.media}}
+                        {{form.content}}
+                    </div>
+                </div>
+
+                <div id="div_id_tags" class="form-group"> 
+                    <label for="id_tags" class="">Tags: </label>
+                        <div class="" style="display: inline-block;">
+                            <input type="text" data-role="tagsinput" name="tags" maxlength="100" class="textinput textInput form-control" id="id_tags">
+                        </div>
+                </div>
+
+                <button type="submit">Create Post</button>
             </div>
-        </form>
-{% endblock%}
+        </form> 
+        </div> 
+      </div>
+    </main>
+<br>
+
+<!-- footer starts -->
+<div id="footer"></div>
+<!-- footer ends -->
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script> 
+$(function(){
+  $("#footer").load("Footer.html"); 
+});
+</script> 
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="{% static '/blog/tagsinput.js' %}"></script>
+    <script src="{% static '/blog/main.js' %}"></script>
+  </body>
+</html>
+
 
 

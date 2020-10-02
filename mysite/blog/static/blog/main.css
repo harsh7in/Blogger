@@ -25,7 +25,7 @@ h6 {
 }
 
 .site-header .navbar-nav .nav-link {
-  color: #cbd5db;
+  color: black;
 }
 
 .site-header .navbar-nav .nav-link:hover {
@@ -39,7 +39,6 @@ h6 {
 .content-section {
   background: #ffffff;
   padding: 10px 20px;
-  border: 1px solid #dddddd;
   border-radius: 3px;
   margin-bottom: 20px;
 }
@@ -114,6 +113,28 @@ h5 {
 label {
   cursor: pointer;
 }
+
+.site-footer {
+  background-color: #c4c4c4;
+  color: black;
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.links {
+  padding: 10px;
+}
+
+.contact {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
 .slider {
   height: 37vh;
   overflow: hidden;
@@ -324,7 +345,6 @@ label {
   display: inline-block;
   margin: 4px 0;
   border-radius: 3px;
-  width: 80px;
   font-weight: bold;
 }
 .readmorebutton:hover {
@@ -348,4 +368,16 @@ li {
 }
 *:focus {
   outline: none;
+}
+.notification{
+    position: relative;
+    left: 10px;
+    bottom: 10px;
+}
+.readtime {
+  float: right; 
+  color: violet;
+}
+.viewcount {
+  float: right;
 }

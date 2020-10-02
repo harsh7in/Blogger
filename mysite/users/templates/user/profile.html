@@ -4,91 +4,109 @@
 {% block content %}
 
 <div class="content-section">
-    <div class="media">
-        <div class="container col-md-3 text-center">
-        {% if flag is True %}   
-        <!--If User has profile Image-->
-        {% if user.profile.image.url  %}
-          <div data-toggle="modal" data-target="#example">
-            <img class="rounded-circle account-img img-responsive " id="profileImage" style="cursor: pointer;" src="{{ user.profile.image.url }}"> 
-            <span style="cursor: pointer; font-size: small;" ><i class="fas fa-pencil-alt" style="padding-right: 5px;"></i> Profile Img</span>
-          </div> 
-
-          <div class="modal fade" id="example" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Choose Profile pic</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <form method="POST" action="profileUpdate/{{user.profile.pk}}/" enctype="multipart/form-data">
-                  {% csrf_token %}
-                  {{ form | crispy }}
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button  class="btn btn-primary" type="submit">Save changes</button>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-        {% else %}
-
-          <!--Else User hasn't profile Image-->
-          <div data-toggle="modal" data-target="#exampleModal">
-            <img class="rounded-circle account-img" id="profileImage" style="cursor: pointer;" src="https://mdbootstrap.com/img/Photos/Others/placeholder-avatar.jpg" >
-            <span style="cursor: pointer; font-size: small;" ><i class="fas fa-pencil-alt" style="padding-right: 5px;"></i> Profile Img</span>
-          </div>
-
-          <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Choose Profile pic</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <form method="POST" action="{% url 'profile' %}" enctype="multipart/form-data">
-                  {% csrf_token %}
-                  {{ form | crispy }}
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button  class="btn btn-primary" type="submit">Save changes</button>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-        {% endif %}
-    {% else %}
+  <div class="media">
+    <div class="container col-md-3 text-center">
+      {% if flag is True %}
+      <!--If User has profile Image-->
       {% if user.profile.image.url  %}
-          <div data-toggle="modal" data-target="#example">
-            <img class="rounded-circle account-img img-responsive " id="profileImage" style="cursor: pointer;" src="{{ user.profile.image.url }}"> 
+      <div data-toggle="modal" data-target="#example">
+        <img class="rounded-circle account-img img-responsive " id="profileImage" style="cursor: pointer;"
+          src="{{ user.profile.image.url }}">
+        <span style="cursor: pointer; font-size: larger;" ><i class="fas fa-pencil-alt" style="padding-right: 3px;"></i>
+          Profile Image</span>
+      </div>
+
+      <div class="modal fade" id="example" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header d-flex justify-content-center">
+              <p style="text-align:center">
+              <h4><b>Please select a new image</b></h4>
+              </p>
+            </div>
+            <div class="modal-footer flex-center">
+              <form method="POST" action="{% url 'profile' %}" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form | crispy }}
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+              <button class="btn btn-primary" type="submit">Save changes</button>
+            </form>
+            </div>
           </div>
+        </div>
+      </div>
+      {% else %}
+
+      <!--Else User hasn't profile Image-->
+      <div data-toggle="modal" data-target="#exampleModal">
+        <img class="rounded-circle account-img" id="profileImage" style="cursor: pointer;"
+          src="https://mdbootstrap.com/img/Photos/Others/placeholder-avatar.jpg">
+        <span style="cursor: pointer; font-size: larger; " ><i class="fas fa-pencil-alt" style="padding-right: 3px;"></i>
+          Profile Image</span>
+      </div>
+
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header d-flex justify-content-center">
+              <p style="text-align:center">
+              <h4><b>Please select a new image</b></h4>
+              </p>
+            </div>
+            <div class="modal-footer flex-center">
+              <form method="POST" action="{% url 'profile' %}" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form | crispy }}
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+              <button class="btn btn-primary" type="submit">Save changes</button>
+            </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endif %}
+      {% else %}
+      {% if user.profile.image.url  %}
+      <div data-toggle="modal" data-target="#example">
+        <img class="rounded-circle account-img img-responsive " id="profileImage" style="cursor: pointer;"
+          src="{{ user.profile.image.url }}">
+      </div>
 
       {%else%}
       <div data-toggle="modal" data-target="#exampleModal">
-        <img class="rounded-circle account-img" id="profileImage" style="cursor: pointer;" src="https://mdbootstrap.com/img/Photos/Others/placeholder-avatar.jpg" >
+        <img class="rounded-circle account-img" id="profileImage" style="cursor: pointer;"
+          src="https://mdbootstrap.com/img/Photos/Others/placeholder-avatar.jpg">
       </div>
-      {% endif%}
-    {% endif %}
-    </div> 
-      
-      
-            <!--User Details-->
-      <div class="media-body">  
-          <h2 class="account-heading">{{user.username}}</h2>
-          <p class="text-secondary">{{user.email}}</p>
-          {% if flag is True %}  
-          <a href="{% url 'editProfile' %}" class="btn btn-outline-secondary" role="button" aria-pressed="true">Edit Profile</a>
-          {% endif%}
-      </div>
+      {% endif %}
+      {% endif %}
     </div>
+
+
+    <!--User Details-->
+    <div class="media-body">
+      <h2 class="account-heading">{{user.username}}</h2>
+      <p class="text-secondary">{{user.email}}</p>
+      {% if flag is True %}
+      <a href="{% url 'editProfile' %}" class="btn btn-outline-secondary" role="button" aria-pressed="true">Edit
+        Profile</a>
+      {% endif %}
+    </div>
+  </div>
 </div>
 
-
-
+<h4 class="mb-3">Posts by {{ user.username }}: {{ user.post_set.count }}</h4>
+{% for post in posts %}
+<article class="media content-section">
+  <div class="media-body">
+    <div class="article-metadata">
+      <a class="mr-2" href="{% url 'blog-profile' post.author.username %}">{{ post.author }}</a>
+      <small class="text-muted">{{ post.date_posted| date:"F d, Y"}}</small>
+    </div>
+    <h2><a class="article-title" href="{% url 'post-detail' post.id %}">{{ post.title }}</a></h2>
+    <p class="article-content">{{ post.content }}</p>
+  </div>
+</article>
+{% endfor %}
 {% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'blog/base.html'%}
+{% load static %}
+
+{% block content %}
+    <h2>My Favourite Blogs</h2>
+
+    {% for post in new %}
+    <article class="media content-section">
+        <div class="media-body">
+            <h2><a id="post_title_{{ forloop.counter }}" class="article-title" href="{% url 'post-detail' post.slug %}">{{ post.title }}</a></h2>
+            <div class="article-metadata">
+                <a class="mr-2" href="{% url 'blog-profile' name=post.author %}">{{ post.author }}</a>
+            </div>
+            <p class="article-content">{{ post.content|truncatechars:200|safe }}</p>
+            <hr />
+            <button class="btn btn-light btn-sm disabled" type="submit">❤</button>
+            <button class="btn btn-light btn-sm disabled" type="submit">👎</button>
+            <button class="btn btn-light btn-sm disabled" type="submit">💬</button>
+        </div>
+    </article>
+    {% endfor %}
+{% endblock %}

@@ -1,22 +1,105 @@
 
 {% extends "blog/base.html" %}
+{% load crispy_forms_tags %}
 {% block content %}
-  <article class="media content-section">
-    <img class="rounded-circle article-img" src="{{ object.author.profile.image.url }}">
+<article class="media content-section">
+
+
+    {% if object.author.profile.image.url %}
+    <img class="rounded-circle article-img img-responsive" src="{{ object.author.profile.image.url }}">
+    {%else%}
+    <img class="rounded-circle article-img img-responsive" id="profileImage"
+         src="https://mdbootstrap.com/img/Photos/Others/placeholder-avatar.jpg">
+    {% endif%}
+
+
     <div class="media-body">
+
       <div class="article-metadata">
         <a class="mr-2" href="#">{{ object.author }}</a>
         <small class="text-muted">{{ object.date_posted|date:"F d, Y" }}</small>
+        <p style="float: right; color: violet;">{{object.readTIme}} min read</p>
+        <div class="faviorite" style="display: inline-block;">
+          {% if request.user.is_authenticated %}
+            {% if fav %}
+              <a href="{% url 'users:favourite_add' object.id %}" class="text-dark">
+                <svg width="1.2em" height="1.2em" viewBox="0 0 16 16" class="bi bi-bookmark-check-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" d="M4 0a2 2 0 0 0-2 2v13.5a.5.5 0 0 0 .74.439L8 13.069l5.26 2.87A.5.5 0 0 0 14 15.5V2a2 2 0 0 0-2-2H4zm6.854 5.854a.5.5 0 0 0-.708-.708L7.5 7.793 6.354 6.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z"/>
+                </svg>
+              </a>
+            {% else %}
+              <a href="{% url 'users:favourite_add' object.id %}" class="text-dark">
+                <svg width="1.2em" height="1.2em" viewBox="0 0 16 16" class="bi bi-bookmark" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5V2zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1H4z"/>
+                </svg>
+              </a>
+            {% endif %}
+          {% else %}
+            <a href="../../login/" class="text-dark">
+              <svg width="1.2em" height="1.2em" viewBox="0 0 16 16" class="bi bi-bookmark" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5V2zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1H4z"/>
+              </svg>
+            </a>
+          {% endif %}
+        </div>
         {% if object.author == user %}
           <div>
             <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'post-update' object.id %}">Update</a>
             <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'post-delete' object.id %}">Delete</a>
-          </div>
-        {% endif %}
-      </div>
-      <h2 class="article-title">{{ object.title }}</h2>
-      <p class="article-content">{{ object.content }}</p>
-    </div>
-  </article>
-{% endblock content %}
+            <hr style="height: 5px; margin-top: 0px;">
+            <div class="tag" style = "position:relative; top:-11px;">
+              <strong>Tags</strong>:
+              {% for tag in object.tags.all %}
+                <a style ="color:white;"href="#" class="mr-1 badge badge-info">#{{tag}}</a>
+              {% endfor %}
 
+            </div>
+            {% endif %}
+        </div>
+        {% if object.image.url != '' %} <!--Condition to see if there's any cover image with the blog-->
+        <img src="{{ object.image.url }}" alt="Unable to load the Image" style="width: 100%;">
+        <div class="horizontalgap" style="height:10px"></div>
+        <h2 class="article-title">{{ object.title }}</h2>
+        <p class="article-content">{{ object.content|safe }}</p>
+        {% else %}
+        <h2 class="article-title">{{ object.title }}</h2>
+        <p class="article-content">{{ object.content|safe }}</p>
+        {% endif %}
+    </div>
+
+    </div>
+</article>
+<div>
+    <b>COMMENTS SECTION</b>
+    <br><br> There are {{comments.count}} comments <br>
+    {% if user.is_authenticated %}
+    <form method="post" style="margin-top: 1.3em;">
+        {{ form | crispy }}
+        {% csrf_token %}
+        <button type="submit" class="btn btn-primary  btn-lg">Submit</button>
+    </form>
+    {% else %}
+    <br> <b>Please login to add comment</b> <br>
+    {% endif %}
+    {% for comment in comments %}
+    <article class="media content-section">
+        <div class="media-body">
+
+            <div class="article-metadata">
+                <a class="mr-2" href="{% url 'blog-profile' name=comment.user %}">{{ comment.user }}</a>
+                <div class="float-right">
+                    <small class="text-muted">Time</small>
+                    <small class="text-muted">{{ comment.created_on }}</small>
+                </div>
+
+            </div>
+            <p class="article-content">{{ comment.body|truncatechars:200|safe }}</p>
+            <hr/>
+            <button class="btn btn-light btn-sm disabled" type="submit">❤</button>
+            <button class="btn btn-light btn-sm disabled" type="submit">👎</button>
+            <button class="btn btn-light btn-sm disabled" type="submit">💬</button>
+        </div>
+    </article>
+    {% endfor %}
+</div>
+{% endblock content %}

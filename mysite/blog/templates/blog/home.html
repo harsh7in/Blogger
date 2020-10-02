@@ -1,10 +1,20 @@
-{% extends 'blog/base.html' %} {% block slider%}
+{% extends 'blog/base.html' %}
+
+{% load static %}
+
+{% block slider%}
+
 <div class="slider">
-    <input name="input-slider" id="input-slide-0" type="radio" class="input-slide input-slide-num" style="display: none;" />
-    <input name="input-slider" id="input-slide-1" type="radio" class="input-slide input-slide-num" style="display: none;" />
-    <input name="input-slider" id="input-slide-2" type="radio" class="input-slide input-slide-num" style="display: none;" />
-    <input name="input-slider" id="input-slide-3" type="radio" class="input-slide input-slide-num" style="display: none;" />
-    <input name="input-slider" id="input-slide-autoplay" type="radio" class="input-slide" checked style="display: none;" />
+    <input name="input-slider" id="input-slide-0" type="radio" class="input-slide input-slide-num"
+        style="display: none;" />
+    <input name="input-slider" id="input-slide-1" type="radio" class="input-slide input-slide-num"
+        style="display: none;" />
+    <input name="input-slider" id="input-slide-2" type="radio" class="input-slide input-slide-num"
+        style="display: none;" />
+    <input name="input-slider" id="input-slide-3" type="radio" class="input-slide input-slide-num"
+        style="display: none;" />
+    <input name="input-slider" id="input-slide-autoplay" type="radio" class="input-slide" checked
+        style="display: none;" />
     <ul>
         <li class="slide-0"></li>
         <li class="slide-1"></li>
@@ -42,28 +52,109 @@
         <label class="slide-3" for="input-slide-3"></label>
     </div>
 </div>
-{% endblock %} {% block content %} {% for post in posts %}
+{% endblock %}
+{% block content %}
+<h2>Recent Posts</h2>
+<hr />
+
+
+{% for post in posts %}
 <article class="media content-section">
     <div class="media-body">
+        <h2><a id="post_title_{{ forloop.counter }}" class="article-title" href="{% url 'post-detail' post.slug %}">{{ post.title }}</a></h2>
         <div class="article-metadata">
             <a class="mr-2" href="{% url 'blog-profile' name=post.author %}">{{ post.author }}</a>
-            <small class="text-muted">{{ post.date_posted }}</small>
+            <div class="float-right">
+                <small class="text-muted">Category</small>
+                <small class="text-muted">{{ post.date_posted }}</small>
+            </div>
+            <div style="float:right;">
+                <img style="height:19px; width:18px;" src="{% static 'blog/viewicon.png' %}">
+                    <p style="float: right; display: inline !important;" id="ViewCount_{{ forloop.counter }}">
+
+                    </p>
+                </img>
+            </div>
         </div>
-        <h2><a class="article-title" href="{% url 'post-detail' post.slug %}">{{ post.title }}</a></h2>
-        <p class="article-content">{{ post.content|truncatechars:300 }}</p>
+        <p class="article-content">{{ post.content|truncatechars:200|safe }}</p>
+        <hr />
+        <button class="btn btn-light btn-sm disabled" type="submit">❤</button>
+        <button class="btn btn-light btn-sm disabled" type="submit">👎</button>
+        <button class="btn btn-light btn-sm disabled" type="submit">💬</button>
     </div>
 </article>
-{% endfor %} {% endblock%}
+{% endfor %}
+<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+<script>
+    $(document).ready(function(){
+    setInterval(function()
+    {
+    $.ajax({
+        type:'GET',
+        url: "{% url 'getBlogs' %}",
+        success: function(response){
+        $("#ViewCount_1").empty();
+        for (var key in response.blogs)
+        {
+            var fromServerTitle = response.blogs[key].title;
+            var fromPageTitle = document.getElementById("post_title_1").innerText;
+            if (fromServerTitle == fromPageTitle) {
+                var temp = response.blogs[key].view_count
+                $("#ViewCount_1").append(temp);
+            }
+        }
+        $("#ViewCount_2").empty();
+        for (var key in response.blogs)
+        {
+            var fromServerTitle = response.blogs[key].title;
+            var fromPageTitle = document.getElementById("post_title_2").innerText;
+            if (fromServerTitle == fromPageTitle) {
+                var temp = response.blogs[key].view_count
+                $("#ViewCount_2").append(temp);
+            }
+        }
+        },
+    });
+    },1000);
+    });
+</script>
+
+
+
+
+<div class="pagination" style="justify-content: center;">
+
+    {% if posts.has_previous %}
+        <a class="btn btn-outline-info mb-4" href="?page=1">First</a>&nbsp;
+        <a class="btn btn-outline-info mb-4" href="?page={{ posts.previous_page_number }}">Previous</a>
+    {% endif %}
+
+    {% for num in posts.paginator.page_range %}
+        {% if posts.number == num %}
+            &nbsp;<a class="btn btn-info mb-4" href="?page={{ num }}">{{ num }}</a>
+        {% elif num > posts.number|add:'-3' and num < posts.number|add:'3' %}
+            &nbsp;<a class="btn btn-outline-info mb-4" href="?page={{ num }}">{{ num }}</a>
+        {% endif %}
+    {% endfor %}
+
+    {% if posts.has_next %}
+        &nbsp;<a class="btn btn-outline-info mb-4" href="?page={{ posts.next_page_number }}">Next</a>&nbsp;
+        <a class="btn btn-outline-info mb-4" href="?page={{ posts.paginator.num_pages }}">Last</a>
+    {% endif %}
+
+</div>
+
+{% endblock%}
 
 {% block contentr %}
 	<div class="content-section">
 	 <ul>
 	  <h4>Latest Posts</h4>
 	    {% for post in postsl %}
-	
+
 	      <li><a  href="{% url 'post-detail' post.id %}">{{ post.title }}</a></li>
 	        <small>{{ post.date_posted }}</small>
 
 	    {% endfor %}
 	</div>
-{% endblock%}
+  {% endblock %}
