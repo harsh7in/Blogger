@@ -4,6 +4,8 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import views as auth_views
 from .forms import user_reg_form, LoginForm, UserProfileForm, UserProfileUpdateForm
+from mysite.settings import EMAIL_HOST_USER
+from django.core.mail import send_mail
 from .models import Profile
 from django.contrib.auth.models import User
 from blog.models import Post
@@ -35,6 +37,11 @@ def register(request):
     if request.method=='POST':
         form = user_reg_form(request.POST)
         if form.is_valid():
+            email = request.POST['email']
+            subject = 'Welcome to Blogger'
+            message = 'to stay connected with me follow  my instagram handle: porwal_ayush18  mob no: 9557251845'
+            recepient = email
+            send_mail(subject,message, EMAIL_HOST_USER, [recepient], fail_silently=False)
             form.save()
             username= form.cleaned_data.get('username')
             messages.success(request,f'Your Account has been created! You are now able to Login')
