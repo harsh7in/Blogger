@@ -39,7 +39,7 @@ def register(request):
         if form.is_valid():
             email = request.POST['email']
             subject = 'Welcome to Blogger'
-            message = 'to stay connected with me follow  my instagram handle: porwal_ayush18  mob no: 9557251845'
+            message = 'Thank you for registering to Blogger. We are gald to see you here. Enjoy the free blogging service. Happy Blogging'
             recepient = email
             send_mail(subject,message, EMAIL_HOST_USER, [recepient], fail_silently=False)
             form.save()
