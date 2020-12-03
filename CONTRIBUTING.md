@@ -94,13 +94,16 @@ You will get the following points on the basis of difficulty of the project.
 | Hard     | 20 |
 You can check your total score [here](https://hakincodes.tech/Leaderboard.html).
 
+
+
 <h2 align="center"><b>Grading for  Our Contributions in NJACK Winter of Code 2020</b></h2>
 <p align="center"><img width=35% src="static/images/nwoc-logo.png"></p>
 
 You will get the following points on the basis of difficulty of the project. 
-2 points for opening a legitimate issue.
-5 points for solving an issue labelled “Beginner”.
-10 points for solving an issue labelled “Intermediate”.
-15 points for solving an issue labelled “Difficult”.
+<ul><li>2 points for opening a legitimate issue.
+<li>5 points for solving an issue labelled “Beginner”.
+<li>10 points for solving an issue labelled “Intermediate”.
+<li>15 points for solving an issue labelled “Difficult”.
+</ul>
 
 You can check your total score [here](https://njackwinterofcode.github.io/leaderboard.html).
