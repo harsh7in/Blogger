@@ -78,7 +78,7 @@
         </div>
         <p class="article-content">{{ post.content|truncatechars:200|safe }}</p>
         <hr />
-        <button class="btn btn-light btn-sm disabled" type="submit">❤</button>
+        <button class="btn btn-light btn-sm disabled" type="submit">❤ {{ post.likes.count }}</button>
         <button class="btn btn-light btn-sm disabled" type="submit">👎</button>
         <button class="btn btn-light btn-sm disabled" type="submit">💬</button>
     </div>

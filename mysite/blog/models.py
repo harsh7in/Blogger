@@ -18,6 +18,8 @@ class Post(models.Model):
     favourites  = models.ManyToManyField(User, related_name='favourite', default=None, blank=True)
     slug        = models.SlugField(blank=True, null=True)
     tags        = TaggableManager()
+    likes       = models.ManyToManyField(User, blank=True, related_name='post_likes')
+
 
     def save(self, *args, **kwargs):
         if not self.slug:
@@ -29,6 +31,7 @@ class Post(models.Model):
 
     def get_absolute_url(self):
         return reverse('post-detail', kwargs={'pk': self.pk})
+     
 
     class Meta:
         ordering = ["-date_posted"]
@@ -37,3 +40,12 @@ class Post(models.Model):
         Read_Time=get_read_time(self.content)
         Read_Time = Read_Time[2:-3]
         return Read_Time
+    
+    def get_url(self):
+        return reverse('post-detail', kwargs={'slug': self.slug})
+
+    def get_like_url(self):
+        return reverse('like-toggle', kwargs={"slug":self.slug})
+    
+    def get_api_like_url(self):
+        return reverse('like-api-toggle', kwargs={"slug":self.slug})
