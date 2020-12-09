@@ -61,6 +61,27 @@
         <h2 class="article-title">{{ object.title }}</h2>
         <p class="article-content">{{ object.content|safe }}</p>
       {% endif %}
+ 
+      <br/><br/>
+  <hr>
+  <h2> Comments</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ comment_form.as_p }}
+    <input type="submit" value="Submit" class="btn btn-outline-success">
+  </form>
+
+  
+  <div class='main-comment-section'>
+    {{ comments.count }} Comment{{comments|pluralize }}
+    {% for comment in comments %}
+    <blockquote class="blockquote">
+      <p class="mb-0">{{comment.body}}</p>
+      <footer class="blockquote-footer">by <cite title="Source Title">{{comment.name|capfirst}}</cite></footer>
+    </blockquote>
+    {% endfor %}
+  </div>
+  
     </div>
   </article>
 {% endblock content %}

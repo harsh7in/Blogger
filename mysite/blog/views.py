@@ -1,12 +1,12 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django.http import HttpResponse
-from .models import Post
+from django.http import HttpResponse, HttpResponseRedirect
+from .models import Post,Comment
 from django.contrib.auth.models import User
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic import ListView, DetailView, UpdateView, DeleteView
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from .forms import PostForm
+from .forms import PostForm,CommentForm
 from django.db.models import Q
 from django.core.paginator import Paginator
 from django.http import JsonResponse
@@ -76,6 +76,7 @@ def Profileview(request,name):
 
 def PostDetail(request, slug):
     post = Post.objects.filter(slug=slug).first()
+    comments=Comment.objects.filter(post=post).order_by('-id')
     post.view_count = post.view_count + 1
     post.save()
 
@@ -85,9 +86,22 @@ def PostDetail(request, slug):
     if objects.favourites.filter(id=request.user.id).exists():
         fav = True
 
+    if request.method == 'POST':
+        comment_form = CommentForm(request.POST or None)
+        if comment_form.is_valid():
+            body = request.POST.get('body')
+            name = request.POST.get('name')
+            comment = Comment.objects.create(post=post, name=name, body=body)
+            comment.save()
+            return redirect(request.path)
+    else:
+        comment_form = CommentForm()
+
     context = {
         'object': objects,
         'fav': fav,
+        'comments' : comments, 
+        'comment_form' : comment_form
     }
     return render(request, 'blog/post_detail.html', context)
 
