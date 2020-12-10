@@ -8,6 +8,8 @@ from .views import (
         about,
         post_create,
         Profileview,
+        PostLikeToggle, 
+        PostLikeAPIToggle,
     )
 
 
@@ -20,4 +22,6 @@ urlpatterns = [
     path("post/<int:pk>/update/", PostUpdateView.as_view(), name="post-update"),
     path("post/<int:pk>/delete/", PostDeleteView.as_view(), name="post-delete"),
     path("post_create/", post_create, name="post_create"),
+    path('post/like/<slug:slug>/', PostLikeToggle.as_view(), name='like-toggle'),
+    path('api/like/<slug:slug>/', PostLikeAPIToggle.as_view(), name='like-api-toggle'),
 ]
