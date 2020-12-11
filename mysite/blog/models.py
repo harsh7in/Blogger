@@ -6,7 +6,16 @@ from django.utils.text import slugify
 from .utils import get_read_time
 from ckeditor_uploader.fields import RichTextUploadingField
 from taggit.managers import TaggableManager
+
 # Create your models here.
+
+class TagDict(models.Model):
+    tag = models.CharField(max_length=100)
+    count = models.IntegerField(default=0)
+
+    def __str__(self):
+        return self.tag
+
 
 class Post(models.Model):
     title       = models.CharField(max_length=100)
@@ -25,6 +34,11 @@ class Post(models.Model):
         if not self.slug:
             self.slug = slugify(self.title)
         super(Post, self).save(*args, **kwargs)
+
+        for tag in self.tags.all():
+            tag_dict,_ = TagDict.objects.get_or_create(tag=str(tag))
+            tag_dict.count += 1
+            tag_dict.save()
 
     def __str__(self):
         return self.title
