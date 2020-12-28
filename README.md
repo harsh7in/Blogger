@@ -50,7 +50,7 @@ python3 -m venv env
 - Install dependencies using
 
 ```
-pip install -r requirements.txt
+pip install -r mysite/requirements.txt
 ```
 
 - Make migrations using
