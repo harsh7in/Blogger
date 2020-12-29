@@ -164,7 +164,7 @@ $ git push origin <branch_name>
 - ### Contributor's Hack 2020
   Contributor's Hack 2020 is a program that helps students grow with ""OPEN SOURCE"". This initiative by **HakinCodes** provides you the best platform to improve your skills and abilities by contributing to vast variety of OPEN SOURCE Projects and opportunity to interact with the mentors and the Organizing Team.
 
-<p align="center"><img src="https://user-images.githubusercontent.com/54139847/87952512-882a5600-cac7-11ea-939d-8304a641d8a9.png" height='400' width='450'/></p>
+<p align="center"><img src="https://user-images.githubusercontent.com/54139847/87952512-882a5600-cac7-11ea-939d-8304a641d8a9.png" height='415' width='450'/></p>
 
 - ### NJACK Winter of Code 2020
   **NWoC** (NJACK Winter of Code) is a program by **NJACK** (The Official Computer Science Club of IIT Patna) that helps students understand the paradigm of Open Source contribution and gives them real world software development experience.
@@ -174,4 +174,4 @@ $ git push origin <branch_name>
 - ### Devscript Winter of Code 2020
   **DWOC** is an open source initiative taken by Devscript to help students and learners be acquainted with the different aspects that entail open source contribution. It helps the mentees get a taste of problem solving in the real world.
 
-<p align="center"><img src="https://github.com/IshetaBansal/Blogger/blob/master/DWOC-logo.png" height='550' width='550'/></p>
+<p align="center"><img src="https://github.com/IshetaBansal/Blogger/blob/master/DWOC-logo.png" height='515' width='515'/></p>
