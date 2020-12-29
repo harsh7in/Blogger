@@ -1,10 +1,11 @@
 # Blogger
+
 Blogger is a basic blogging application which includes user to create account and post their views.
 
 ## Tech Stack
+
 - **Frontend:** HTML/CSS
 - **Backend:** Django
-
 
 ## Quick Start :
 
@@ -20,6 +21,7 @@ $ cd Blogger/mysite
 ```
 
 - **Branching**
+
 ```
 $ git checkout -b [your_branch_name]
 ```
@@ -29,13 +31,15 @@ $ git checkout -b [your_branch_name]
 #### Setting up Project
 
 - Create a Virtual Environment
+
 ```
 python3 -m venv env
 ```
 
 - Activate the Virtual Environment
+
   - On Windows
-    ``` 
+    ```
     env\Scripts\activate
     ```
   - On Linux or MAC
@@ -44,9 +48,11 @@ python3 -m venv env
     ```
 
 - Install dependencies using
+
 ```
-pip install -r requirements.txt
+pip install -r mysite/requirements.txt
 ```
+
 
 - Setting up mandatory file
 ```
@@ -55,24 +61,33 @@ A .env.example file is present in the mysite folder you have to copy the content
 configurations from .env file.
 ```
 
+
 - Make migrations using
+
 ```
 python manage.py makemigrations
 ```
+
 - Migrate Database
+
 ```
 python manage.py migrate
 ```
+
 - Create a superuser
+
 ```
 python manage.py createsuperuser
 ```
+
 - Run server using
+
 ```
 python manage.py runserver
 ```
 
 - **Stage your Changes and Commit**
+
 ```
 # For adding/Staging Changes
 
@@ -86,11 +101,13 @@ $ git commit -m "<your commit message>"
 ```
 
 - **Push your Commit to Repo**
+
 ```
 $ git push origin <branch_name>
 ```
 
 ## Project Structure
+
 /<br>
 |- .github<br>
 |- mysite : Project Directory<br>
@@ -98,7 +115,7 @@ $ git push origin <branch_name>
 |&ensp;&ensp;&ensp;&ensp;|&ensp;&ensp;&ensp;&ensp;|- migrations : Contains files that helps us to make the changes to the database schema as per the changes done in the models.<br>
 |&ensp;&ensp;&ensp;&ensp;|&ensp;&ensp;&ensp;&ensp;|- static : All the static assets for the blog application<br>
 |&ensp;&ensp;&ensp;&ensp;|&ensp;&ensp;&ensp;&ensp;|- templates : All the application specific templates<br>
-|&ensp;&ensp;&ensp;&ensp;|&ensp;&ensp;&ensp;&ensp;|- \_\_init__.py<br>
+|&ensp;&ensp;&ensp;&ensp;|&ensp;&ensp;&ensp;&ensp;|- \_\_init**.py<br>
 |&ensp;&ensp;&ensp;&ensp;|&ensp;&ensp;&ensp;&ensp;|- admin.py : In this we register the models with the Django admin application<br>
 |&ensp;&ensp;&ensp;&ensp;|&ensp;&ensp;&ensp;&ensp;|- apps.py : In this we register/configure all the common files for the app<br>
 |&ensp;&ensp;&ensp;&ensp;|&ensp;&ensp;&ensp;&ensp;|- forms.py : Contains all the forms for the app<br>
@@ -108,7 +125,7 @@ $ git push origin <branch_name>
 |&ensp;&ensp;&ensp;&ensp;|&ensp;&ensp;&ensp;&ensp;|- views.py : Contains all the views for the app<br>
 |&ensp;&ensp;&ensp;&ensp;|- media : The media files related to the blogs and users<br>
 |&ensp;&ensp;&ensp;&ensp;|- mysite : Python project package<br>
-|&ensp;&ensp;&ensp;&ensp;|&ensp;&ensp;&ensp;&ensp;|- \_\_init__.py<br>
+|&ensp;&ensp;&ensp;&ensp;|&ensp;&ensp;&ensp;&ensp;|- \_\_init**.py<br>
 |&ensp;&ensp;&ensp;&ensp;|&ensp;&ensp;&ensp;&ensp;|- asgi.py : Entry point for the ASGI servers<br>
 |&ensp;&ensp;&ensp;&ensp;|&ensp;&ensp;&ensp;&ensp;|- settings.py : All the configurations for your project<br>
 |&ensp;&ensp;&ensp;&ensp;|&ensp;&ensp;&ensp;&ensp;|- urls.py : All the URLs for the Django project<br>
@@ -117,7 +134,7 @@ $ git push origin <branch_name>
 |&ensp;&ensp;&ensp;&ensp;|- users : Application for users<br>
 |&ensp;&ensp;&ensp;&ensp;|&ensp;&ensp;&ensp;&ensp;|- migrations : Contains files that helps us to make the changes to the database schema as per the changes done in the models.<br>
 |&ensp;&ensp;&ensp;&ensp;|&ensp;&ensp;&ensp;&ensp;|- templates : All the application specific templates<br>
-|&ensp;&ensp;&ensp;&ensp;|&ensp;&ensp;&ensp;&ensp;|- \_\_init__.py<br>
+|&ensp;&ensp;&ensp;&ensp;|&ensp;&ensp;&ensp;&ensp;|- \_\_init\_\_.py<br>
 |&ensp;&ensp;&ensp;&ensp;|&ensp;&ensp;&ensp;&ensp;|- admin.py : In this we register the models with the Django admin application<br>
 |&ensp;&ensp;&ensp;&ensp;|&ensp;&ensp;&ensp;&ensp;|- apps.py : In this we register/configure all the common files for the app<br>
 |&ensp;&ensp;&ensp;&ensp;|&ensp;&ensp;&ensp;&ensp;|- backends.py : Contains the backend specific authentication functions<br>
@@ -136,21 +153,34 @@ $ git push origin <branch_name>
 |- [LICENSE.md](https://github.com/harsh-9in/Blogger/blob/master/LICENSE.md) : See the License<br>
 |- [README.md](https://github.com/harsh-9in/Blogger/blob/master/README.md) : Read all the instructions releated to the project<br>
 
-## Contribution Guidelines 
+## Contribution Guidelines
+
 - Take a look at the guidelines to contribute to the project
 - [CONTRIBUTING GUIDELINES](https://github.com/harsh-9in/Blogger/blob/master/CONTRIBUTING.md)
-## Geeks behind the initiative
-### Project Admin
-**Harsh Kumar** -[Know more](https://github.com/harsh-9in)
-### Project Mentors
--**Kajol Kumari**-[Know More](https://github.com/Kajol-Kumari)
--**Swarnima Shukla**-[Know More](https://github.com/Swarnimashukla)
--**Sarath Kaul**-[Know More](https://github.com/SKAUL05)
 
+## Geeks behind the initiative
+
+### Project Admin
+
+**Harsh Kumar** -[Know more](https://github.com/harsh-9in)
+
+### Project Mentors
+
+-**Kajol Kumari**-[Know More](https://github.com/Kajol-Kumari) -**Swarnima Shukla**-[Know More](https://github.com/Swarnimashukla) -**Sarath Kaul**-[Know More](https://github.com/SKAUL05)
 
 ## Open Source Programs
 
 - ### Contributor's Hack 2020
-Contributor's Hack 2020 is a program that helps students grow with ""OPEN SOURCE"". This initiative by **HakinCodes** provides you the best platform to improve your skills and abilities by contributing to vast variety of OPEN SOURCE Projects and opportunity to interact with the mentors and the Organizing Team.
+  Contributor's Hack 2020 is a program that helps students grow with ""OPEN SOURCE"". This initiative by **HakinCodes** provides you the best platform to improve your skills and abilities by contributing to vast variety of OPEN SOURCE Projects and opportunity to interact with the mentors and the Organizing Team.
 
-![HakinCodes Logo](https://user-images.githubusercontent.com/54139847/87952512-882a5600-cac7-11ea-939d-8304a641d8a9.png)
+<p align="center"><img src="https://user-images.githubusercontent.com/54139847/87952512-882a5600-cac7-11ea-939d-8304a641d8a9.png" height='415' width='450'/></p>
+
+- ### NJACK Winter of Code 2020
+  **NWoC** (NJACK Winter of Code) is a program by **NJACK** (The Official Computer Science Club of IIT Patna) that helps students understand the paradigm of Open Source contribution and gives them real world software development experience.
+
+<p align="center"><img src="https://njackwinterofcode.github.io/images/nwoc-logo.png" height='450' width='600'/></p>
+
+- ### Devscript Winter of Code 2020
+  **DWOC** is an open source initiative taken by Devscript to help students and learners be acquainted with the different aspects that entail open source contribution. It helps the mentees get a taste of problem solving in the real world.
+
+<p align="center"><img src="https://github.com/IshetaBansal/Blogger/blob/master/DWOC-logo.png" height='515' width='515'/></p>
