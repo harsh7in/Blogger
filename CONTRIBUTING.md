@@ -1,4 +1,4 @@
-# Blogger
+# Blogger:man_technologist:
 
 ***Blogger is a basic blogging application which includes user to create account and post their views.***
 
@@ -57,7 +57,7 @@ Before you start off with the contribution,
 git clone "https://github.com/bhavesh1129/Blogger.git"
 ```
 
-### 3. Create a branch ⚓
+### 3. Navigate to the project directory.⚓
 
 * Change to the repository directory on your computer (if you are not already there):
 
@@ -65,7 +65,7 @@ git clone "https://github.com/bhavesh1129/Blogger.git"
 cd Blogger
 ```
 
-### 4. Add a reference to the original repository.
+### 4. Add a reference to the original repository.:ledger:
 
 ```
 git remote add upstream https://github.com/bhavesh1129-/Blogger.git (URL of the repository)
@@ -75,7 +75,7 @@ git remote add upstream https://github.com/bhavesh1129-/Blogger.git (URL of the 
     <img src="https://github.com/bhavesh1129/Blogger/blob/master/Contributing%20File%20Images/upstream.png">
   </a>
   
-### 5. See latest  changes to the repository using following command:
+### 5. See latest changes to the repository using following command::arrow_left:
 
 ```
 git remote -v
@@ -85,7 +85,7 @@ git remote -v
     <img src="https://github.com/bhavesh1129/Blogger/blob/master/Contributing%20File%20Images/remote.png">
   </a>
   
-### 6. Now create a branch using the `git checkout` command:
+### 6. Now create a branch using::dna:
 
 ```
 git checkout -b <your-new-branch-name>
@@ -95,7 +95,7 @@ git checkout -b <your-new-branch-name>
     <img src="https://github.com/bhavesh1129/Blogger/blob/master/Contributing%20File%20Images/checkout.png">
   </a>
   
-### 7. Always take a pull from the upstream repository to your master branch to keep it at par with the main project(updated repository).
+### 7. Take a pull from the upstream repository to your master branch to keep it at par with the main project.:arrow_up:
 
 ```
 git pull upstream master
@@ -106,7 +106,7 @@ git pull upstream master
   </a>
   
 
-### 8. Make necessary changes and commit those changes 🚏
+### 8. Make necessary changes🚏
 
 * Do the necessary changes.
 
@@ -121,7 +121,7 @@ git add .
   </a>
 
 
-### 9. Now commit those changes using the `git commit` command:
+### 9. Now Commit those changes::fountain_pen:
 
 ```
 git commit -m "(Add your message here)"
