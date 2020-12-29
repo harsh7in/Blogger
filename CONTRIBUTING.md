@@ -54,15 +54,6 @@ Before you start off with the contribution,
 * Open a terminal and run the following git command:
 
 ```
-git clone "url you just copied"
-```
-
-   where "url you just copied" (without the quotation marks) is the url to this repository (your fork of this project). See the previous steps to obtain the url.
-
-
-* For example:
-
-```
 git clone "https://github.com/bhavesh1129/Blogger.git"
 ```
 
@@ -71,9 +62,8 @@ git clone "https://github.com/bhavesh1129/Blogger.git"
 * Change to the repository directory on your computer (if you are not already there):
 
 ```
-cd (filename)
+cd Blogger
 ```
-
 
 ### 4. Add a reference to the original repository.
 
@@ -105,12 +95,6 @@ git checkout -b <your-new-branch-name>
     <img src="https://github.com/bhavesh1129/Blogger/blob/master/Contributing%20File%20Images/checkout.png">
   </a>
   
-* For example:
-
-```
-git checkout -b dev_username
-```
-
 ### 7. Always take a pull from the upstream repository to your master branch to keep it at par with the main project(updated repository).
 
 ```
@@ -129,28 +113,24 @@ git pull upstream master
 * If you go to the project directory and execute the command `git status`, you'll see there are changes.
 
 * Add those changes to the branch you just created using the `git add` command:
-
+```
+git add .
+```
 <p align="center">
     <img src="https://github.com/bhavesh1129/Blogger/blob/master/Contributing%20File%20Images/add.png">
   </a>
 
-```
-git add .
-```
 
-* Now commit those changes using the `git commit` command:
-
-<p align="center">
-    <img src="https://github.com/bhavesh1129/Blogger/blob/master/Contributing%20File%20Images/commit.png">
-  </a>
+### 9. Now commit those changes using the `git commit` command:
 
 ```
 git commit -m "(Add your message here)"
 ```
+<p align="center">
+    <img src="https://github.com/bhavesh1129/Blogger/blob/master/Contributing%20File%20Images/commit.png">
+  </a>
 
-   replacing `<Add your message here>` with your message.
-
-### 9. Push changes to GitHub 🪂
+### 10. Push changes to GitHub 🪂
 
 * Push your changes using the command `git push`:
 
@@ -164,7 +144,7 @@ git push origin <branch-name>
 
    replacing `<branch-name>` with the name of the branch you created earlier.
 
-### 10. Submit your changes for review 🚩
+### 11. Submit your changes for review 🚩
 
 * If you go to your repository on GitHub, you'll see a `Compare & pull request` button. Click on that button.
 
