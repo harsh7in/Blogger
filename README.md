@@ -48,11 +48,11 @@ python3 -m venv env
 pip install -r requirements.txt
 ```
 
--Setting up mandatory file
+- Setting up mandatory file
 ```
-A .env.example file is present in the mysite folder you have to copy 
-the content of .env.example and paste it into .env file (a file to be made in the same folder as .env.example file)
-so that settings.py file take all the configurations from .env file.
+A .env.example file is present in the mysite folder you have to copy the content of .env.example and paste it into
+.env file (a file to be made in the same folder as .env.example file) so that settings.py file take all the 
+configurations from .env file.
 ```
 
 - Make migrations using
