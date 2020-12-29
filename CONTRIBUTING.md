@@ -81,18 +81,30 @@ cd (filename)
 git remote add upstream https://github.com/bhavesh1129-/Blogger.git (URL of the repository)
 ```
 
+<p align="center">
+    <img src="https://github.com/bhavesh1129/Blogger/blob/master/Contributing%20File%20Images/upstream.png">
+  </a>
+  
 ### 5. See latest  changes to the repository using following command:
 
 ```
 git remote -v
 ```
 
+<p align="center">
+    <img src="https://github.com/bhavesh1129/Blogger/blob/master/Contributing%20File%20Images/remote.png">
+  </a>
+  
 ### 6. Now create a branch using the `git checkout` command:
 
 ```
 git checkout -b <your-new-branch-name>
 ```
 
+<p align="center">
+    <img src="https://github.com/bhavesh1129/Blogger/blob/master/Contributing%20File%20Images/checkout.png">
+  </a>
+  
 * For example:
 
 ```
@@ -105,6 +117,11 @@ git checkout -b dev_username
 git pull upstream master
 ```
 
+<p align="center">
+    <img src="https://github.com/bhavesh1129/Blogger/blob/master/Contributing%20File%20Images/upstream.png">
+  </a>
+  
+
 ### 8. Make necessary changes and commit those changes 🚏
 
 * Do the necessary changes.
@@ -114,7 +131,7 @@ git pull upstream master
 * Add those changes to the branch you just created using the `git add` command:
 
 <p align="center">
-    <img src="https://raw.githubusercontent.com/bhavesh1129/orphan_support-php/main/assets/img/Add.png">
+    <img src="https://github.com/bhavesh1129/Blogger/blob/master/Contributing%20File%20Images/add.png">
   </a>
 
 ```
@@ -124,7 +141,7 @@ git add .
 * Now commit those changes using the `git commit` command:
 
 <p align="center">
-    <img src="https://raw.githubusercontent.com/bhavesh1129/orphan_support-php/main/assets/img/Commit.png">
+    <img src="https://github.com/bhavesh1129/Blogger/blob/master/Contributing%20File%20Images/commit.png">
   </a>
 
 ```
@@ -138,7 +155,7 @@ git commit -m "(Add your message here)"
 * Push your changes using the command `git push`:
 
 <p align="center">
-    <img src="https://raw.githubusercontent.com/bhavesh1129/orphan_support-php/main/assets/img/push.png">
+    <img src="https://github.com/bhavesh1129/Blogger/blob/master/Contributing%20File%20Images/push.png">
   </a>
 
 ```
