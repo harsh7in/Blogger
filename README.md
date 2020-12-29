@@ -170,3 +170,8 @@ $ git push origin <branch_name>
   **NWoC** (NJACK Winter of Code) is a program by **NJACK** (The Official Computer Science Club of IIT Patna) that helps students understand the paradigm of Open Source contribution and gives them real world software development experience.
 
 ![NWoC Logo](https://njackwinterofcode.github.io/images/nwoc-logo.png)
+
+- ### Devscript Winter of Code 2020
+**DWOC** is an open source initiative taken by Devscript to help students and learners be acquainted with the different aspects that entail open source contribution. It helps the mentees get a taste of problem solving in the real world.
+
+<p align="left"><img src="https://github.com/IshetaBansal/Blogger/blob/master/DWOC-logo.png" height='500' width='500'/></p>
