@@ -27,7 +27,7 @@ Before you start off with the contribution,
 
 * First comment on the opened issues on which you want to work as "Can I take up the work ?","I would like to work on this!",etc.:loudspeaker:
 
-* Wait for ***approval***. After it's assigned to you then move on further, fork the repository and clone it (if haven't yet done) and start your work according to the guidelines given in the [README.md](https://github.com/sanscript-tech/orphan_support-php/blob/main/README.md) of repository.
+* Wait for ***approval***. After it's assigned to you then move on further, fork the repository and clone it (if haven't yet done) and start your work according to the guidelines given in the [README.md](https://github.com/bhavesh1129/Blogger/blob/master/README.md) of repository.
 
 ## Steps to Contribute in GitHub Repository:pushpin:
 
