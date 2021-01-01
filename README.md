@@ -15,6 +15,10 @@ Get your own Fork/Copy of repository by clicking `Fork` button right upper corne
 
 - **Clone**:
 
+Now clone the forked repository to your machine. Go to your GitHub account, open the forked repository, click on the code button and then click the copy to clipboard icon.
+
+Open a terminal and run the following git command:
+
 ```sh
 $ git clone https://github.com/harsh-9in/Blogger.git
 $ cd Blogger/mysite
