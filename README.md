@@ -17,8 +17,6 @@ Blogger is a basic blogging application which includes user to create account an
 [![Issues](https://img.shields.io/github/issues/harsh-9in/Blogger.svg?logo=github)](https://github.com/harsh-9in/Blogger/issues)
 [![Contributors](https://img.shields.io/github/contributors/harsh-9in/Blogger.svg?logo=github)](https://img.shields.io/github/contributors/harsh-9in/Blogger)
 
-<br>
-
 
 
 ## Tech Stack
