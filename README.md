@@ -1,7 +1,7 @@
 <h1 align= "center"><b>Blogger</b></h1> 
 
 <div align= "center"> 
-💥Blogger is a basic blogging application which includes user to create account and post their views.💫
+💥Blogger is a basic blogging application which includes user to create account and post their views.
 </div>
 
 <br>
@@ -19,7 +19,7 @@
 
 
 
-## Tech Stack
+## Tech Stack💻
 
 - **Frontend:** HTML/CSS
 - **Backend:** Django
