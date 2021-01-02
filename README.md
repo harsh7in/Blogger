@@ -5,7 +5,7 @@ Blogger is a basic blogging application which includes user to create account an
 </div>
 
 
-<br>
+
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 [![LinkedIn](https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555)](https://www.linkedin.com/in/harsh-kumar-1a287617a/)
