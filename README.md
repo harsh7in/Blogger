@@ -4,6 +4,21 @@
 Blogger is a basic blogging application which includes user to create account and post their views.
 </div>
 
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+[![LinkedIn](https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555)](https://www.linkedin.com/in/harsh-kumar-1a287617a/)
+![Python](https://img.shields.io/badge/python-v3.6+-blue.svg)
+[![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/harsh-9in/Blogger/issues)
+[![License](https://img.shields.io/github/license/akrish4/Learn-By-Write?style=flat-square)](https://github.com/harsh-9in/Blogger/)
+[![Forks](https://img.shields.io/github/forks/akrish4/Learn-By-Write.svg?logo=github)](https://github.com/harsh-9in/Blogger/network/members)
+[![Stargazers](https://img.shields.io/github/stars/akrish4/Learn-By-Write.svg?logo=github)](https://github.com/harsh-9in/Blogger/stargazers)
+[![Issues](https://img.shields.io/github/issues/akrish4/Learn-By-Write.svg?logo=github)](https://github.com/harsh-9in/Blogger/issues)
+[![Contributors](https://img.shields.io/github/contributors/akrish4/Learn-By-Write.svg?logo=github)](https://img.shields.io/github/contributors/harsh-9in/Blogger)
+
+<br>
+
+
+
 ## Tech Stack
 
 - **Frontend:** HTML/CSS
