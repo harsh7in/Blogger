@@ -71,30 +71,18 @@ cd Blogger
 ```
 git remote add upstream https://github.com/bhavesh1129-/Blogger.git (URL of the repository)
 ```
-
-<p align="center">
-    <img src="https://github.com/bhavesh1129/Blogger/blob/master/Contributing%20File%20Images/upstream.png">
-  </a>
   
 ### 5. See latest changes to the repository using following command::arrow_left:
 
 ```
 git remote -v
 ```
-
-<p align="center">
-    <img src="https://github.com/bhavesh1129/Blogger/blob/master/Contributing%20File%20Images/remote.png">
-  </a>
   
 ### 6. Now create a branch using::dna:
 
 ```
 git checkout -b <your-new-branch-name>
 ```
-
-<p align="center">
-    <img src="https://github.com/bhavesh1129/Blogger/blob/master/Contributing%20File%20Images/checkout.png">
-  </a>
   
 ### 7. Take a pull from the upstream repository to your master branch to keep it at par with the main project.:arrow_up:
 
@@ -102,10 +90,6 @@ git checkout -b <your-new-branch-name>
 git pull upstream master
 ```
 
-<p align="center">
-    <img src="https://github.com/bhavesh1129/Blogger/blob/master/Contributing%20File%20Images/upstream.png">
-  </a>
-  
 
 ### 8. Make necessary changes🚏
 
@@ -117,27 +101,16 @@ git pull upstream master
 ```
 git add .
 ```
-<p align="center">
-    <img src="https://github.com/bhavesh1129/Blogger/blob/master/Contributing%20File%20Images/add.png">
-  </a>
-
 
 ### 9. Now Commit those changes::fountain_pen:
 
 ```
 git commit -m "(Add your message here)"
 ```
-<p align="center">
-    <img src="https://github.com/bhavesh1129/Blogger/blob/master/Contributing%20File%20Images/commit.png">
-  </a>
 
 ### 10. Push changes to GitHub 🪂
 
 * Push your changes using the command `git push`:
-
-<p align="center">
-    <img src="https://github.com/bhavesh1129/Blogger/blob/master/Contributing%20File%20Images/push.png">
-  </a>
 
 ```
 git push origin <branch-name>
@@ -149,15 +122,7 @@ git push origin <branch-name>
 
 * If you go to your repository on GitHub, you'll see a `Compare & pull request` button. Click on that button.
 
-<p align="center">
-    <img src="https://raw.githubusercontent.com/bhavesh1129/orphan_support-php/main/assets/img/compare.png">
-  </a>
-
 * Now submit the pull request.
-
-<p align="center">
-    <img src="https://raw.githubusercontent.com/bhavesh1129/orphan_support-php/main/assets/img/pullrequest.png">
-  </a>
 
 * Soon we will be merging all your changes into the master branch of this project. You will get a notification email once the changes have been merged.
 
